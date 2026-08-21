@@ -1,0 +1,104 @@
+{
+  "date": "2026-08-21",
+  "title": "大模型每日进展 · 2026-08-21",
+  "summary": "今日 HuggingFace 趋势榜显示新一代大模型密集迭代，DeepSeek-V4、Qwen3.8、Kimi-K3 等超大规模模型齐聚；论文侧关注 Agent 学习环境与 LLM 记忆认知陷阱等新基准；工具生态方面 Bun 1.4 引入原生浏览器自动化能力，为 Agent 化工作流提供新基础设施。",
+  "sections": [
+    {
+      "heading": "模型发布与能力更新",
+      "items": [
+        {
+          "title": "HuggingFace 趋势榜：DeepSeek-V4、Qwen3.8、Kimi-K3 等超大模型密集上榜",
+          "summary": "当前 HuggingFace Trending Models 榜单被多个大规模模型占据，包括 deepseek-ai/DeepSeek-V4-Pro-0813（1.7T）、Qwen3.8-2.4T-A95B、moonshotai/Kimi-K3（2.8T）等超大参数模型，以及广受欢迎的中等规模 Qwen3.8-27B 系列，反映近期开源大模型在参数规模与多模态能力上的持续扩张。",
+          "url": "https://huggingface.co/models?sort=trending",
+          "source": "HuggingFace",
+          "tags": [
+            "模型发布",
+            "开源模型",
+            "MoE"
+          ]
+        },
+        {
+          "title": "MiniMax 发布 Music3 音频生成与 MiniMax-H3 多模态视频模型",
+          "summary": "MiniMaxAI 在 HuggingFace 上线 MiniMax-Music3（2B，Text-to-Audio）与 MiniMax-H3（33B，Image-Text-to-Video）等模型，覆盖音乐生成与图文到视频生成方向，均获得较高下载与关注度。",
+          "url": "https://huggingface.co/models?sort=trending",
+          "source": "HuggingFace",
+          "tags": [
+            "多模态",
+            "音频生成",
+            "视频生成"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "论文与技术方法",
+      "items": [
+        {
+          "title": "EnvHarness：唤醒静态世界用于智能体学习",
+          "summary": "Google 提出 EnvHarness，将静态环境改造为可交互的训练场景，用于提升 Agent 的学习能力，为智能体在真实/合成环境中的训练提供新方法，当日登上 HuggingFace Papers 榜首。",
+          "url": "https://huggingface.co/papers",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "Agent",
+            "强化学习",
+            "论文"
+          ]
+        },
+        {
+          "title": "MemTrapBench：评测 LLM 记忆使用中的认知陷阱",
+          "summary": "ZJUNLP 提出 MemTrapBench，系统性地基准测试大模型在使用记忆时可能落入的认知陷阱，揭示 LLM 在长期记忆与信息利用上的失效模式，对记忆增强型 Agent 设计有参考价值。",
+          "url": "https://huggingface.co/papers",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "记忆",
+            "评测基准",
+            "论文"
+          ]
+        },
+        {
+          "title": "Learning how to Forget：面向长上下文稀疏注意力的微调",
+          "summary": "该论文提出通过微调让模型学会\"遗忘\"，以实现长上下文场景下的稀疏注意力，在保持长文本处理能力的同时降低注意力计算成本。",
+          "url": "https://arxiv.org/list/cs.CL/recent",
+          "source": "arXiv",
+          "tags": [
+            "长上下文",
+            "稀疏注意力",
+            "论文"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "开源生态与工具",
+      "items": [
+        {
+          "title": "Bun 1.4 发布：引入 Bun.WebView 原生浏览器自动化",
+          "summary": "Bun 1.4 作为 Rust 重写后的首个稳定版发布，新增 Bun.WebView（基于 WebKit 或 CDP 控制 Chromium）、Bun.Image、Bun.markdown 等特性，将浏览器自动化能力内建到运行时核心，为 Agent 化的网页抓取与工具调用提供了轻量基础设施。",
+          "url": "https://simonwillison.net/",
+          "source": "Simon Willison",
+          "tags": [
+            "工具",
+            "浏览器自动化",
+            "Agent"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "产品与行业动态",
+      "items": [
+        {
+          "title": "ChatGPT Search 大规模启用 site: 运算符，GEO 优化兴起",
+          "summary": "据 Promptwatch 追踪，随 GPT-5.6 推出，ChatGPT Search 使用 site: 运算符的查询占比从 0.3%-0.5% 骤升至 8 月 8 日的 16-17%，同时明显减少了对 Reddit 来源的引用，反映搜索工具行为的显著调整，也推动了面向生成式引擎的 GEO（Generative Engine Optimization）优化生态兴起。",
+          "url": "https://simonwillison.net/",
+          "source": "Simon Willison",
+          "tags": [
+            "ChatGPT",
+            "AI搜索",
+            "GEO"
+          ]
+        }
+      ]
+    }
+  ]
+}

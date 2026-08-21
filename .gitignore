@@ -2,6 +2,8 @@
 node_modules/
 .DS_Store
 run.log
+launchd.out.log
+launchd.err.log
 .env.local
 
 # 流水线脚本与密钥仅本地保留，公开仓库只含静态站点
