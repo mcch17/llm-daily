@@ -1,3 +1,11 @@
+# 本地文件，不发布到公开仓库
 node_modules/
 .DS_Store
 run.log
+.env.local
+
+# 流水线脚本与密钥仅本地保留，公开仓库只含静态站点
+research.mjs
+run-daily.sh
+build.mjs
+prompt.md

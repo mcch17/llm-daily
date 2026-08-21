@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-08-20</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-08-20</p>
+  <h1>大模型每日进展 · 2026-08-20</h1>
+  <div class="summary">今日 HuggingFace 论文榜由具身智能与 Agent 主题主导，Zetta 提出自演化物理智能的高效闭环框架成为焦点；开源生态方面 Qwen3.8-27B 以 27B 体量在 Artificial Analysis Intelligence Index 上取得 52 分逼近千亿级大模型，成为社区最热门模型；Mojo 语言也正式以 Apache 2 许可开源。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>Qwen3.8-27B 以小体量逼近千亿级模型</h3>
+  <p>Qwen3.8-27B 在 Artificial Analysis Intelligence Index 上取得 52 分，与 GPT-5.6 Luna(max) 持平，仅落后 753B 的 GLM-5.2 与 1.7T 的 DeepSeek V4 Pro 一分，展示了小模型的惊人性价比，成为 HuggingFace Trending 榜首并衍生大量社区微调版本。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/" target="_blank" rel="noopener">Simon Willison</a></div>
+  <div class="tags"><span class="tag">Qwen</span><span class="tag">开源模型</span><span class="tag">评测</span></div>
+</div>
+<div class="item">
+  <h3>多款大规模模型登上 HuggingFace 趋势榜</h3>
+  <p>HuggingFace Trending 显示 moonshotai/Kimi-K3(2.8T)、deepseek-ai/DeepSeek-V4-Pro-0813(1.7T)、Qwen3.8-2.4T-A95B 等超大规模模型齐聚榜单，同时 MiniMax-H3、Lightricks/LTX-2.5 等多模态与视频生成模型热度显著。</p>
+  <div class="src">来源：<a href="https://huggingface.co/models?sort=trending" target="_blank" rel="noopener">HuggingFace</a></div>
+  <div class="tags"><span class="tag">模型榜单</span><span class="tag">多模态</span><span class="tag">MoE</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>Zetta ζ：自演化物理智能的高效闭环框架</h3>
+  <p>该工作提出面向具身智能的高效闭环 harness，支持物理智能的自我演化，登上 HuggingFace 论文榜首，反映具身与自演化 Agent 方向的持续升温。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">具身智能</span><span class="tag">Agent</span></div>
+</div>
+<div class="item">
+  <h3>SPADE：在自适应合成可执行环境中的自博弈</h3>
+  <p>由 Luke Zettlemoyer、Yejin Choi 等参与，提出在自适应合成可执行环境中通过自博弈提升模型能力的方法，探索合成环境驱动的强化学习范式。</p>
+  <div class="src">来源：<a href="https://arxiv.org/list/cs.CL/recent" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">自博弈</span><span class="tag">强化学习</span></div>
+</div>
+<div class="item">
+  <h3>On-Policy 蒸馏的分组校准与多教师能力均衡</h3>
+  <p>两篇工作分别提出 Group-Calibrated On-Policy Distillation(面向长上下文推理)与 Open-MOPD(诊断并修复多教师在线蒸馏中的能力失衡)，推进在线蒸馏在长上下文与多教师场景的稳定性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/list/cs.LG/recent" target="_blank" rel="noopener">arXiv cs.LG</a></div>
+  <div class="tags"><span class="tag">蒸馏</span><span class="tag">长上下文</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>Mojo 语言正式开源</h3>
+  <p>Mojo 兑现自 2023 年 5 月起的开源承诺，在发布 1.0 后将编译器与工具链以 Apache 2 许可开源；该语言现已定位为借鉴 Python 语法、专注简化 GPU 编程的独立语言，而非严格的 Python 超集。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/" target="_blank" rel="noopener">Simon Willison</a></div>
+  <div class="tags"><span class="tag">Mojo</span><span class="tag">开源</span><span class="tag">GPU</span></div>
+</div>
+<div class="item">
+  <h3>以 smolvm 沙箱运行不受信任代码的实践</h3>
+  <p>Simon Willison 用 Claude 在 smolmachines 上探索安全沙箱执行不受信任 Python/JavaScript 的可行性，指出结合 LLM 生成扩展与现代沙箱原语，为 Web 上的『可扩展软件』提供了新机会。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/" target="_blank" rel="noopener">Simon Willison</a></div>
+  <div class="tags"><span class="tag">沙箱</span><span class="tag">代码执行</span><span class="tag">安全</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
