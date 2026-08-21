@@ -1,29 +1,39 @@
 {
   "date": "2026-08-21",
   "title": "大模型每日进展 · 2026-08-21",
-  "summary": "今日 HuggingFace 上 Google 的 EnvHarness 提出将静态世界唤醒用于智能体学习引发关注；ForgeWM 的少步动作条件视频世界模型与 Tencent 的 FlashPrefill V2 稀疏 prefill 注意力代表了世界模型与长上下文推理的两条技术前沿。工具侧 Bun 1.4 稳定版发布，带来 Bun.WebView 等适合 AI/Agent 场景的能力。",
+  "summary": "今日 HuggingFace 论文聚焦智能体学习与代码/终端任务合成，Google 的 EnvHarness 与 Tencent 的 FlashPrefill V2 值得关注；开源侧 Kimi-K3、DeepSeek-V4 系列与 MiniMax 多模态模型持续霸榜 trending；异常检测与多模态计数方向均有较多面向工业与视觉的实用新作。",
   "sections": [
     {
       "heading": "模型发布与能力更新",
       "items": [
         {
-          "title": "ForgeWM：少步动作条件视频世界模型的渐进因果训练",
-          "summary": "ForgeWM 提出用渐进式因果训练构建少步（few-step）、动作条件（action-conditioned）的视频世界模型，兼顾生成质量与推理效率，是当前世界模型方向的高热度工作。",
-          "url": "https://huggingface.co/papers/2608.14022",
-          "source": "HuggingFace Papers",
+          "title": "moonshotai/Kimi-K3 登顶 HuggingFace 图文模型 trending",
+          "summary": "Kimi-K3 为 2.8T 参数级 Image-Text-to-Text 模型，近一日下载量达 235 万、点赞过万，显示其在多模态理解上的高热度。",
+          "url": "https://huggingface.co/moonshotai/Kimi-K3",
+          "source": "HuggingFace Trending Models",
           "tags": [
-            "世界模型",
-            "视频生成"
+            "多模态",
+            "开源模型"
           ]
         },
         {
-          "title": "4DAnyone：从随手拍单目视频重建任意人物的 4D 表示",
-          "summary": "Ant Research 提出 4DAnyone，可从随意拍摄的单目视频中创建任意人物的 4D（动态三维）重建，拓展了从普通视频重建可动人物的能力边界。",
-          "url": "https://huggingface.co/papers/2608.20335",
-          "source": "HuggingFace Papers",
+          "title": "MiniMax-H3 图文到视频模型持续热门",
+          "summary": "MiniMaxAI 发布的 33B Image-Text-to-Video 模型 MiniMax-H3，累计下载 331 万、点赞 4.25k，代表视频生成方向的开源进展。",
+          "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+          "source": "HuggingFace Trending Models",
           "tags": [
-            "4D重建",
-            "单目视频"
+            "视频生成",
+            "多模态"
+          ]
+        },
+        {
+          "title": "DeepSeek-V4 系列（Pro/Flash）上线 HuggingFace",
+          "summary": "deepseek-ai 推出 1.7T 的 DeepSeek-V4-Pro-0813 与 304B 的 DeepSeek-V4-Flash-0731 两档文本生成模型，覆盖不同性能与成本需求。",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "LLM",
+            "开源模型"
           ]
         }
       ]
@@ -32,43 +42,43 @@
       "heading": "论文与技术方法",
       "items": [
         {
-          "title": "EnvHarness：唤醒静态世界用于智能体学习",
-          "summary": "Google 提出 EnvHarness，将原本静态的世界/环境转化为可供智能体交互与学习的训练场，为 Agent 训练提供可扩展的环境合成方案，为当日热度最高论文。",
+          "title": "EnvHarness: Awakening Static Worlds for Agent Learning",
+          "summary": "Google 提出的方法将静态世界数据转化为可交互环境，用于智能体训练，是当日 HuggingFace 论文热度最高之一（126 赞）。",
           "url": "https://huggingface.co/papers/2608.19880",
           "source": "HuggingFace Papers",
           "tags": [
             "Agent",
-            "环境合成"
+            "强化学习"
           ]
         },
         {
-          "title": "FlashPrefill V2：面向长上下文 LLM 服务的块稀疏 Prefill 注意力",
-          "summary": "Tencent 提出 FlashPrefill V2，通过块稀疏（block-sparse）prefill 注意力加速长上下文 LLM 的推理服务，针对长序列预填充阶段的算力瓶颈进行优化。",
+          "title": "FlashPrefill V2: Block-Sparse Prefill Attention for Long-Context LLM Serving",
+          "summary": "Tencent 提出面向长上下文推理服务的块稀疏 prefill 注意力，优化长序列 LLM 部署时的 prefill 效率。",
           "url": "https://huggingface.co/papers/2608.19758",
           "source": "HuggingFace Papers",
           "tags": [
             "长上下文",
-            "推理加速"
+            "推理优化"
           ]
         },
         {
-          "title": "MemTrapBench：评测 LLM 记忆使用中的认知陷阱",
-          "summary": "ZJUNLP 提出 MemTrapBench，系统性基准测试大模型在利用记忆时可能陷入的认知陷阱，为评估模型记忆可靠性提供工具。",
-          "url": "https://huggingface.co/papers/2608.20202",
+          "title": "ForgeWM: Progressive Causal Training for Few-Step Action-Conditioned Video World Models",
+          "summary": "提出渐进式因果训练，用于少步、动作条件化的视频世界模型，兼顾世界建模质量与生成效率（76 赞）。",
+          "url": "https://huggingface.co/papers/2608.14022",
           "source": "HuggingFace Papers",
           "tags": [
-            "评测基准",
-            "记忆"
+            "世界模型",
+            "视频生成"
           ]
         },
         {
-          "title": "SWE-bench Science：编码智能体能否解决科学工程任务",
-          "summary": "OpenMOSS 推出 SWE-bench Science，将编码智能体评测扩展到科学领域的工程任务，考察 Agent 在真实科研代码场景下的解题能力。",
+          "title": "SWE-bench Science: Can Coding Agents Resolve Engineering Tasks in Science?",
+          "summary": "OpenMOSS 推出面向科学工程任务的编码智能体基准 SWE-bench Science，评估 coding agent 在真实科研工程场景的解决能力。",
           "url": "https://huggingface.co/papers/2608.19799",
           "source": "HuggingFace Papers",
           "tags": [
             "评测基准",
-            "编码Agent"
+            "Coding Agent"
           ]
         }
       ]
@@ -77,23 +87,23 @@
       "heading": "开源生态与工具",
       "items": [
         {
-          "title": "Bun 1.4 稳定版发布：新增 Bun.WebView 等能力",
-          "summary": "Bun 1.4 为首个 Rust 重写后的稳定版本，新增 Bun.WebView、Bun.Image、Bun.markdown 等特性，并大幅提升 Node.js 兼容性与性能；其中 Bun.WebView 通过 CDP 提供原生浏览器自动化，适合 AI/Agent 抓取与工具执行场景。",
-          "url": "https://bun.com/blog/bun-v1.4",
-          "source": "Simon Willison's Weblog",
+          "title": "Bun 1.4 发布，新增 Bun.WebView 浏览器自动化能力",
+          "summary": "Bun 1.4 是 Rust 重写后首个稳定版，新增 Bun.WebView 通过 CDP 控制 Chromium，Simon Willison 用其构建了 shot-scraper 式 JSON API 原型，适合为 LLM/agent 提供网页抓取沙箱。",
+          "url": "https://github.com/simonw/research/tree/main/bun-webview-json-api#readme",
+          "source": "Simon Willison 博客",
           "tags": [
-            "Bun",
-            "工具链"
+            "工具",
+            "浏览器自动化"
           ]
         },
         {
-          "title": "基于 Bun.WebView 的 shot-scraper 风格 JSON API 原型",
-          "summary": "Simon Willison 用 Claude Code 基于 Bun 1.4 的 Bun.WebView 构建了加载网页并执行 JavaScript 的 Web API 原型，实测在约 192-256MB 容器内即可跑完整 Chrome，展示了 Agent 化浏览器自动化的轻量部署路径。",
-          "url": "https://github.com/simonw/research/tree/main/bun-webview-json-api#readme",
-          "source": "Simon Willison's Weblog",
+          "title": "Task-CoEvolve: 通过自适应验证任务选择优化 Agent Harness",
+          "summary": "东京大学团队提出高效的 harness 优化方法，通过自适应选取验证任务提升智能体系统评估与迭代效率，附开源仓库。",
+          "url": "https://github.com/Agent4Science-UTokyo/Task-CoEvolve",
+          "source": "arXiv cs.CL",
           "tags": [
-            "浏览器自动化",
-            "Agent工具"
+            "Agent",
+            "开源"
           ]
         }
       ]
@@ -102,13 +112,111 @@
       "heading": "产品与行业动态",
       "items": [
         {
-          "title": "ChatGPT 搜索大规模启用 site: 操作符",
-          "summary": "Promptwatch 追踪显示，随 GPT-5.6 推出，ChatGPT 搜索 fanout 查询中包含 site: 操作符的比例从约 0.3%-0.5% 跃升至 8 月 8 日的 16%-17%，并且后续显著降低了 Reddit 作为信息来源的引用，反映搜索检索策略的调整。",
+          "title": "ChatGPT Search 大规模启用 site: 操作符",
+          "summary": "Promptwatch 追踪显示，随 GPT-5.6 Sol 更新，ChatGPT Search fanout 查询中含 site: 操作符比例从约 0.4% 跃升至 8 月 8 日的 16-17%，并显著降低了对 Reddit 来源的引用。",
           "url": "https://promptwatch.com/data/chatgpt-site-operator-fanouts",
-          "source": "Simon Willison's Weblog",
+          "source": "Simon Willison 博客",
           "tags": [
             "ChatGPT",
             "AI搜索"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "异常检测（Anomaly Detection）",
+      "items": [
+        {
+          "title": "LLM as Detector: An In-context Learning Approach for Tabular Anomaly Detection",
+          "summary": "利用 LLM 的上下文学习能力检测表格数据中的跨特征依赖违规异常，克服传统几何/重构方法难以捕捉特征间依赖的局限。",
+          "url": "https://arxiv.org/abs/2608.19463v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "异常检测",
+            "LLM",
+            "表格数据"
+          ]
+        },
+        {
+          "title": "From Noise to Signal: Improving Security Log Anomaly Detection Using LLMs with Endpoint-Specific Logs",
+          "summary": "结合终端专属日志与 LLM 改进安全日志异常检测，突破 Wazuh 等基于预定义规则方案的局限。",
+          "url": "https://arxiv.org/abs/2608.19938v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "异常检测",
+            "安全日志",
+            "LLM"
+          ]
+        },
+        {
+          "title": "SPARC: Subspace Position-Aware Robust Few-Shot Calibration for Distribution-Shifted Industrial Anomaly Detection",
+          "summary": "针对工业视觉异常检测在光照、夹具位置、传感器差异等分布偏移下性能骤降的问题，提出子空间位置感知的鲁棒少样本校准方法。",
+          "url": "https://arxiv.org/abs/2608.18585v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "异常检测",
+            "工业视觉",
+            "少样本"
+          ]
+        },
+        {
+          "title": "STEP: Score-Based Temporal Energy for Human Pose Video Anomaly Detection",
+          "summary": "基于骨架的视频异常检测，采用得分化时序能量建模正常静/动姿态分布，兼顾隐私保护与鲁棒性。",
+          "url": "https://arxiv.org/abs/2608.19987v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "视频异常检测",
+            "姿态",
+            "能量模型"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "多模态计数（Multimodal Counting）",
+      "items": [
+        {
+          "title": "The Count Is There, but Misaligned: Understanding and Correcting Counting Failures in VLMs",
+          "summary": "研究 VLM 基本物体计数失败的根源，发现问题多源于内部表示与输出间的对齐缺口而非知识缺失，并给出纠正方法。",
+          "url": "https://arxiv.org/abs/2607.09544v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "VLM",
+            "计数",
+            "对齐"
+          ]
+        },
+        {
+          "title": "HoloCount: A Holistic Visual Counting Benchmark for MLLMs",
+          "summary": "面向多模态大模型的整体视觉计数基准，要求细粒度 grounding 与空间推理的深度融合，系统评估 MLLM 的计数能力。",
+          "url": "https://arxiv.org/abs/2607.06420v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "MLLM",
+            "计数基准",
+            "多模态"
+          ]
+        },
+        {
+          "title": "Depth-Guided Video Object Counting in Crowded Scenes",
+          "summary": "提出深度引导的视频物体计数，基于文本或视觉提示鲁棒计数目标类别所有实例，弥补仅依赖 RGB 信息的不足。",
+          "url": "https://arxiv.org/abs/2608.06236v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "视频计数",
+            "深度",
+            "多模态提示"
+          ]
+        },
+        {
+          "title": "Spatially-Aware Class-Agnostic Object Counting",
+          "summary": "通用类无关物体计数方法，通过增强空间建模改进对结构复杂物体的单图实例数量估计。",
+          "url": "https://arxiv.org/abs/2607.16826v2",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "类无关计数",
+            "空间建模",
+            "视觉"
           ]
         }
       ]
