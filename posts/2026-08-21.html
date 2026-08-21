@@ -12,77 +12,71 @@
 <article>
   <p class="meta">2026-08-21</p>
   <h1>大模型每日进展 · 2026-08-21</h1>
-  <div class="summary">今日 HuggingFace 趋势榜显示国产大模型持续领跑，Qwen3.8-27B、moonshotai/Kimi-K3（2.8T）与 deepseek-ai/DeepSeek-V4-Pro（1.7T）位居前列；arXiv 出现多篇聚焦长上下文稀疏注意力、MoE 超参迁移与 Agent 学习环境的研究；Simon Willison 观察到 ChatGPT Search 在 GPT-5.6 更新后大规模启用 site: 操作符与调整信息来源策略。</div>
+  <div class="summary">今日 HuggingFace 上 Google 的 EnvHarness 提出将静态世界唤醒用于智能体学习引发关注；ForgeWM 的少步动作条件视频世界模型与 Tencent 的 FlashPrefill V2 稀疏 prefill 注意力代表了世界模型与长上下文推理的两条技术前沿。工具侧 Bun 1.4 稳定版发布，带来 Bun.WebView 等适合 AI/Agent 场景的能力。</div>
   <section>
   <h2>模型发布与能力更新</h2>
   <div class="item">
-  <h3>moonshotai/Kimi-K3 登顶 HuggingFace 趋势榜</h3>
-  <p>月之暗面发布 Kimi-K3，参数规模达 2.8T，为 Image-Text-to-Text 多模态模型，近 22 小时更新下载量超 235 万、点赞近 1.1 万，成为当前趋势榜最热门开源模型之一。</p>
-  <div class="src">来源：<a href="https://huggingface.co/models?sort=trending" target="_blank" rel="noopener">HuggingFace</a></div>
-  <div class="tags"><span class="tag">Kimi-K3</span><span class="tag">多模态</span><span class="tag">开源模型</span></div>
+  <h3>ForgeWM：少步动作条件视频世界模型的渐进因果训练</h3>
+  <p>ForgeWM 提出用渐进式因果训练构建少步（few-step）、动作条件（action-conditioned）的视频世界模型，兼顾生成质量与推理效率，是当前世界模型方向的高热度工作。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2608.14022" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">世界模型</span><span class="tag">视频生成</span></div>
 </div>
 <div class="item">
-  <h3>DeepSeek-V4-Pro 与 Qwen3.8 系列持续领跑</h3>
-  <p>deepseek-ai/DeepSeek-V4-Pro-0813（1.7T）与 Qwen3.8-2.4T-A95B、Qwen3.8-27B 等多个版本齐聚趋势榜前列，显示国产大模型在超大规模与中等规模两端均保持高关注度与部署活跃度。</p>
-  <div class="src">来源：<a href="https://huggingface.co/models?sort=trending" target="_blank" rel="noopener">HuggingFace</a></div>
-  <div class="tags"><span class="tag">DeepSeek-V4</span><span class="tag">Qwen3.8</span><span class="tag">MoE</span></div>
-</div>
-<div class="item">
-  <h3>MiniMax 与 Lightricks 发力多模态生成</h3>
-  <p>趋势榜出现 MiniMaxAI/MiniMax-Music3（音频生成）、MiniMax-H3（图文转视频）以及 Lightricks/LTX-2.5（图生视频），反映音频与视频生成模型的关注度持续上升。</p>
-  <div class="src">来源：<a href="https://huggingface.co/models?sort=trending" target="_blank" rel="noopener">HuggingFace</a></div>
-  <div class="tags"><span class="tag">视频生成</span><span class="tag">音频生成</span><span class="tag">多模态</span></div>
+  <h3>4DAnyone：从随手拍单目视频重建任意人物的 4D 表示</h3>
+  <p>Ant Research 提出 4DAnyone，可从随意拍摄的单目视频中创建任意人物的 4D（动态三维）重建，拓展了从普通视频重建可动人物的能力边界。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2608.20335" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">4D重建</span><span class="tag">单目视频</span></div>
 </div>
 </section>
 <section>
   <h2>论文与技术方法</h2>
   <div class="item">
-  <h3>Learning how to Forget：面向长上下文稀疏注意力的微调</h3>
-  <p>论文提出通过微调让模型学会'遗忘'，以提升长上下文场景下稀疏注意力的效果，为长文本处理的效率与质量平衡提供了新的训练思路。</p>
-  <div class="src">来源：<a href="https://arxiv.org/list/cs.CL/recent" target="_blank" rel="noopener">arXiv cs.CL</a></div>
-  <div class="tags"><span class="tag">长上下文</span><span class="tag">稀疏注意力</span><span class="tag">微调</span></div>
+  <h3>EnvHarness：唤醒静态世界用于智能体学习</h3>
+  <p>Google 提出 EnvHarness，将原本静态的世界/环境转化为可供智能体交互与学习的训练场，为 Agent 训练提供可扩展的环境合成方案，为当日热度最高论文。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2608.19880" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">环境合成</span></div>
 </div>
 <div class="item">
-  <h3>Let's Scale Step by Step：大规模 MoE 的计算高效超参迁移</h3>
-  <p>COLM 2026 论文研究混合专家（MoE）模型的超参数迁移方法，通过逐步扩展策略在大规模训练中实现计算高效的超参配置，降低超大 MoE 模型调参成本。</p>
-  <div class="src">来源：<a href="https://arxiv.org/list/cs.LG/recent" target="_blank" rel="noopener">arXiv cs.LG</a></div>
-  <div class="tags"><span class="tag">MoE</span><span class="tag">超参迁移</span><span class="tag">训练效率</span></div>
-</div>
-<div class="item">
-  <h3>EnvHarness：为 Agent 学习唤醒静态世界</h3>
-  <p>Google 提出 EnvHarness，将静态环境转化为可供智能体学习的交互式世界，为 Agent 训练提供更丰富的环境构建方法，登上 HuggingFace 当日热门论文榜。</p>
-  <div class="src">来源：<a href="https://huggingface.co/papers" target="_blank" rel="noopener">HuggingFace Papers</a></div>
-  <div class="tags"><span class="tag">Agent</span><span class="tag">环境学习</span><span class="tag">强化学习</span></div>
+  <h3>FlashPrefill V2：面向长上下文 LLM 服务的块稀疏 Prefill 注意力</h3>
+  <p>Tencent 提出 FlashPrefill V2，通过块稀疏（block-sparse）prefill 注意力加速长上下文 LLM 的推理服务，针对长序列预填充阶段的算力瓶颈进行优化。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2608.19758" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">长上下文</span><span class="tag">推理加速</span></div>
 </div>
 <div class="item">
   <h3>MemTrapBench：评测 LLM 记忆使用中的认知陷阱</h3>
-  <p>浙江大学（ZJUNLP）提出 MemTrapBench，用于系统评测大语言模型在记忆使用过程中容易落入的认知陷阱，为记忆机制的可靠性研究提供基准。</p>
-  <div class="src">来源：<a href="https://huggingface.co/papers" target="_blank" rel="noopener">HuggingFace Papers</a></div>
-  <div class="tags"><span class="tag">记忆</span><span class="tag">评测基准</span><span class="tag">LLM</span></div>
+  <p>ZJUNLP 提出 MemTrapBench，系统性基准测试大模型在利用记忆时可能陷入的认知陷阱，为评估模型记忆可靠性提供工具。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2608.20202" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">评测基准</span><span class="tag">记忆</span></div>
+</div>
+<div class="item">
+  <h3>SWE-bench Science：编码智能体能否解决科学工程任务</h3>
+  <p>OpenMOSS 推出 SWE-bench Science，将编码智能体评测扩展到科学领域的工程任务，考察 Agent 在真实科研代码场景下的解题能力。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2608.19799" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">评测基准</span><span class="tag">编码Agent</span></div>
 </div>
 </section>
 <section>
   <h2>开源生态与工具</h2>
   <div class="item">
-  <h3>Bun 1.4 发布，新增 Bun.WebView 浏览器自动化能力</h3>
-  <p>Bun 1.4 作为 Rust 重写后的首个稳定版发布，新增 Bun.WebView，支持通过 macOS WebKit 或 CDP 控制本地 Chromium，Simon Willison 借助 Claude Code 构建了类似 shot-scraper 的网页抓取 API 原型。</p>
-  <div class="src">来源：<a href="https://simonwillison.net/" target="_blank" rel="noopener">Simon Willison</a></div>
-  <div class="tags"><span class="tag">Bun</span><span class="tag">浏览器自动化</span><span class="tag">工具</span></div>
+  <h3>Bun 1.4 稳定版发布：新增 Bun.WebView 等能力</h3>
+  <p>Bun 1.4 为首个 Rust 重写后的稳定版本，新增 Bun.WebView、Bun.Image、Bun.markdown 等特性，并大幅提升 Node.js 兼容性与性能；其中 Bun.WebView 通过 CDP 提供原生浏览器自动化，适合 AI/Agent 抓取与工具执行场景。</p>
+  <div class="src">来源：<a href="https://bun.com/blog/bun-v1.4" target="_blank" rel="noopener">Simon Willison's Weblog</a></div>
+  <div class="tags"><span class="tag">Bun</span><span class="tag">工具链</span></div>
 </div>
 <div class="item">
-  <h3>Qwen3.8-27B 生态量化版本繁荣</h3>
-  <p>围绕 Qwen3.8-27B 涌现出 GGUF、FP8、NVFP4 等多种量化与 MLX 版本（unsloth、orcarouter 等），下载量普遍达百万级，显示开源社区对该模型的本地部署与优化生态高度活跃。</p>
-  <div class="src">来源：<a href="https://huggingface.co/models?sort=trending" target="_blank" rel="noopener">HuggingFace</a></div>
-  <div class="tags"><span class="tag">量化</span><span class="tag">GGUF</span><span class="tag">本地部署</span></div>
+  <h3>基于 Bun.WebView 的 shot-scraper 风格 JSON API 原型</h3>
+  <p>Simon Willison 用 Claude Code 基于 Bun 1.4 的 Bun.WebView 构建了加载网页并执行 JavaScript 的 Web API 原型，实测在约 192-256MB 容器内即可跑完整 Chrome，展示了 Agent 化浏览器自动化的轻量部署路径。</p>
+  <div class="src">来源：<a href="https://github.com/simonw/research/tree/main/bun-webview-json-api#readme" target="_blank" rel="noopener">Simon Willison's Weblog</a></div>
+  <div class="tags"><span class="tag">浏览器自动化</span><span class="tag">Agent工具</span></div>
 </div>
 </section>
 <section>
   <h2>产品与行业动态</h2>
   <div class="item">
-  <h3>ChatGPT Search 大规模启用 site: 操作符并调整来源策略</h3>
-  <p>Promptwatch 追踪显示，随 GPT-5.6 更新，ChatGPT Search fanout 查询中含 site: 操作符的比例从约 0.3%-0.5% 骤升至 8 月 8 日的 16%-17%，并在后续显著降低 Reddit 作为来源的使用频率，反映搜索检索行为的重大调整。</p>
-  <div class="src">来源：<a href="https://simonwillison.net/" target="_blank" rel="noopener">Simon Willison</a></div>
-  <div class="tags"><span class="tag">ChatGPT</span><span class="tag">AI搜索</span><span class="tag">GEO</span></div>
+  <h3>ChatGPT 搜索大规模启用 site: 操作符</h3>
+  <p>Promptwatch 追踪显示，随 GPT-5.6 推出，ChatGPT 搜索 fanout 查询中包含 site: 操作符的比例从约 0.3%-0.5% 跃升至 8 月 8 日的 16%-17%，并且后续显著降低了 Reddit 作为信息来源的引用，反映搜索检索策略的调整。</p>
+  <div class="src">来源：<a href="https://promptwatch.com/data/chatgpt-site-operator-fanouts" target="_blank" rel="noopener">Simon Willison's Weblog</a></div>
+  <div class="tags"><span class="tag">ChatGPT</span><span class="tag">AI搜索</span></div>
 </div>
 </section>
 </article>
