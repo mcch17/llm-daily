@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-08-23</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-08-23</p>
+  <h1>大模型每日进展 · 2026-08-23</h1>
+  <div class="summary">今日看点：SWE-bench Science 揭示顶级编码 Agent（Claude Code + Opus-5）在科学软件工程任务上 pass@1 仍低于 50%，暴露 Agent 修复真实科研代码的短板；文档知识内化框架 IAR 提出「注入-对齐-恢复」三阶段后训练以支持免检索问答；异常检测方面出现 LLM 上下文学习做表格异常检测与在线测试时适应动态图异常检测等新工作。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>MiniMax-Music3 音频生成模型开源上线</h3>
+  <p>MiniMaxAI 发布 2B 规模的 Text-to-Audio 模型 MiniMax-Music3，登上 HuggingFace 趋势榜，用于文本到音乐/音频生成。</p>
+  <div class="src">来源：<a href="https://huggingface.co/MiniMaxAI/MiniMax-Music3" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">音频生成</span><span class="tag">开源模型</span></div>
+</div>
+<div class="item">
+  <h3>Lightricks LTX-2.5 图生视频模型发布</h3>
+  <p>Lightricks 更新 LTX-2.5 图生视频（Image-to-Video）模型，近期下载量近 70 万，成为视频生成方向的热门开源选择。</p>
+  <div class="src">来源：<a href="https://huggingface.co/Lightricks/LTX-2.5" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">视频生成</span><span class="tag">开源模型</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>SWE-bench Science：编码 Agent 能否解决科学工程任务</h3>
+  <p>科研软件日益成为科学仪器本身的一部分，其缺陷可能直接损害科学结论，但现有编码 Agent 评测多只看聚合成功率、难以揭示失败原因。为此作者构建了仓库级基准 SWE-bench Science，覆盖 20 个科学领域、98 个 GitHub 仓库共 119 个任务，并分为 Issue 驱动、专家探索、工程集成三种范式。实验表明即便最强的 Claude Code（Opus-5 max）pass@1 也低于 50%，凸显 Agent 在真实科研代码修复上仍有明显差距。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.19799v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">编码Agent</span><span class="tag">基准评测</span></div>
+</div>
+<div class="item">
+  <h3>IAR：面向免检索文档问答的分阶段后训练</h3>
+  <p>大模型在推理时若不检索源文档，往往无法回答关于固定文档集合的问题，作者将其视为「文档知识内化」问题。IAR（Inject, Align, Recover）提出三阶段后训练框架，将源文档转化为续写、改写和指令重构目标进行知识注入，再用仅含答案的 QA 监督进行行为对齐，最后与基座模型合并恢复通用能力。相比传统持续预训练，该方法更有效地将语料转化为可用的参数化知识，支持免检索问答。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.20281v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">后训练</span><span class="tag">知识内化</span></div>
+</div>
+<div class="item">
+  <h3>MemTrapBench：评测 LLM 记忆使用中的认知陷阱</h3>
+  <p>记忆已成为大模型的关键组件，但现有基准主要考察信息能否正确抽取、存储和检索，忽视了检索到的记忆如何反过来影响当前任务的推理。作者提出「记忆诱导认知陷阱」概念，即语义相关且忠实记录的记忆也可能扭曲模型推理或信念，并构建 MemTrapBench 覆盖推理固化与信念扭曲两类陷阱。在两个模型家族、五种代表性记忆框架上的实验揭示了普遍存在的失败模式。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.20202v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">记忆</span><span class="tag">评测</span></div>
+</div>
+<div class="item">
+  <h3>FlashPrefill V2：面向长上下文服务的块稀疏 Prefill 注意力</h3>
+  <p>长上下文建模中注意力的二次复杂度在计算密集的 prefill 阶段成为关键瓶颈，此前的 FlashPrefill 仍停留在算法原型阶段、离生产部署较远。FlashPrefill V2 从三方面推进：引入均值修正项抑制近似误差以在极端稀疏下保持性能，重新设计稀疏注意力算子以提升实际效率。工作旨在把即时模式发现与动态阈值机制推向可实际部署的长上下文服务。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.19758v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">长上下文</span><span class="tag">推理优化</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>LLM 0.33 发布：升级 OpenAI 库并支持推理摘要</h3>
+  <p>Simon Willison 的 llm 工具发布 0.33，升级至 OpenAI Python 3.x 并从 httpx 切换到 httpx2，embed 命令新增 --key 支持，-t 模板可重复组合，推理型 Responses API 模型支持 reasoning_summary（auto/concise/detailed）选项。</p>
+  <div class="src">来源：<a href="https://github.com/simonw/llm/releases/tag/0.33" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">工具</span><span class="tag">LLM CLI</span></div>
+</div>
+<div class="item">
+  <h3>llm-openrouter 0.7：支持推理轨迹与服务端工具</h3>
+  <p>llm-openrouter 插件更新 0.7，兼容 LLM 0.32 并可展示 OpenRouter 上模型的推理轨迹，采用 OpenRouter 的 Responses API 实现，新增 Shell、WebFetch、WebSearch 三个服务端工具。</p>
+  <div class="src">来源：<a href="https://github.com/simonw/llm-openrouter/releases/tag/0.7" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">工具</span><span class="tag">插件</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>Linus Torvalds 记录 AI 辅助内核调试经历</h3>
+  <p>Linus Torvalds 在一次 drm/xe 内核提交中记录了 AI 辅助的「地狱级调试」经历：AI 多次断言问题无解并建议放弃，但在其坚持推动下仍持续添加调试代码并忠实分析，反映了当前 AI 辅助编程既有价值又需人为坚持的现实。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Aug/22/linus-torvalds/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">AI辅助编程</span><span class="tag">行业观察</span></div>
+</div>
+</section>
+<section>
+  <h2>异常检测（Anomaly Detection）</h2>
+  <div class="item">
+  <h3>LLM as Detector：面向表格异常检测的上下文学习方法</h3>
+  <p>表格数据异常往往表现为跨特征依赖关系的违背而非简单的边际偏离，现有检测器依赖几何或重构信号，已有的 LLM 方法主要靠微调或生成合成异常。作者提出 LLM-Detector，利用 LLM 的上下文学习能力进行结构化、提示条件下的评分合成：将正常训练数据转化为统计摘要、因果依赖和蒸馏原型组织成提示以生成打分代码，从而让 LLM 从正常态知识中推导异常检测逻辑，得到可评估统计与依赖违背的打分引擎。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.19463v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">表格异常检测</span><span class="tag">LLM</span><span class="tag">上下文学习</span></div>
+</div>
+<div class="item">
+  <h3>OTTA-DGAD：可泛化动态图异常检测的在线测试时适应</h3>
+  <p>可泛化动态图异常检测希望预训练检测器无需重训即可识别未见目标域的异常，但现有方法过度依赖域无关模式、忽视持续演化的域特有模式，且假设可访问完整目标域数据，与目标数据分块顺序到达的在线场景不符。作者形式化了在线测试时适应问题并提出 OTTA-DGAD，从时序自我图中抽取正常与异常的演化原型存入记忆缓冲区并选择性更新，从而在无标签流式数据下持续适应。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.19858v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">动态图</span><span class="tag">测试时适应</span></div>
+</div>
+<div class="item">
+  <h3>STEP：基于分数的时序能量人体姿态视频异常检测</h3>
+  <p>基于骨架的视频异常检测提供了鲁棒且保护隐私的异常行为识别方案，近期方法通过去噪分数匹配训练能量模型建模正常静态与运动姿态，但直接向原始关节坐标注入训练所需噪声会产生物理上不可能的姿态，且时间窗口扩大时结构坍塌严重。STEP 用 PCA 将姿态序列投影到紧凑白化的主成分空间，在其中学习数据密度，使注入噪声对应到物理上合理的变化，从而缓解结构坍塌问题。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.19987v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">视频异常检测</span><span class="tag">骨架</span><span class="tag">能量模型</span></div>
+</div>
+<div class="item">
+  <h3>用 LLM 与端点日志改进安全日志异常检测</h3>
+  <p>现有日志异常检测方法（如 Wazuh）主要依赖预定义规则，统计方法（如 OpenSearch）依赖历史行为偏差，而 LLM 方法虽能理解语义和上下文，却受提示构造、噪声日志和通用数据集缺乏端点特有认证行为的影响。本研究构建了标准化的指令式 LLM 分类框架用于检测异常认证行为（含边界案例），并搭建受控网络安全测试床进行评估。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.19938v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">安全日志</span><span class="tag">LLM</span></div>
+</div>
+</section>
+<section>
+  <h2>多模态计数（Multimodal Counting）</h2>
+  <div class="item">
+  <h3>Depth-Guided Video Object Counting：深度引导的拥挤场景视频目标计数</h3>
+  <p>目标是在拥挤场景下根据文本或视觉提示鲁棒地计数目标类别的所有实例，但现有方法仅依赖 RGB 信息，在拥挤和遮挡条件下判别能力受限。作者提出深度引导检测器 DG-Det 及通用后处理流程，通过多尺度 RGB-D 交叉注意力融合深度线索并显式预测遮挡，增强空间理解；同时引入统一去重框架消除跨帧重复计数，并发布了新的 RGB-D 视频目标计数数据集。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.06236v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">视频计数</span><span class="tag">RGB-D</span><span class="tag">文本/视觉提示</span></div>
+</div>
+<div class="item">
+  <h3>Spatial-IQ：通过分层能力测试解构空间智能</h3>
+  <p>多模态大模型擅长视觉解释，却在人类可靠完成的空间推理任务上失败，而现有基准把模型当黑盒评测，难以区分失败源自感知（如识别物体边界）还是认知（如推理遮挡以推断隐藏几何）。作者提出 Spatial-IQ 分层诊断框架，把堆叠 3D 结构中的物体计数分解为按人类空间认知发展阶段组织的 9 个感知与认知子任务，并加入心理旋转探针，借助 NVIDIA Isaac Sim 系统诊断 MLLM 的空间计数能力。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2607.22864v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">空间推理</span><span class="tag">物体计数</span><span class="tag">MLLM</span></div>
+</div>
+<div class="item">
+  <h3>DCA-MoE：空间自适应跨层融合与密度路由专家的人群计数</h3>
+  <p>人群计数需在透视、头部尺度、遮挡和背景杂波剧烈变化下恢复可靠的局部密度，但许多多层解码器仍采用空间不变的特征融合并对所有位置施加同一感受野。作者提出 DCA-MoE，在冻结 DINOv3 编码器基础上让融合与感受野决策内容相关：SALF 预测四个对齐骨干特征的逐位置权重，DR-MoE 为每个位置分配局部、中程与大上下文残差专家的软混合，配合 EBC 密度头与 DMCount 监督提升计数精度。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.15213v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">人群计数</span><span class="tag">MoE</span><span class="tag">DINOv3</span></div>
+</div>
+<div class="item">
+  <h3>面向 2034 世界杯的无标签无人机人群计数部署协议</h3>
+  <p>沙特将举办 2034 世界杯并已在朝觐规模运营人群管理，无人机计数须在与训练语料截然不同的画面上保持精度、无需标签，并在踩踏形成前预警危险人流。作者基于 525 次受控实验、全分辨率语料研究与多项消融，提出经验证的部署协议、严重度定律与诊断方法，无标签适应可恢复四类退化、五种严重度下 31–49% 的偏移误差，最强方法较冻结源模型提升 41.8 MAE（p=7.5e-10, d=2.52）。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.17625v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">人群计数</span><span class="tag">无人机</span><span class="tag">无标签适应</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
