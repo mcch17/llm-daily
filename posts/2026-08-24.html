@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-08-24</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-08-24</p>
+  <h1>大模型每日进展 · 2026-08-24</h1>
+  <div class="summary">今日看点：InfinityEdit 提出「无限视频编辑」新范式，可对开放式流媒体持续应用编辑指令；Llama-Mobile 用 2.7-bit 量化将 VLM 压至可在移动端部署；行业侧 FT 数据显示 Anthropic 最贵模型 Fable 因高成本反而遇冷，价格性价比成为选型关键。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>Llama-Mobile：VLM 的 2.7-bit 高效量化</h3>
+  <p>提出面向移动端部署的 VLM 量化框架，采用模型自生成训练数据、无需访问原始训练环境的量化流水线，并设计支持 Arm CPU 高效执行的 2.7-bit 格式。将 Llama 3.2 11B Vision Instruct 压缩至 3.7GB（8-bit 激活），在标准视觉问答任务上仍保持较强性能。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.21134v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">VLM</span><span class="tag">量化</span><span class="tag">端侧</span></div>
+</div>
+<div class="item">
+  <h3>MiniMax 系列模型持续更新（MiniMax-H3 / MiniMax-Music3）</h3>
+  <p>MiniMax 在 HuggingFace 上开源多个热门模型，包括 33B 的图文到视频模型 MiniMax-H3 与 2B 的文本到音频模型 MiniMax-Music3，均获较高下载与关注度。</p>
+  <div class="src">来源：<a href="https://huggingface.co/MiniMaxAI/MiniMax-H3" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">多模态</span><span class="tag">视频生成</span><span class="tag">音频</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>InfinityEdit：面向无限视频编辑的轻量 Edit-Ignition Adapter</h3>
+  <p>现有指令视频编辑大多依赖「原地编辑」假设，逐帧对齐固定时长的源片段，无法处理直播换风格、进行中镜头运动等开放式流场景。作者提出「无限视频编辑」任务：给定前置片段与编辑请求，模型需在延续流的同时对后续帧应用编辑，并随不断到来的指令无限重复。方案采用轻量 Edit-Ignition Adapter 实现，为流媒体场景下的持续编辑提供了新范式。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.20910v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">视频编辑</span><span class="tag">扩散模型</span></div>
+</div>
+<div class="item">
+  <h3>CLEAR：连续潜空间适配器路由的效用保持型 LLM 安全对齐</h3>
+  <p>针对全局安全微调会同时改变模型对有害与无害输入响应、损害效用的问题，作者提出 CLEAR：用轻量隐状态门控连续控制安全低秩适配器的激活强度，避免对冻结主干做不必要改动。在 HarmBench 等安全与效用基准上，CLEAR 在提升鲁棒性的同时，缓解了 SFT 等全局安全微调带来的效用退化。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.21278v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">安全对齐</span><span class="tag">LoRA</span><span class="tag">LLM</span></div>
+</div>
+<div class="item">
+  <h3>PatternEval：超越正确性，评测与对齐混合思考 MLLM 的响应行为</h3>
+  <p>混合思考 MLLM 可在深思与低延迟非思考模式间切换，但两种模式应对用户满足同样的响应标准，仅靠正确性难以刻画质量。作者提出「响应模式对齐」概念并构建失败富集诊断基准 PatternEval，含 2415 条覆盖视觉感知、结构化图像理解与多模态知识的多模态提示，用于同时评测任务准确性与响应模式失败。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.12781v2" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">MLLM</span><span class="tag">评测基准</span><span class="tag">推理</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>LLM 命令行工具 0.33 版发布</h3>
+  <p>Simon Willison 的 llm 工具发布 0.33，升级到 OpenAI Python 3.x 并将 HTTP 客户端从 httpx 切换为 httpx2；llm embed 与 embed-multi 及相关 Python 方法新增 --key/key= 支持，可按调用传入密钥而不改变共享模型状态，并向后兼容旧插件。</p>
+  <div class="src">来源：<a href="https://github.com/simonw/llm/releases/tag/0.33" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">工具</span><span class="tag">嵌入</span><span class="tag">命令行</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>FT：Anthropic 最强模型因高成本遇冷，廉价工具反而更受欢迎</h3>
+  <p>FT 报道称 Anthropic 7 月年化收入升至 650 亿美元（5 月为 470 亿），预计 Q3 盈利，拥有 6000 家年支出超 10 万美元的客户；但据 Ramp AI 指数，其最贵的 Fable 模型使用份额仅约 8%，Opus 4.8 反以 28% 领先，显示价格性价比正主导模型选型。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Aug/23/anthropics-best-ai-model-struggles-to-attract-users-as-cheaper-t/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">Anthropic</span><span class="tag">商业</span><span class="tag">模型选型</span></div>
+</div>
+<div class="item">
+  <h3>Drew Breunig：Fable 与「免费午餐」的终结</h3>
+  <p>文章指出，在 Fable 之前，新模型通常以同价或更低价发布并弥补大多数问题，因此没必要过度优化编码框架和上下文策略；但 Fable 虽性能出色却成本高昂，而 Opus、5.6、K3、GLM 等已「足够好」，团队开始重新权衡不同任务该用哪个模型。</p>
+  <div class="src">来源：<a href="https://www.dbreunig.com/2026/08/23/fable-the-end-of-moore-s-law.html" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">LLM 定价</span><span class="tag">工程实践</span></div>
+</div>
+</section>
+<section>
+  <h2>异常检测</h2>
+  <div class="item">
+  <h3>A VLM Answer Is Not an Anomaly Score：无训练视频异常检测中的排名压缩</h3>
+  <p>VLM 可通过回答视频片段相关问题实现无训练视频异常检测，但 VAD 基准要求为每段输出标量异常分并用 AUROC/AP 评估排名，因此从模型输出分布到分数的读出规则实为检测器的一部分而非格式细节。作者区分「仅用最可能答案」的生成式读出与「利用完整答案分布」的概率读出，在四个 7-8B VLM 上，概率读出在所有测试组合中均优于生成式读出。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.21244v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">VLM</span><span class="tag">视频异常检测</span><span class="tag">无训练</span></div>
+</div>
+<div class="item">
+  <h3>STEP：基于分数的时序能量用于人体姿态视频异常检测</h3>
+  <p>骨架式视频异常检测隐私友好且鲁棒，近期方法通过去噪分数匹配训练能量模型，但直接向原始关节坐标注入噪声会产生物理上不可能的姿态，且随时间窗扩大结构崩溃愈发严重。STEP 用 PCA 将姿态序列投影到紧凑白化的主成分空间，使注入噪声转化为物理可信的变化，从而在扩大时间窗下稳定建模正常静态与运动姿态分布。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.19987v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">视频异常检测</span><span class="tag">姿态</span><span class="tag">能量模型</span></div>
+</div>
+<div class="item">
+  <h3>TRACE-C：多流运维遥测的秩校准关系型异常检测</h3>
+  <p>运维遥测常在每条单独流都处于正常范围时仍呈现联合异常。TRACE-C 是可审计、严格先验的秩校准检测器，对同区间滚动中位数/MAD 残差构建三个窗口通道（最大归一化局部和、鲁棒 z 残差的高斯 copula 依赖对比、最差标准化 AR(1) 创新），经 Fisher 聚合后排名。在六路英国电网数据的 2019 年拟合与 2020 年冻结留出集上，TRACE-C 将 Storm Atiyah 事件排在 2019 测试窗首位，并通过通道消融揭示该排名主要来自局部通道。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.21251v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">多流遥测</span><span class="tag">时序</span><span class="tag">关系异常</span></div>
+</div>
+<div class="item">
+  <h3>从噪声到信号：用 LLM 与端点专属日志改进安全日志异常检测</h3>
+  <p>Wazuh 等方法主要依赖预定义规则，OpenSearch 等统计方法识别与历史行为的偏差，而 LLM 因能理解语义与上下文被用于日志异常检测，但受限于提示构造、噪声日志及缺乏端点专属认证行为的通用数据集。本文构建标准化的指令式 LLM 分类框架，在受控网络安全测试床上检测异常认证行为（含边界情形）。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.19938v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">LLM</span><span class="tag">日志异常</span><span class="tag">安全</span></div>
+</div>
+</section>
+<section>
+  <h2>多模态计数</h2>
+  <div class="item">
+  <h3>Depth-Guided Video Object Counting：拥挤场景下深度引导的视频物体计数</h3>
+  <p>目标是根据文本或视觉提示鲁棒地计数拥挤场景中某类别的所有实例，而现有方法仅依赖 RGB，在拥挤遮挡条件下判别力受限。作者提出深度引导检测器 DG-Det 及通用后处理流水线，通过多尺度 RGB-D 交叉注意力融合深度线索并显式预测遮挡，增强空间理解；同时引入统一去重框架消除跨帧重复计数，并发布新的 RGB-D 视频物体计数数据集。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.06236v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">视频计数</span><span class="tag">RGB-D</span><span class="tag">提示驱动</span></div>
+</div>
+<div class="item">
+  <h3>DCA-MoE：空间自适应跨层融合与密度路由专家的人群计数</h3>
+  <p>人群计数需在透视、头部尺度、遮挡与背景杂波剧变下恢复可靠的局部密度，但许多多级解码器仍使用空间不变的特征融合并对所有位置用同一感受野。作者在冻结 DINOv3 编码器上提出 DCA-MoE：空间自适应层融合（SALF）为四个对齐主干特征预测逐位置权重，密度路由多感受野专家（DR-MoE）为每个位置分配局部/中程/大上下文残差专家的软混合，配合 EBC 密度头与 DMCount 监督。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.15213v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">人群计数</span><span class="tag">MoE</span><span class="tag">DINOv3</span></div>
+</div>
+<div class="item">
+  <h3>面向大规模集会的无人机人群监测验证适配：迈向 2034 世界杯</h3>
+  <p>沙特将承办 2034 世界杯并已运营朝觐规模的人群管理，无人机计数须在与训练语料迥异的画面上无标签保持精度并在踩踏形成前预警。作者基于 525 次受控实验、全分辨率语料研究、五项证伪消融与五条件安全联锁评估，验证无标签适配可在四类退化、五种严重度下恢复 31-49% 的偏移误差，最强方法相较冻结源模型提升 41.8 MAE，并提出区分方法的严重度定律与稳定性预算。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.17625v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">无人机</span><span class="tag">人群计数</span><span class="tag">测试时适配</span></div>
+</div>
+<div class="item">
+  <h3>文本到图像前沿模型在图像描述提示上的基准评测</h3>
+  <p>文本到图像模型通常报告平均提示表现，掩盖了在精确物体数量、多物体属性绑定、可读嵌入文字与空间约束等组合性苛刻请求上的差距。作者从 DataSeeds.AI 样本集自动挑选 48 条最难提示，评测 Hunyuan 3.0、Gemini 3 Pro Image、FLUX.2、Ideogram 3.0 四款生产系统，采用 GPT-5.4-Pro 编写的原子加权 MECE 评分规则由独立评审打分，其中物体计数是关键考察维度之一。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.14976v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">文本到图像</span><span class="tag">组合生成</span><span class="tag">物体计数</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
