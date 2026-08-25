@@ -1,0 +1,207 @@
+{
+  "date": "2026-08-25",
+  "title": "大模型每日进展 · 2026-08-25",
+  "summary": "今日看点：Apodex 1.1 通过环境扩展与智能体协同扩展推进复杂长程工作的「可交付」能力；FT 数据揭示 Anthropic 高端模型 Fable 因高定价遭遇采用瓶颈、便宜模型反而占据主流用量；异常检测方向出现将 VLM 时间一致性建模为异常检测问题的 TimeCatch 评测；多模态计数则以 DINOv3 冻结编码器的 DCA-MoE 与深度引导视频计数 DG-Det 为代表。",
+  "sections": [
+    {
+      "heading": "模型发布与能力更新",
+      "items": [
+        {
+          "title": "Apodex 1.1：面向复杂工作的智能体智能扩展",
+          "summary": "Apodex 1.1 聚焦「工作能力」——即在文件、信息源与可执行代码上持续交互、维护状态、失败恢复并可验证交付。它沿两条维度扩展：Environment Scaling 扩大可执行文件/搜索/代码环境的多样性与可验证性，Agentic Coordination Scaling 训练智能体分解长程任务、并行委派与重规划，配合共享执行框架与 AgentOS 跨工具维护任务状态与溯源。",
+          "url": "https://arxiv.org/abs/2608.23283v1",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "Agent",
+            "长程任务"
+          ]
+        },
+        {
+          "title": "TLive-Omni：面向电商直播的全模态理解模型",
+          "summary": "针对电商直播中商品信息分散于语音、视频帧、商品图、叠加文字与用户提问的噪声长流场景，TLive-Omni 将图像、视频、音频与文本映射到统一表示空间，并提出 Per-vGrid 时间戳 token 组织方式将视频网格与对应音频对齐，配合三阶段监督训练逐步培养从全模态感知到指令跟随的直播理解能力。",
+          "url": "https://arxiv.org/abs/2608.20958v1",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "多模态",
+            "电商直播"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "论文与技术方法",
+      "items": [
+        {
+          "title": "RISE：世界动作模型的自适应想象",
+          "summary": "现有世界动作模型（WAM）对每个场景分配固定的「想象预算」，效率与效果难以兼顾。RISE 提出系统级自适应想象框架，通过 Latent Evaluator 估计当前前缀暴露的风险及继续 rollout 的潜在规划收益，再由 Rollout Gate 权衡收益与额外计算成本，做出 Roll/Stop 的序贯决策；由于真实驾驶日志只暴露单一已实现未来，作者进一步构建了反事实数据集 CounterDrive 支撑评测。",
+          "url": "https://arxiv.org/abs/2608.20430v1",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "世界模型",
+            "自动驾驶"
+          ]
+        },
+        {
+          "title": "Memory Augmentation Unlocks Efficient Chain-of-Thought Reasoning",
+          "summary": "针对链式思维推理冗长、计算开销大的痛点，该工作提出通过记忆增强机制来提升 CoT 推理的效率，将部分推理状态外置到记忆而非全部展开为长文本，从而在保持推理能力的同时降低生成长度与成本。",
+          "url": "https://arxiv.org/abs/2608.21265",
+          "source": "arXiv cs.CL",
+          "tags": [
+            "CoT",
+            "推理效率"
+          ]
+        },
+        {
+          "title": "EnSI-RAG：面向长文档问答的实体-结构索引检索增强生成",
+          "summary": "长文档问答中扁平化检索易丢失实体身份与结构依赖。EnSI-RAG 提出以实体-结构为索引的检索增强生成方法，将文档组织为实体与结构关联的索引以支持跨段落多跳检索，从而在长文档 QA 任务上改善检索相关性与答案质量。",
+          "url": "https://arxiv.org/abs/2608.21252",
+          "source": "arXiv cs.CL",
+          "tags": [
+            "RAG",
+            "长文档QA"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "开源生态与工具",
+      "items": [
+        {
+          "title": "llm-anthropic 0.27 发布",
+          "summary": "Simon Willison 的 LLM 工具 Anthropic 插件更新至 0.27，主要提供对 anthropic v1.0.0 Python 库的兼容（该库将 httpx 切换为 httpx2，OpenAI 两周前的 v3.0.0 也做了同样改动），升级过程由 Fable 5 在 Claude Code 中依据官方迁移指南自动完成并通过测试。",
+          "url": "https://github.com/simonw/llm-anthropic/releases/tag/0.27",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "LLM工具",
+            "Anthropic"
+          ]
+        },
+        {
+          "title": "Your executable is a SQLite database",
+          "summary": "Farid Zakaria 提出一种在 Linux 上把 SQLite 数据库文件直接当作可执行二进制运行的技巧：将 SQLite 文件格式第 68 字节的 4 字节 application ID 设为 SELF，把 ELF 各组成部分存入不同 SQLite 表，再通过自定义解释器与 binfmt_misc 机制让内核在遇到匹配模式时自动提取并执行。",
+          "url": "https://fzakaria.com/2026/08/23/your-executable-is-a-sqlite-database",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "SQLite",
+            "Linux"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "产品与行业动态",
+      "items": [
+        {
+          "title": "Anthropic 顶级模型 Fable 因高价难获用户，便宜工具反而增长",
+          "summary": "FT 报道称 Anthropic 7 月年化收入升至 650 亿美元（5 月为 470 亿），Q3 预期盈利，拥有 6000 家年支出超 10 万美元的客户；但 Ramp AI 指数显示 Fable 5 虽能力出众却因成本高企采用受限，Opus 4.8 占月度支出 28% 居首，Fable 仅约 8%，反映出「足够好且更便宜」的模型正在主导实际用量。",
+          "url": "https://www.ft.com/content/5ee49718-c258-4f01-aa32-7e5b76ae5245",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "Anthropic",
+            "市场"
+          ]
+        },
+        {
+          "title": "Fable 与免费午餐的终结",
+          "summary": "Drew Breunig 撰文指出，在 Fable 之前团队无需过度优化编码工具链或上下文策略，因为新模型往往以同价甚至更低价格「抹平」问题；但 Fable 虽强大却成本高昂，而 Opus、5.6、K3 乃至 GLM 对多数编码需求已「足够好」，促使团队开始按任务分配不同模型，标志着模型能力免费升级的红利趋于结束。",
+          "url": "https://www.dbreunig.com/2026/08/23/fable-the-end-of-moore-s-law.html",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "行业观察",
+            "成本"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "异常检测（Anomaly Detection）",
+      "items": [
+        {
+          "title": "TimeCatch：以异常检测评估视觉-语言模型的时间一致性",
+          "summary": "VLM 在视频与图像序列基准上表现强，但是否真正捕捉时间结构尚不清楚。该工作将时间定位构造为异常检测问题以提供受控评测：通过交换相邻帧制造时间异常、用高斯噪声替换某帧制造帧级异常，并在四个合成与真实数据集及人类实验上测试异常检测与定位。结果揭示 VLM 能稳定检测帧级异常，但在时间异常上存在显著差距，说明其对时间一致性敏感度不足。",
+          "url": "https://arxiv.org/abs/2608.23474v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "VLM",
+            "时间一致性"
+          ]
+        },
+        {
+          "title": "训练期数据污染下工业控制系统异常检测的鲁棒性",
+          "summary": "多数研究默认异常检测训练数据可信，但 ICS 实践中日志被篡改、标注错误或不安全再训练都会污染训练数据。该文在 SWaT 基准上评估 11 种异构异常检测器在随机注入、相似性定向注入、特征噪声注入三种污染策略下的鲁棒性，系统刻画训练期污染对离线 ICS 检测流水线性能的影响，为部署可信检测器提供了实证依据。",
+          "url": "https://arxiv.org/abs/2608.23547v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "工业控制",
+            "数据污染"
+          ]
+        },
+        {
+          "title": "RAD：规则增强的关系型异常检测",
+          "summary": "关系数据库上的异常检测通常需将多表扁平化为单一特征矩阵，从而丢失实体身份、模式结构与多跳依赖。RAD 提出规则增强的关系型异常检测器，结合异构图表示与符号化行为证据，直接在多表数据库上识别异常实体或事件，解决了保留关系结构并融合符号行为线索的双重挑战。",
+          "url": "https://arxiv.org/abs/2608.23468v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "关系数据库",
+            "图表示"
+          ]
+        },
+        {
+          "title": "Clean Images Miss Useful Near-Defect Normal Patches for Anomaly Detection",
+          "summary": "基于记忆的异常检测将标称训练补丁存入记忆并对测试补丁打分，但被选为覆盖的补丁会在未检查其几何稀有性是否可信的情况下成为正常参考。作者用稀疏训练污染探查这一耦合，提出 CLEANCON——一种基于袋外跨图支持的门控机制。实验表明全局覆盖会严重过度代表稀疏污染，而 CLEANCON 可将最终记忆污染降至近零，并在全部 12 组匹配对比中提升类别宏 P-AP。",
+          "url": "https://arxiv.org/abs/2608.23299v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "记忆检测",
+            "工业缺陷"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "多模态计数（Multimodal Counting）",
+      "items": [
+        {
+          "title": "DCA-MoE：空间自适应跨层融合与密度路由专家的人群计数",
+          "summary": "人群计数需在透视、头部尺度、遮挡与背景杂波剧烈变化下恢复可靠局部密度，但许多多级解码器仍使用空间不变的特征融合与统一感受野。DCA-MoE 在冻结 DINOv3 编码器基础上，通过 SALF 预测四个对齐骨干特征的位置级融合权重，并用密度路由的多感受野专家（DR-MoE）为每个位置分配局部、中程与大上下文残差专家的软混合，使融合与感受野决策内容自适应。",
+          "url": "https://arxiv.org/abs/2608.15213v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "人群计数",
+            "MoE"
+          ]
+        },
+        {
+          "title": "Depth-Guided Video Object Counting in Crowded Scenes",
+          "summary": "现有视频对象计数仅依赖 RGB 信息，在拥挤遮挡场景下判别力受限。该工作提出深度引导检测器 DG-Det，通过多尺度 RGB-D 交叉注意力与显式遮挡预测融合深度线索以增强空间理解，并引入统一去重框架消除跨帧重复计数，同时基于文本或视觉提示计数目标类别，并发布新的 RGB-D 视频对象计数数据集。",
+          "url": "https://arxiv.org/abs/2608.06236v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "视频计数",
+            "RGB-D"
+          ]
+        },
+        {
+          "title": "面向大规模聚集的空中人群监测：无标注无人机人群计数的部署协议与严重度定律",
+          "summary": "面向 2034 FIFA 世界杯与 Hajj 级人群管理，无人机计数需在与训练语料迥异且无标注的画面上保持精度并提前预警危险人流。作者基于 525 次受控运行、全分辨率语料研究与多项消融，证明无标注自适应可在四种失真、五种严重度下恢复 31–49% 的偏移误差，最强方法较冻结源模型提升 41.8 MAE，并建立了区分方法的严重度定律与稳定性预算。",
+          "url": "https://arxiv.org/abs/2608.17625v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "无人机",
+            "人群计数"
+          ]
+        },
+        {
+          "title": "在图像描述提示上对前沿文生图模型的计数与合成能力基准评测",
+          "summary": "文生图模型常以平均提示报告成绩，掩盖了在精确对象计数、多对象属性绑定、可读嵌入文本与显式空间约束等组合性需求上的差距。该文从 DSD 数据集中自动挑选 48 个最难提示，对 Hunyuan 3.0、Gemini 3 Pro Image、FLUX.2、Ideogram 3.0 四个生产级系统进行独立评审打分，重点考察包含精确物体计数在内的组合生成能力。",
+          "url": "https://arxiv.org/abs/2608.14976v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "文生图",
+            "对象计数"
+          ]
+        }
+      ]
+    }
+  ]
+}
