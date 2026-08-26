@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-08-26</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-08-26</p>
+  <h1>大模型每日进展 · 2026-08-26</h1>
+  <div class="summary">今日亮点集中在 Agent 长程任务的自改进方向：AutoSaddler、Meta^n、Recuris 等一批方法围绕 harness 自动优化与递归记忆演化展开；后训练领域出现无超参融合 OPD 与 RLVR 的 OPDVR；异常检测与多模态计数方向则分别有严格因果流式视频异常检测与跨模态目标计数综述值得关注。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>MiniMax-H3 图文生视频模型登上 HuggingFace 趋势榜</h3>
+  <p>MiniMax 发布的 33B Image-Text-to-Video 模型 MiniMax-H3 近期在 HuggingFace 上下载量与热度居前（4.64M 下载、4.46k 收藏），面向图文条件视频生成场景。</p>
+  <div class="src">来源：<a href="https://huggingface.co/MiniMaxAI/MiniMax-H3" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">视频生成</span><span class="tag">多模态</span></div>
+</div>
+<div class="item">
+  <h3>SenseNova-U1.5-8B-MoT 任意到任意多模态模型开源</h3>
+  <p>商汤发布 18B 规模的 Any-to-Any 模型 SenseNova-U1.5-8B-MoT，支持多模态间的统一转换，登上 HuggingFace 趋势榜。</p>
+  <div class="src">来源：<a href="https://huggingface.co/sensenova/SenseNova-U1.5-8B-MoT" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">多模态</span><span class="tag">开源模型</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>AutoSaddler：从 Agent 执行轨迹自动优化 harness</h3>
+  <p>针对 LLM agent 在长程任务上局部小错误累积导致整体失败、而 harness 设计仍依赖昂贵人工搜索的痛点，作者将 harness 改进形式化为离线学习问题，通过失败轨迹诊断、把 harness 视作代码的结构化补丁生成与基于验证的更新选择来迭代优化。在 GAIA2、SWE-Bench Pro 与 Terminal-Bench 2.0 上的实验表明该框架能显著提升 agent 的鲁棒性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.23041v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">harness优化</span></div>
+</div>
+<div class="item">
+  <h3>OPDVR：无超参融合 On-policy Distillation 与可验证奖励</h3>
+  <p>RLVR 反馈稀疏、on-policy distillation 虽提供稠密 token 级信号却忽略轨迹正确性且性能受限于教师模型，二者结合又常引入额外超参与折中。OPDVR 提出一种无需新增任何超参、无缝融合 OPD 与 RLVR 的简洁方法，使稠密监督与任务级正确性协同，从而突破单纯蒸馏的性能上限。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.24696v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">后训练</span><span class="tag">RLVR</span></div>
+</div>
+<div class="item">
+  <h3>Meta^n：通过涌现深度实现递归自我改进</h3>
+  <p>现有自改进 agent 只精修答案而非产生答案的过程，加入元层的系统通常将元深度限制在约两层。Meta^n 保持元操作 Ω 固定并对其自身产物递归，读取下层求解栈的轨迹与代码后写出新的策略预处理层与可调用工具库；由于 Ω 不变故系统稳定，而其输入严格增长使每层都从更高视角推理，从而突破元深度上限。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.24735v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">自我改进</span><span class="tag">Agent</span></div>
+</div>
+<div class="item">
+  <h3>Recuris：长程 Agent harness 的递归经验-工作记忆演化</h3>
+  <p>长程任务中不断增长的历史会掩盖任务状态并导致技能调用错位，使递归自改进难以奏效。Recuris 引入经验-工作记忆架构，用工作记忆追踪任务进度并从经验记忆中选择技能，将执行转化为可定位失败的结构化证据，再由固定 Meta-Agent 做验证门控的局部更新，形成有界的递归记忆演化循环。在四个长程基准、十个模型上均取得改进。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.24876v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">记忆</span><span class="tag">Agent</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>llm-anthropic 0.27 发布，兼容 Anthropic v1.0.0 SDK</h3>
+  <p>Simon Willison 更新了 LLM 的 Anthropic 插件 0.27，主要提供对新发布 anthropic v1.0.0 Python 库（从 httpx 切换到 httpx2）的兼容性，升级过程借助 Claude Code 按官方迁移指南自动完成。</p>
+  <div class="src">来源：<a href="https://github.com/simonw/llm-anthropic/releases/tag/0.27" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">工具</span><span class="tag">SDK</span></div>
+</div>
+<div class="item">
+  <h3>selfdb：把 SQLite 数据库文件当作可执行二进制</h3>
+  <p>Farid Zakaria 展示了一种将 SQLite 数据库文件直接作为可执行 ELF 二进制运行的技巧，通过设置文件的 application ID 为 SELF 并将 ELF 各组件组织进 SQLite 表，再配合 binfmt_misc 让内核识别执行。</p>
+  <div class="src">来源：<a href="https://github.com/fzakaria/selfdb/blob/main/schema/self.sql" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">SQLite</span><span class="tag">Linux</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>FT：Anthropic 最强模型用户增长乏力，廉价工具反而更受欢迎</h3>
+  <p>据 FT 报道，Anthropic 7 月年化收入升至 650 亿美元（5 月为 470 亿），并称有 6000 家客户年支出超 10 万美元、预计 Q3 盈利；同期 OpenAI 因 7 月推出 GPT 5.6 使季度内年化收入增长 35%、突破 400 亿美元。</p>
+  <div class="src">来源：<a href="https://www.ft.com/content/5ee49718-c258-4f01-aa32-7e5b76ae5245" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">行业</span><span class="tag">商业</span></div>
+</div>
+</section>
+<section>
+  <h2>异常检测</h2>
+  <div class="item">
+  <h3>严格因果的流式视频异常检测与理论化状态空间核</h3>
+  <p>针对现有基于 Mamba 的视频异常检测仍需内部缓存片段、缺乏时间记忆与检测延迟关系的理论刻画、且只用 GPU 吞吐衡量效率而非目标边缘硬件的问题，作者提出严格因果的流式检测器，其固定大小状态以每帧 O(1) 时间与内存更新、无前瞻无缓存。时间核为带输入与状态相关衰减门的对角线性状态空间递归，通过冻结视觉骨干上的因果下一嵌入预测自监督训练，并推导了记忆与延迟的闭式关系。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.24810v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">视频异常检测</span><span class="tag">状态空间模型</span></div>
+</div>
+<div class="item">
+  <h3>面向 LLM 时序异常检测的结构化频域证据</h3>
+  <p>时序异常不仅表现为逐点偏差，还包括周期性偏移、局部振荡等重复时间结构的变化，而现有基于 LLM 的方法主要暴露时域证据、让频谱结构隐式。作者提出证据增强的零样本 TSAD 框架，在保留去季节化的索引观测的同时用 FFT 计算紧凑的频域证据，分全局与局部两种分辨率分别概括序列级周期上下文与时间局部化的频谱偏离，从而增强 LLM 对时序异常的判别能力。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.24113v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">时序异常检测</span><span class="tag">LLM</span></div>
+</div>
+<div class="item">
+  <h3>DriftAD：视觉引导文本漂移的少样本工业异常检测</h3>
+  <p>基于 CLIP 的少样本异常检测通常使用在整个特征层级与空间维度上统一应用的静态文本提示，难以捕捉工业缺陷高度局部化与尺度依赖的物理变化。DriftAD 提出三大模块：异常信号放大模块通过空间与频率分支增强微弱缺陷信号，视觉引导文本漂移模块动态变换文本特征以适配局部特征，从而实现更精细的文本-视觉匹配。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.23723v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">工业异常检测</span><span class="tag">CLIP</span></div>
+</div>
+</section>
+<section>
+  <h2>多模态计数</h2>
+  <div class="item">
+  <h3>跨模态目标计数综述：分类体系、基准、应用与开放挑战</h3>
+  <p>目标计数方法已从类特定的密度回归快速转向开放词汇、基础模型驱动的计数器，可从多种视觉与文本提示中枚举实例，但作者指出对通用性的宣称已超出评测基础设施：多数指标依赖少数已饱和的基准，新诊断数据集揭示了语义 grounding、时序身份与遮挡下空间推理的系统性失败。为此提出涵盖模态、机制、提示、监督级别与泛化设置的五轴分类体系，用以审视现有文献。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.23845v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">目标计数</span><span class="tag">综述</span></div>
+</div>
+<div class="item">
+  <h3>深度引导的拥挤场景视频目标计数</h3>
+  <p>面向拥挤场景下依据文本或视觉提示鲁棒计数目标类别所有实例的任务，现有方法仅依赖 RGB 信息、在拥挤与遮挡条件下判别能力受限。作者提出深度引导检测器 DG-Det 及通用后处理流程，通过融合深度线索、多尺度 RGB-D 交叉注意力与显式遮挡预测增强空间理解，并引入统一去重框架消除跨帧重复计数，同时发布新的 RGB-D 视频目标计数数据集。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.06236v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">视频计数</span><span class="tag">RGB-D</span></div>
+</div>
+<div class="item">
+  <h3>DCA-MoE：空间自适应跨层融合与密度路由专家的人群计数</h3>
+  <p>人群计数需在透视、头部尺度、遮挡与背景杂波剧烈变化下恢复可靠的局部密度，而许多多层解码器仍使用空间不变的特征融合并对所有位置用同一感受野。DCA-MoE 在冻结 DINOv3 编码器基础上让两项决策都随内容变化：空间自适应层融合预测四个对齐骨干特征的逐位置权重，密度路由多感受野专家为每个位置分配局部、中程与大范围上下文残差专家的软混合。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.15213v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">人群计数</span><span class="tag">MoE</span></div>
+</div>
+<div class="item">
+  <h3>在图文提示上对前沿文生图模型的基准评测</h3>
+  <p>文生图模型通常以平均提示报告效果，低估了在涉及精确目标数量、多目标属性绑定、可读嵌入文字与显式空间约束等组合性苛刻请求上的系统差距。作者评测了 Hunyuan 3.0、Gemini 3 Pro Image、FLUX.2 与 Ideogram 3.0 四个生产级系统，选取 DSD 数据集中最难的 48 条提示，采用 MECE 加权评分标准与独立评审模型进行打分，凸显出精确计数等约束仍是难点。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.14976v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">文生图</span><span class="tag">计数评测</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
