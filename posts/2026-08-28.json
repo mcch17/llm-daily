@@ -1,0 +1,218 @@
+{
+  "date": "2026-08-28",
+  "title": "大模型每日进展 · 2026-08-28",
+  "summary": "今日 Qwen 开源多模态 MoE 模型 Qwen3.8-Flash-Next（作为 Qwen4 架构预览）成为开源焦点；智能体数据生成与技能演化研究活跃，Anthropic Claude Code Opus 5 的 Auto Mode 被曝可被 prompt injection 绕过。异常检测与多模态计数方向多篇综述与新框架值得关注。",
+  "sections": [
+    {
+      "heading": "模型发布与能力更新",
+      "items": [
+        {
+          "title": "Qwen3.8-Flash-Next 开源多模态 MoE 模型（Qwen4 架构预览）",
+          "summary": "Qwen 发布新开源权重多模态 MoE 模型 Qwen3.8-Flash-Next，作为下一代 Qwen4 架构的早期预览。模型总参数约 125B，仅激活 6B，通过稀疏激活获得显著性能与效率提升，已有 Unsloth 量化版本可在 DGX Spark 等硬件上本地运行。",
+          "url": "https://qwen.ai/blog?id=qwen3.8-flash-next",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "Qwen",
+            "MoE",
+            "多模态",
+            "开源"
+          ]
+        },
+        {
+          "title": "Kimi-K3 多模态大模型登上 HuggingFace Trending",
+          "summary": "Moonshot AI 的 Kimi-K3 以约 2.8T 总参数登上 HuggingFace 趋势榜，属 Image-Text-to-Text 类多模态模型，下载量已达数百万级，显示国产超大规模多模态模型持续受关注。",
+          "url": "https://huggingface.co/moonshotai/Kimi-K3",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "Kimi",
+            "多模态",
+            "大模型"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "论文与技术方法",
+      "items": [
+        {
+          "title": "ACE 视角下的智能体数据生成：什么是好的 Agentic Data",
+          "summary": "随着 LLM 智能体越来越依赖生成的交互数据进行学习，现有工作多以领域为中心组织、评估异构，掩盖了共同的生成机制并混淆了候选构造与验证选择。为此该工作提出一个两级框架，将 agentic data 表示为环境、任务、交互、验证器的可分解对象 (E,q,τ,v)，并按主锚点组织生成范式。文章据此系统梳理了跨领域的智能体数据生成方法，厘清了数据\"有用\"而非\"仅丰富\"的关键要素。",
+          "url": "https://arxiv.org/abs/2608.27260v1",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "Agent",
+            "数据生成"
+          ]
+        },
+        {
+          "title": "WikiSkill：将智能体经验编译为持久知识以实现技能演化",
+          "summary": "现有自动技能发现方法中，指导技能发展的洞见往往散落在优化历史里，难以在迭代间系统复用。WikiSkill 提出让智能体技能与一个持久知识库（wiki）共同演化，将原始执行经验、累积知识与可执行技能分离，并持续将经验固化进 wiki 供后续技能更新构建。在多样化基准与模型上，WikiSkill 持续优于对比方法，验证了持久知识固化对技能演化的价值。",
+          "url": "https://arxiv.org/abs/2608.27454v1",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "Agent",
+            "技能演化"
+          ]
+        },
+        {
+          "title": "Self-OPD：无需教师的流匹配模型在线策略蒸馏",
+          "summary": "在线策略蒸馏（OPD）在 LLM 上取得成功并被引入流匹配模型，但为每个新目标训练专用教师成本高，且师生分布差异会沿生成轨迹累积误差。Self-OPD 提出一种无教师框架，将学生自身的探索转化为逐步监督：每个时间步将确定性下一状态预测分支为 K 个候选，从而免去外部教师并缓解误差累积，为流匹配模型的高效后训练提供了新思路。",
+          "url": "https://arxiv.org/abs/2608.26872v1",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "流匹配",
+            "蒸馏"
+          ]
+        },
+        {
+          "title": "理解进化策略在 LLM 推理中的作用：比 GRPO 更广的推理覆盖",
+          "summary": "进化策略（ES）近来作为内存高效的后训练范式出现，但其优化行为与相对 GRPO 的优势范围尚不明确。该文系统研究 ES 动态，理论与实证表明 ES 能带来更广的推理覆盖，从而更好地发挥预训练 LLM 的推理潜力；理论上验证器投影的 ES 种群 JS 多样性有助于更高的 Pass@K，实证上 ES 不像 GRPO 那样出现熵坍缩。",
+          "url": "https://arxiv.org/abs/2608.27351v1",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "进化策略",
+            "推理",
+            "RL"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "开源生态与工具",
+      "items": [
+        {
+          "title": "TTPO：Test-Time Policy Optimization 开源",
+          "summary": "浙大 ZJU-REAL 团队提出并开源 TTPO（测试时策略优化）方法，提供项目主页与代码仓库，探索在推理阶段对策略进行优化以提升模型表现。",
+          "url": "https://github.com/ZJU-REAL/TTPO",
+          "source": "arXiv cs.CL",
+          "tags": [
+            "测试时优化",
+            "开源"
+          ]
+        },
+        {
+          "title": "LTX-2.5 图生视频模型登上 HuggingFace Trending",
+          "summary": "Lightricks 发布的 LTX-2.5 图像到视频生成模型登上趋势榜，下载量超 90 万，是当前热门的开源视频生成工具之一。",
+          "url": "https://huggingface.co/Lightricks/LTX-2.5",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "视频生成",
+            "开源"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "产品与行业动态",
+      "items": [
+        {
+          "title": "Claude Code Opus 5 的 Auto Mode 被曝可被 prompt injection 绕过",
+          "summary": "安全研究者 Johann Rehberger 发现 Anthropic 力推的 Claude Code Auto Mode 防护存在漏洞，通过诱导下载解压 zip 并利用 base64 导入本地 struct.py 执行代码的攻击约 80% 情况下成功，甚至在部分场景下防护机制反而阻止了 Claude 自身清理恶意进程的命令。结论强调无人值守的编码智能体应在沙箱/容器中运行并限制网络出口。",
+          "url": "https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "安全",
+            "prompt injection",
+            "Claude Code"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "异常检测",
+      "items": [
+        {
+          "title": "TraceBench：LLM 智能体时序根因归因的受控评测框架",
+          "summary": "LLM 智能体越来越多用于真实系统时序观测的异常检测与根因分析，但其性能缺乏受控条件下的系统评估。作者提出基于仿真的 TraceBench，通过模拟物理动力系统生成受控根因归因任务，让智能体判断是否有系统参数被改变及具体是哪一个。基于三个可解释机械系统生成任务并评测四个 LLM 智能体，揭示了其在时序分析归因中的能力与局限的新洞见。",
+          "url": "https://arxiv.org/abs/2608.27182v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "LLM Agent",
+            "时序",
+            "根因分析"
+          ]
+        },
+        {
+          "title": "X-WAD：可解释的 Web 异常检测",
+          "summary": "面向 API 驱动的分布式系统，半监督防御常仅用正常数据建模正常行为，但训练数据难以完全剔除异常样本，被污染或误标的攻击样本会引入后门使模型静默地将攻击误判为正常。X-WAD 针对该痛点研究基于 Transformer 的可解释 Web 异常检测方法，探讨其在训练数据污染下的鲁棒性与可解释性。",
+          "url": "https://arxiv.org/abs/2608.27172v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "Web安全",
+            "可解释",
+            "Transformer"
+          ]
+        },
+        {
+          "title": "JPGFN：特征变换增强的 Jacobi 多项式图滤波用于图异常检测",
+          "summary": "频域滤波的图异常检测（GAD）面临三大问题：静态基函数难以适配图数据频域分布、忽略节点特征各属性重要性导致细粒度信息丢失、未充分利用节点标签。JPGFN 提出特征分离变换网络（FSTNN）等模块以更好适配频域分布并保留细粒度信息，从而提升图异常检测效果。",
+          "url": "https://arxiv.org/abs/2608.27144v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "图异常检测",
+            "频域滤波"
+          ]
+        },
+        {
+          "title": "GeoMAD：几何感知的多视角异常检测",
+          "summary": "多视角异常检测需在保持可扩展性的同时融合具备足够几何感知的多视角信息，现有方法或依赖昂贵的体素级 3D 构建、或轻量 patch 融合缺乏连续跨视对应。GeoMAD 提出统一的多视角多类别框架，通过跨视可变形融合模块与分布对齐同时解决几何对应缺失与分布不一致问题，适用于多类别工业检测场景。",
+          "url": "https://arxiv.org/abs/2608.26724v1",
+          "source": "arXiv 定向 · 异常检测",
+          "tags": [
+            "多视角",
+            "工业检测"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "多模态计数",
+      "items": [
+        {
+          "title": "跨模态目标计数综述：分类体系、基准、应用与开放挑战",
+          "summary": "目标计数已从类别专用的密度回归快速转向开放词表、基础模型支撑的计数器，可依据多种视觉与文本提示枚举实例，但该综述指出\"通用性\"的宣称已超前于评测基础设施——多数指标依赖少数饱和基准，新诊断数据集揭示了语义 grounding、时序身份与遮挡空间推理的系统性失败。为此作者提出模态、机制、提示、监督级别、泛化设置五轴分类体系，用以审计现有文献并厘清开放挑战。",
+          "url": "https://arxiv.org/abs/2608.23845v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "目标计数",
+            "综述",
+            "开放词表"
+          ]
+        },
+        {
+          "title": "DCA-MoE：空间自适应跨层融合与密度路由专家用于人群计数",
+          "summary": "人群计数需在透视、头部尺度、遮挡与背景杂乱剧烈变化下恢复可靠的局部密度，但许多多级解码器仍采用空间不变的特征融合与单一感受野。DCA-MoE 在冻结 DINOv3 编码器基础上，通过空间自适应层融合（SALF）预测四个对齐骨干特征的逐位置权重，并用密度路由的多感受野专家（DR-MoE）为每个位置分配局部、中程与大上下文残差专家的软混合，使融合与感受野选择均内容相关，从而提升计数精度。",
+          "url": "https://arxiv.org/abs/2608.15213v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "人群计数",
+            "MoE",
+            "DINOv3"
+          ]
+        },
+        {
+          "title": "深度引导的拥挤场景视频目标计数",
+          "summary": "视频目标计数需根据文本或视觉提示鲁棒地统计拥挤场景中目标类别的所有实例，而现有方法仅依赖 RGB 信息，在拥挤遮挡条件下判别力受限。作者提出深度引导检测器 DG-Det，通过多尺度 RGB-D 交叉注意力与显式遮挡预测整合深度线索增强空间理解，并引入统一去重框架消除跨帧重复计数，同时发布新的 RGB-D 视频目标计数数据集。",
+          "url": "https://arxiv.org/abs/2608.06236v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "视频计数",
+            "RGB-D",
+            "视觉提示"
+          ]
+        },
+        {
+          "title": "面向大规模航拍人群监测的无标签无人机计数验证方案",
+          "summary": "面向 2034 沙特世界杯与 Hajj 规模的人群管理，无人机计数需在与训练语料完全不同的画面上无标签保持精度，并在踩踏形成前预警危险人流。作者基于 525 次受控实验、全分辨率语料研究与多项消融，验证无标签自适应可在四种画面退化、五种严重度下恢复 31–49% 的漂移误差，最强方法相较冻结源模型获得 41.8 MAE 提升，并建立了区分方法优劣的严重度定律与稳定性预算。",
+          "url": "https://arxiv.org/abs/2608.17625v1",
+          "source": "arXiv 定向 · 多模态计数",
+          "tags": [
+            "无人机",
+            "人群计数",
+            "无标签自适应"
+          ]
+        }
+      ]
+    }
+  ]
+}
