@@ -1,0 +1,207 @@
+{
+  "date": "2026-08-29",
+  "title": "大模型每日进展 · 2026-08-29",
+  "summary": "今日 Qwen 开源了多模态 MoE 新架构 Qwen3.8-Flash-Next（Qwen4 预览），智谱 GLM-5.3 系列同步登场；研究侧关注 Evolution Strategies 相较 GRPO 更广的推理覆盖，以及 LLM 编码智能体正在颠覆开源安全披露流程。异常检测与多模态计数领域涌现出 TraceBench、GeoMAD 及跨模态目标计数综述等值得关注的工作。",
+  "sections": [
+    {
+      "heading": "模型发布与能力更新",
+      "items": [
+        {
+          "title": "Qwen3.8-Flash-Next：多模态 MoE 开源模型（Qwen4 架构预览）",
+          "summary": "Qwen 发布开源多模态 MoE 模型 Qwen3.8-Flash-Next，作为 Qwen4 所用架构的早期预览。模型规模较大但仅 6B 激活参数，兼顾性能与推理速度，已在 HuggingFace 提供含 FP8、GGUF 等多种量化版本。",
+          "url": "https://qwen.ai/blog?id=qwen3.8-flash-next",
+          "source": "Qwen / Simon Willison",
+          "tags": [
+            "Qwen",
+            "MoE",
+            "多模态",
+            "开源模型"
+          ]
+        },
+        {
+          "title": "智谱 GLM-5.3 与 GLM-5.3-Flash 系列上线",
+          "summary": "智谱 AI 在 HuggingFace 发布 GLM-5.3（753B）及轻量化 GLM-5.3-Flash（321B）等新一代文本生成模型，登上 Trending 榜单，配套提供 GGUF 量化版本便于本地部署。",
+          "url": "https://huggingface.co/zai-org/GLM-5.3",
+          "source": "HuggingFace",
+          "tags": [
+            "GLM",
+            "智谱",
+            "开源模型"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "论文与技术方法",
+      "items": [
+        {
+          "title": "Understanding Evolution Strategies for LLM Reasoning: Broader Reasoning Coverage than GRPO",
+          "summary": "针对 Evolution Strategies（ES）作为 LLM 推理后训练范式其优化行为尚不明确的问题，本文系统分析了 ES 的动力学机制，旨在界定其相对 GRPO 等主流方法的优势边界。研究从理论与实证两方面证明 ES 能带来更广的推理覆盖，从而更充分挖掘预训练模型的推理能力；理论上 verifier 投影的 JS 散度多样性有助于提升 Pass@K，而不同于 GRPO 表现出的熵坍缩，ES 能保持更好的探索性。",
+          "url": "https://arxiv.org/abs/2608.27351",
+          "source": "arXiv",
+          "tags": [
+            "LLM推理",
+            "Evolution Strategies",
+            "后训练",
+            "GRPO"
+          ]
+        },
+        {
+          "title": "TTPO: Test-Time Policy Optimization",
+          "summary": "针对模型在测试阶段难以针对具体任务动态优化策略的痛点，本文提出测试时策略优化 TTPO，将策略优化引入推理阶段。方法旨在无需重新训练即可根据当前任务反馈调整生成策略，提升复杂任务的表现，并提供了开源代码与项目页供复现。",
+          "url": "https://zju-real.github.io/TTPO",
+          "source": "arXiv",
+          "tags": [
+            "测试时优化",
+            "策略优化",
+            "LLM"
+          ]
+        },
+        {
+          "title": "PAWBench: How Far Are We from Probabilistically Aligned World Modeling?",
+          "summary": "当前视频生成模型日益被视为世界模型，但许多物理过程存在多种合理演化方式，模型不仅应生成一条可信轨迹，更应复现同一初始条件下可能行为的分布。针对现有评测仅衡量单视频合理性而不检验分布对齐的缺陷，本文将概率对齐形式化为世界模型的分布级标准，并提出 PAWBench 基准来评估视频生成器在重复生成下能否恢复正确的行为分布。",
+          "url": "https://arxiv.org/abs/2608.27345",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "世界模型",
+            "视频生成",
+            "评测基准"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "开源生态与工具",
+      "items": [
+        {
+          "title": "LLM 编码智能体正在颠覆开源安全漏洞披露流程",
+          "summary": "Simon Willison 汇总了多位开源维护者的观察：现代编码智能体高效到仅凭补丁讨论的蛛丝马迹便能在约十分钟内定位并探测漏洞，rclone 项目上月收到的安全披露量超过过去十年总和。这一发现表明现有开源漏洞禁运与 CVE 分配流程难以适应 AI 时代的发现速度，社区需要重新设计防护机制。",
+          "url": "https://simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug/",
+          "source": "Simon Willison",
+          "tags": [
+            "AI安全",
+            "编码智能体",
+            "开源"
+          ]
+        },
+        {
+          "title": "Breaking Claude Code Opus 5 Auto Mode：绕过提示注入防护",
+          "summary": "提示注入研究者 Johann Rehberger 发现针对 Claude Code auto mode 的攻击可在约 80% 情况下成功，通过诱导智能体下载并解压 zip 后触发本地恶意代码执行；某些情况下安全机制反而阻止了 Claude 自身的清理命令。文章强调运行无人值守编码智能体的唯一安全方式是沙箱隔离并限制网络出口。",
+          "url": "https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/",
+          "source": "Simon Willison",
+          "tags": [
+            "Claude Code",
+            "提示注入",
+            "AI安全"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "产品与行业动态",
+      "items": [
+        {
+          "title": "Launch HN: TeamOut（YC W22）——面向公司团建的 AI 规划智能体",
+          "summary": "YC W22 项目 TeamOut 推出面向企业团建活动策划的 AI 智能体，可自动化规划公司 retreat 行程，在 Hacker News 上获得关注。",
+          "url": "https://app.teamout.com/ai",
+          "source": "Hacker News",
+          "tags": [
+            "AI Agent",
+            "创业",
+            "YC"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "异常检测（Anomaly Detection）",
+      "items": [
+        {
+          "title": "TraceBench: Controlled Evaluation of LLM Agents for Time-Series Root-Cause Attribution",
+          "summary": "LLM 智能体日益被用于时序观测的异常检测与根因分析，但其在受控条件下的表现尚缺乏系统评估。本文提出基于仿真的 TraceBench 框架，通过模拟物理动力系统生成受控的根因归因任务，要求智能体判断某系统参数是否被改动及具体是哪一个。作者在三类可解释机械系统上系统评估了四个 LLM 智能体，揭示了这些智能体在时序分析中的行为特征与局限。",
+          "url": "https://arxiv.org/abs/2608.27182",
+          "source": "arXiv",
+          "tags": [
+            "异常检测",
+            "LLM智能体",
+            "时序",
+            "根因分析"
+          ]
+        },
+        {
+          "title": "GeoMAD: Geometry-Aware Multi-View Anomaly Detection via Deformable Fusion and Distributional Alignment",
+          "summary": "多视角异常检测通过多相机互补观测检测缺陷，核心挑战在于既要有足够几何感知地融合多视角，又要能扩展到多类工业场景。针对体素融合几何对齐精确但昂贵、而轻量 patch 融合缺乏连续跨视角对应的两极问题，本文提出统一的多视角多类框架 GeoMAD，采用跨视角可变形融合模块与分布对齐来同时解决几何对应缺失与分布不一致问题。",
+          "url": "https://arxiv.org/abs/2608.26724",
+          "source": "arXiv",
+          "tags": [
+            "异常检测",
+            "多视角",
+            "工业检测"
+          ]
+        },
+        {
+          "title": "Feature Transformation Enhanced Jacobi Polynomial Graph Filtering for Graph Anomaly Detection",
+          "summary": "针对频域滤波类图异常检测中静态基函数难以适应图数据频域分布、忽略节点特征各属性重要性、以及标签利用不足三大挑战，本文提出 JPGFN 方法。其通过特征分离变换网络提取细粒度信息，并结合 Jacobi 多项式图滤波自适应地构造图滤波器，从而更有效地建模图异常。",
+          "url": "https://arxiv.org/abs/2608.27144",
+          "source": "arXiv",
+          "tags": [
+            "图异常检测",
+            "频域滤波",
+            "GNN"
+          ]
+        },
+        {
+          "title": "X-WAD: eXplainable Web Anomaly Detection",
+          "summary": "API 驱动的分布式 Web 服务快速增长使自动化防御变得关键，而现实中良性流量占主导，半监督方法仅用正常数据建模正常行为，但训练数据中难以完全排除被污染的攻击样本会引入后门。本文研究基于 Transformer 的可解释 Web 异常检测方案，探讨其在数据污染场景下的鲁棒性与可解释性。",
+          "url": "https://arxiv.org/abs/2608.27172",
+          "source": "arXiv",
+          "tags": [
+            "异常检测",
+            "Web安全",
+            "可解释性"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "多模态计数（Multimodal Counting）",
+      "items": [
+        {
+          "title": "Object Counting Across Modalities: Taxonomies, Benchmarks, Applications, and Open Challenges",
+          "summary": "目标计数方法已从类别专属的密度回归快速转向开放词表、基础模型驱动的计数器，可根据多样的视觉与文本提示枚举实例。本文指出关于通用性的宣称已超出评测基础设施的支撑，现有指标多依赖少数饱和基准，而新诊断数据集揭示了语义 grounding、时序身份和遮挡下空间推理的系统性失败。为此作者提出涵盖模态、机制、提示、监督级别与泛化设定的五维分类法来系统审视该领域。",
+          "url": "https://arxiv.org/abs/2608.23845",
+          "source": "arXiv",
+          "tags": [
+            "目标计数",
+            "多模态",
+            "综述",
+            "开放词表"
+          ]
+        },
+        {
+          "title": "Depth-Guided Video Object Counting in Crowded Scenes",
+          "summary": "针对拥挤场景视频目标计数中现有方法仅依赖 RGB 信息、在遮挡下判别力受限的问题，本文提出深度引导检测器 DG-Det 及通用后处理流程，可基于文本或视觉提示鲁棒地计数目标类别的所有实例。方法通过多尺度 RGB-D 交叉注意力融合深度线索并显式预测遮挡，同时引入统一去重框架消除跨帧重复计数，并发布了新的 RGB-D 视频目标计数数据集。",
+          "url": "https://arxiv.org/abs/2608.06236",
+          "source": "arXiv",
+          "tags": [
+            "视频计数",
+            "多模态",
+            "深度引导",
+            "遮挡"
+          ]
+        },
+        {
+          "title": "DCA-MoE: Spatially Adaptive Cross-Layer Fusion and Density-Routed Experts for Crowd Counting",
+          "summary": "人群计数需在透视、头部尺度、遮挡和背景杂乱的剧烈变化下恢复可靠的局部密度，但许多多级解码器仍采用空间不变的特征融合并对所有位置使用同一感受野。本文提出 DCA-MoE，在冻结 DINOv3 编码器基础上通过空间自适应层融合（SALF）预测各位置对多层骨干特征的权重，并用密度路由的多感受野专家（DR-MoE）为每个位置分配局部、中程与大上下文残差专家的软混合，使融合与感受野决策均随内容自适应。",
+          "url": "https://arxiv.org/abs/2608.15213",
+          "source": "arXiv",
+          "tags": [
+            "人群计数",
+            "MoE",
+            "DINOv3"
+          ]
+        }
+      ]
+    }
+  ]
+}
