@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-08-30</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-08-30</p>
+  <h1>大模型每日进展 · 2026-08-30</h1>
+  <div class="summary">腾讯发布开源权重大模型 Hy4 Preview（770B 总参/49B 激活/1M 上下文），成为国产开源 LLM 参数规模的新高点；测试时优化与弱到强泛化成为推理增强研究热点（TTPO、CritICL）；物体计数领域出现跨模态综述与 RGB-D 视频计数新方法。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>腾讯发布开源权重大模型 Hy4 Preview</h3>
+  <p>Tencent 推出纯文本（无视觉）开源权重 LLM Hy4 Preview，770B 总参数、49B 激活参数、1M token 上下文，权重体积达 1.56TB，相较 7 月的 Hy3（295B/21B/256K）大幅升级。其 chat_template 显示仅提供 'high'（默认）与 'no_think' 两档推理力度设置。</p>
+  <div class="src">来源：<a href="https://huggingface.co/tencent/Hy4-preview" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">开源权重</span><span class="tag">Tencent</span></div>
+</div>
+<div class="item">
+  <h3>HuggingFace Trending：GLM-5.3 系列与 Qwen3.8 系列持续走热</h3>
+  <p>HuggingFace 趋势榜上 zai-org 的 GLM-5.3（753B）与 GLM-5.3-Flash（321B）、Qwen3.8-Flash-Next（180B）及 Qwen3.8-27B 等多个新模型占据前列，反映近期国产大模型与量化/衍生版本（GGUF/FP8/Uncensored）密集迭代。</p>
+  <div class="src">来源：<a href="https://huggingface.co/zai-org/GLM-5.3" target="_blank" rel="noopener">HuggingFace Trending</a></div>
+  <div class="tags"><span class="tag">趋势模型</span><span class="tag">GLM</span><span class="tag">Qwen</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>TTPO：Test-Time Policy Optimization</h3>
+  <p>针对现有推理增强方法在测试阶段难以持续利用自身反馈提升表现的痛点，作者提出在测试时进行策略优化的 TTPO 框架，让模型在推理阶段动态调整策略以增强推理能力。项目提供了开源代码与页面，展示了测试时优化在推理任务上的可行路径。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.27448" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">测试时优化</span><span class="tag">推理</span><span class="tag">RL</span></div>
+</div>
+<div class="item">
+  <h3>CritICL：从小模型失败模式实现推理时的弱到强泛化</h3>
+  <p>为在不重训大模型的前提下提升生成质量，作者提出 CritICL，通过归纳小语言模型的失败模式并在推理时以上下文批判引导强模型，实现弱到强泛化。该方法在推理时无需额外训练即可利用弱模型经验改进强模型输出。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.27455" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">弱到强泛化</span><span class="tag">ICL</span><span class="tag">推理</span></div>
+</div>
+<div class="item">
+  <h3>理解进化策略用于 LLM 推理：比 GRPO 更广的推理覆盖</h3>
+  <p>针对 GRPO 等强化学习方法在 LLM 推理中探索范围受限的问题，作者系统分析了进化策略（Evolution Strategies）在推理训练中的作用，指出其能带来比 GRPO 更广的推理覆盖。研究为强化学习之外的推理优化范式提供了理论与实验依据。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.27351" target="_blank" rel="noopener">arXiv cs.LG</a></div>
+  <div class="tags"><span class="tag">进化策略</span><span class="tag">推理</span><span class="tag">GRPO</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>TTPO 开源代码库</h3>
+  <p>浙大 ZJU-REAL 团队公开了 Test-Time Policy Optimization 的完整实现与项目页，便于社区复现测试时策略优化在 LLM 推理任务中的效果。</p>
+  <div class="src">来源：<a href="https://github.com/ZJU-REAL/TTPO" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">开源代码</span><span class="tag">测试时优化</span></div>
+</div>
+<div class="item">
+  <h3>CritICL 代码仓库</h3>
+  <p>CritICL 论文配套开源实现已在 GitHub 发布，提供从小模型失败模式进行推理时弱到强泛化的可复现代码。</p>
+  <div class="src">来源：<a href="https://github.com/umwyf/CRITICL" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">开源代码</span><span class="tag">弱到强泛化</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>AI 编码 agent 让'仅凭补丁传闻'即可挖出漏洞</h3>
+  <p>剑桥教授 Anil Madhavapeddy 报告，开源项目补丁一经公开讨论，自动化 agent 可在约十分钟内探测出对应漏洞；rclone 维护者亦证实近一个月收到超 40 份安全披露（约为前十年总量两倍），现有开源漏洞禁运流程受到严峻挑战。</p>
+  <div class="src">来源：<a href="https://anil.recoil.org/notes/rumour-is-the-exploit" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">AI安全</span><span class="tag">编码agent</span><span class="tag">开源</span></div>
+</div>
+<div class="item">
+  <h3>Claude Code Opus 5 Auto Mode 被绕过</h3>
+  <p>提示注入研究者 Johann Rehberger 发现针对 Claude Code auto mode 的攻击，声称成功率约 80%：诱导 agent 下载并解压 zip，在导入 base64 时无意执行归档中提取的本地 struct.py，暴露了 Anthropic 主推的默认防护机制的薄弱点。</p>
+  <div class="src">来源：<a href="https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">提示注入</span><span class="tag">Claude Code</span><span class="tag">AI安全</span></div>
+</div>
+</section>
+<section>
+  <h2>异常检测（Anomaly Detection）</h2>
+  <div class="item">
+  <h3>TraceBench：面向时间序列根因归因的 LLM Agent 受控评测</h3>
+  <p>针对 LLM agent 在时间序列异常检测与根因分析上缺乏受控系统评估的问题，作者提出基于仿真的 TraceBench 框架，通过模拟物理动力系统生成可控的根因归因任务，让 agent 判断是否有系统参数被改变及具体是哪一个。基于三个可解释机械系统评测四个 LLM agent，揭示了这些 agent 在受控条件下分析时序数据的新洞察。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.27182v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">LLM Agent</span><span class="tag">时间序列</span><span class="tag">根因分析</span></div>
+</div>
+<div class="item">
+  <h3>X-WAD：可解释的 Web 异常检测</h3>
+  <p>面向 API 驱动架构中半监督异常检测常因训练数据被污染（混入被误标的攻击样本）而植入'后门'的问题，作者研究基于 Transformer 的可解释 Web 异常检测方案 X-WAD。工作重点在于分析训练数据污染对正常行为建模的影响并提升检测的可解释性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.27172v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">Web安全</span><span class="tag">可解释性</span><span class="tag">半监督</span></div>
+</div>
+<div class="item">
+  <h3>GeoMAD：基于可变形融合与分布对齐的几何感知多视角异常检测</h3>
+  <p>多视角异常检测中，体素融合几何对齐精确但计算昂贵且依赖类别假设，而轻量补丁融合高效却缺乏连续跨视角对应，作者提出统一的多视角多类别框架 GeoMAD 以同时解决几何对应缺失与分布不一致。其 Cross-view Deformable Fusion 模块在保持可扩展性的同时实现具备几何感知的视角融合，适用于多类别工业检测场景。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.26724v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">多视角</span><span class="tag">工业检测</span><span class="tag">特征融合</span></div>
+</div>
+<div class="item">
+  <h3>JPGFN：特征变换增强的 Jacobi 多项式图滤波用于图异常检测</h3>
+  <p>针对现有频域图异常检测使用静态基函数难以适应频域分布、忽视节点特征各属性重要性、以及标签利用不足三大问题，作者提出 JPGFN，引入特征分离变换网络（FSTNN）以保留细粒度信息并采用可自适应的 Jacobi 多项式图滤波。方法在图异常检测任务上改进了频域滤波器对数据分布的适配能力。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.27144v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">图异常检测</span><span class="tag">频域滤波</span><span class="tag">GNN</span></div>
+</div>
+</section>
+<section>
+  <h2>多模态计数（Multimodal Counting）</h2>
+  <div class="item">
+  <h3>跨模态物体计数综述：分类法、基准、应用与开放挑战</h3>
+  <p>物体计数已从类别专用的密度回归转向开放词表、基础模型驱动的计数器，但作者指出其'通用性'宣称已超越现有评测基础设施，多数指标依赖少数饱和基准、且新诊断数据集揭示了语义定位、时序一致性与遮挡空间推理上的系统性失败。为此论文提出涵盖模态、机制、提示、监督级别与泛化设置的五轴分类法，用以审视文献并厘清开放挑战。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.23845v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">综述</span><span class="tag">开放词表</span><span class="tag">物体计数</span></div>
+</div>
+<div class="item">
+  <h3>深度引导的拥挤场景视频物体计数</h3>
+  <p>面向在拥挤遮挡场景下依据文本或视觉提示鲁棒计数目标类别所有实例的需求，作者针对现有方法仅依赖 RGB、判别力受限的问题，提出深度引导检测器 DG-Det 及通用后处理流程。通过多尺度 RGB-D 交叉注意力与显式遮挡预测增强空间理解，并引入统一去重框架消除跨帧重复计数，同时发布了新的 RGB-D 视频物体计数数据集。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.06236v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">视频计数</span><span class="tag">RGB-D</span><span class="tag">文本/视觉提示</span></div>
+</div>
+<div class="item">
+  <h3>DCA-MoE：空间自适应跨层融合与密度路由专家的人群计数</h3>
+  <p>人群计数需在透视、头部尺度、遮挡与背景杂乱剧烈变化下恢复可靠的局部密度，但许多多级解码器仍采用空间不变的特征融合与统一感受野，作者提出 DCA-MoE 使这两项决策依内容而定并冻结 DINOv3 编码器。其 SALF 模块预测逐位置的多层特征融合权重，DR-MoE 为每个位置分配局部/中程/大上下文残差专家的软混合，从而更好适应密度变化。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.15213v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">人群计数</span><span class="tag">MoE</span><span class="tag">DINOv3</span></div>
+</div>
+<div class="item">
+  <h3>面向大规模聚集航拍人群监测的无标签无人机计数验证适配</h3>
+  <p>面向沙特 2034 世界杯与朝觐级人群管理，无人机计数须在与训练语料迥异且无标签的画面上保持精度并及时预警危险人流，作者基于 525 次受控实验、全分辨率语料研究与多项消融给出验证方案。无标签适配可跨四种画质退化、五种严重度恢复 31–49% 的偏移误差，最强方法相比冻结源模型提升 41.8 MAE（95% CI [34.1, 49.6]，p=7.5e-10）。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.17625v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">无人机</span><span class="tag">人群计数</span><span class="tag">无标签适配</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
