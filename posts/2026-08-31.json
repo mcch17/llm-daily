@@ -1,0 +1,152 @@
+{
+  "date": "2026-08-31",
+  "title": "大模型每日进展 · 2026-08-31",
+  "summary": "今日腾讯 Hy4 Preview 大规模开源权重模型（770B 总参/49B 激活/1M 上下文）与 GLM-5.3、Qwen3.8 系列共同登上开源趋势榜；论文侧 GeoNeXt 将视频生成模型重用为几何估计框架、LMSM 借鉴 Linux Security Modules 构建 LLM 运行时安全框架；此外 Simon Willison 关注到 AI 编码代理正让开源安全漏洞披露流程面临前所未有的压力。",
+  "sections": [
+    {
+      "heading": "模型发布与能力更新",
+      "items": [
+        {
+          "title": "腾讯发布 Hy4 Preview 开源大模型",
+          "summary": "腾讯开源了新一代纯文本（无视觉）大模型 Hy4 Preview，总参数 770B、激活参数 49B、上下文窗口达 1M token，Hugging Face 权重约 1.56TB。相比 7 月的 Hy3（295B/21B/256K）在规模上大幅提升，仅提供 high 与 no_think 两档推理力度。",
+          "url": "https://huggingface.co/tencent/Hy4-preview",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "模型发布",
+            "开源",
+            "长上下文"
+          ]
+        },
+        {
+          "title": "GLM-5.3 / GLM-5.3-Flash 登上 HuggingFace 趋势榜",
+          "summary": "智谱 zai-org 上线 GLM-5.3（753B）与 GLM-5.3-Flash（321B）文本生成模型，均在近日更新并快速跻身 HuggingFace Trending 前列，配套提供 GGUF 量化版本便于本地部署。",
+          "url": "https://huggingface.co/zai-org/GLM-5.3",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "模型发布",
+            "GLM"
+          ]
+        },
+        {
+          "title": "Qwen3.8 系列多模态模型热度居高",
+          "summary": "Qwen3.8-Flash-Next（180B）与 Qwen3.8-27B 等 Image-Text-to-Text 模型持续占据 HuggingFace 趋势榜前列，月下载量达数百万，衍生的 GGUF、FP8 与去审查版本生态活跃。",
+          "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "模型发布",
+            "多模态",
+            "Qwen"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "论文与技术方法",
+      "items": [
+        {
+          "title": "GeoNeXt：将视频生成模型重用为统一几何估计框架",
+          "summary": "以往的几何估计方法多改造图像扩散模型，要么为深度/法线分别训练任务专用模型而丢失几何目标间的内在关联，要么联合微调需要大量标注数据。GeoNeXt 创新地将预训练视频生成模型重新表述为\"下一帧预测\"任务，统一且数据高效地联合建模图像与几何目标，继承视频模型的结构化先验。实验表明其在零样本单目深度与表面法线估计上超越此前任务专用与统一生成式方法，且用更少训练数据即可媲美使用 100 倍以上数据训练的判别式 SOTA。",
+          "url": "https://huggingface.co/papers/2608.28549",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "几何估计",
+            "视频生成",
+            "零样本"
+          ]
+        },
+        {
+          "title": "LMSM：借鉴 Linux Security Modules 的 LLM 安全框架",
+          "summary": "针对 LLM 部署中可解释性信号难以直接转化为安全控制、且每个新信号都要单独耦合校准与策略代码的痛点，LMSM 借鉴 Linux Security Modules 的分离思想，将证据校准、策略评估与输出放行网关解耦，使后端/规则/调度可独立更换。在 Qwen3-4B 上，LMSM-Checkpoint 将 HarmBench 攻击成功率从 39.20% 降至 3.32%，XSTest 误拒仅从 2.40% 升至 4.40%，并在 32 并发下保留 98.14% 的吞吐。",
+          "url": "https://huggingface.co/papers/2608.25697",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "LLM 安全",
+            "可解释性",
+            "vLLM"
+          ]
+        },
+        {
+          "title": "PonderPounce：将预训练 MLLM 用作机器人控制的情节上下文引擎",
+          "summary": "现有 VLA 模型继承了预训练表征却未利用 MLLM 的长视觉历史与上下文推理能力作为情节记忆。PonderPounce 复用 MLLM 原生因果上下文作机器人记忆：System2 的 Ponder 累积观测与推理并生成子目标，System1 的 Pounce 异步接收最新认知 token 端到端联合训练，无需专用记忆模块。在 RoboMME 基础规模数据下 9B 模型达 60.83%（0.8B 为 50.04%），显著超过 FrameSamp+Modul 的 44.51%；9 倍数据下达 75.54%。",
+          "url": "https://huggingface.co/papers/2608.24115",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "VLA",
+            "机器人",
+            "多模态"
+          ]
+        },
+        {
+          "title": "Sliding-window beats linear attention",
+          "summary": "该工作针对长序列建模中线性注意力与滑动窗口注意力的效率-效果权衡展开系统比较，探讨在何种条件下滑动窗口机制能取得更优表现。研究结论指出，在多项语言建模设置下滑动窗口注意力可超越线性注意力，为高效注意力架构的选择提供了实证参考。",
+          "url": "https://arxiv.org/abs/2608.28444",
+          "source": "arXiv cs.CL",
+          "tags": [
+            "注意力机制",
+            "高效架构"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "开源生态与工具",
+      "items": [
+        {
+          "title": "LMSM 开源实现：LLM 运行时安全模块框架",
+          "summary": "新加坡国立大学团队开源了 LMSM 框架的原型实现，兼容 Hugging Face Transformers 与连续批处理的 vLLM，可在同一底座上托管稀疏自编码器（SAE）、transcoder 与任务定制的密集探针，实现每请求的规则组合与选择性执行。",
+          "url": "https://github.com/xiuyuz/LMSM",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "开源工具",
+            "LLM 安全"
+          ]
+        },
+        {
+          "title": "LTX-2.5 图生视频模型",
+          "summary": "Lightricks 更新的 LTX-2.5 图生视频（Image-to-Video）模型在 HuggingFace 趋势榜快速上升，月下载量超百万，是开源视频生成生态的重要更新。",
+          "url": "https://huggingface.co/Lightricks/LTX-2.5",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "视频生成",
+            "开源"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "产品与行业动态",
+      "items": [
+        {
+          "title": "Simon Willison 解析 ChatGPT Work",
+          "summary": "OpenAI 于 7 月 9 日发布 ChatGPT Work 并持续快速迭代，Simon Willison 撰文梳理了这款\"极为混乱但非常强大\"的产品，剖析其代码解释器、通用代理等能力及其潜在的 lethal-trifecta 安全风险。",
+          "url": "https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "OpenAI",
+            "产品",
+            "代理"
+          ]
+        },
+        {
+          "title": "AI 编码代理令开源安全漏洞披露流程面临压力",
+          "summary": "Cambridge 教授 Anil Madhavapeddy 报告称，OCaml 项目的补丁在公开讨论后约 10 分钟内即遭自动化探测；rclone 维护者证实近一个月收到超 40 起安全披露（10 年前 10 年才约 20 起）。AI 代理高效发掘漏洞的能力，正使现有开源禁运（embargo）与 CVE 分配流程难以适应。",
+          "url": "https://anil.recoil.org/notes/rumour-is-the-exploit",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "安全",
+            "AI 代理",
+            "开源"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "异常检测（Anomaly Detection）",
+      "items": []
+    },
+    {
+      "heading": "多模态计数（Multimodal Counting）",
+      "items": []
+    }
+  ]
+}
