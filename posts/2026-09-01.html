@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-09-01</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-09-01</p>
+  <h1>大模型每日进展 · 2026-09-01</h1>
+  <div class="summary">今日焦点：智谱 GLM-5.3 系列与阿里 Qwen3.8-Flash-Next、腾讯 Hy4 Preview 等大参数开源模型密集更新；自演化框架 J-Zero 探索无监督领域的模型自我进化；视觉计数领域出现 NumBench 等新基准，系统诊断 T2I 模型的计数失败。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>智谱 GLM-5.3 / GLM-5.3-Flash 上线</h3>
+  <p>智谱发布新一代 GLM-5.3（753B 文本生成）及 GLM-5.3-Flash（321B，Image-Text-to-Text）多模态版本，均登上 HuggingFace Trending 前列，Flash 版偏向低延迟场景。</p>
+  <div class="src">来源：<a href="https://huggingface.co/zai-org/GLM-5.3" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">GLM</span></div>
+</div>
+<div class="item">
+  <h3>腾讯 Hy4 Preview 开源权重发布</h3>
+  <p>腾讯推出 Hy4 Preview，纯文本输入（无视觉）大模型，770B 总参数、49B 激活参数、1M token 上下文窗口，权重体积约 1.56TB，是其上代模型的显著规模跃升。</p>
+  <div class="src">来源：<a href="https://hy.tencent.ai/research/hy4-preview" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">MoE</span><span class="tag">长上下文</span></div>
+</div>
+<div class="item">
+  <h3>Qwen3.8-Flash-Next 与 DeepSeek-V4-Flash-Vision 多模态更新</h3>
+  <p>阿里 Qwen3.8-Flash-Next（180B，Image-Text-to-Text）与 DeepSeek-V4-Flash-Vision-Exp（305B）近期上线并冲上 HuggingFace 热榜，显示大厂在多模态低延迟旗舰上的持续竞速。</p>
+  <div class="src">来源：<a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">多模态</span><span class="tag">Qwen</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>J-Zero：从零数据出发的 Challenger–Solver–Judge 协同进化</h3>
+  <p>针对自演化语言模型在不可验证领域探索不足的问题，J-Zero 提出统一的 Challenger–Solver–Judge 三方协同进化框架：Challenger 不断生成更难任务、Solver 学习产出更优回答，Judge 则利用已知偏序的偏好对进行协同适配，从而在可验证与不可验证领域同时实现自我提升，减少对人工监督的依赖。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.26582v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">自演化</span><span class="tag">RL</span><span class="tag">无监督</span></div>
+</div>
+<div class="item">
+  <h3>Locate Anything in Videos：并行管道解码的高效时空视频定位</h3>
+  <p>现有多模态大模型以自回归方式串行输出密集定位轨迹，导致解码延迟随管道长度增长且误差跨时间传播。该工作提出 Parallel Tube Decoding（PTD），将定位拆解为时间块加时间条件的空间块并行解码，把顺序解码深度固定为 1+1 轮，与管道长度无关，并配合 Decoupled Block Attention 实现并行空间生成，显著提升 STVG 的效率。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.28192v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">视频理解</span><span class="tag">时空定位</span><span class="tag">高效推理</span></div>
+</div>
+<div class="item">
+  <h3>Puro-2B：消费级 RTX 5090 上以 5090 美元完成预训练</h3>
+  <p>针对大模型预训练成本高昂、学术与开源社区难以承受的痛点，该报告给出一套低成本、硬件可及的开源预训练配方，在消费级 RTX 5090 上用 FP8 精度从零训练最多 1.4 万亿 token 的 Puro-2B 系列，将原本动辄数十万至百万美元的训练门槛大幅降低。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.27370v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">预训练</span><span class="tag">低成本</span><span class="tag">FP8</span></div>
+</div>
+<div class="item">
+  <h3>Code-as-World：面向物理推理的可执行世界表征</h3>
+  <p>针对视觉语言模型缺乏对物体状态、物理参数与动力学等底层机制的显式表征、难以可靠推理世界演化的问题，Code-as-World 将物理组成、动态演化与视觉外观表达为可执行代码，提供紧凑、可量化且可控的物理世界抽象，以支持更可靠的物理理解与干预推理。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.27549v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">物理推理</span><span class="tag">世界模型</span><span class="tag">VLM</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>wrapture：面向测试与追踪的 Python 包装库</h3>
+  <p>wrapt 作者 Graham Dumpleton 推出 wrapture，将 wrapt 的猴子补丁思路扩展到同时支持测试与追踪，可作为 unittest.mock 的替代并对现有项目做基于配置的 OpenTelemetry 追踪；整个项目由 AI 助手在作者严格指导下完成，是一次典型的 agent 驱动工程实践。</p>
+  <div class="src">来源：<a href="https://grahamdumpleton.me/posts/2026/08/introducing-wrapture/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">开源工具</span><span class="tag">可观测性</span><span class="tag">AI辅助编程</span></div>
+</div>
+<div class="item">
+  <h3>LTX-2.5 图生视频模型登上 HuggingFace 热榜</h3>
+  <p>Lightricks 发布 LTX-2.5 图像到视频模型，近一日下载量超百万、点赞逾 2.3k，成为当前 Trending 中最受关注的视频生成开源模型之一。</p>
+  <div class="src">来源：<a href="https://huggingface.co/Lightricks/LTX-2.5" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">视频生成</span><span class="tag">开源模型</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>深入理解 ChatGPT Work</h3>
+  <p>Simon Willison 撰文梳理 OpenAI 于 7 月 9 日发布并持续快速迭代的 ChatGPT Work，认为它是一款功能强大但相当令人困惑的企业级产品，并系统解释了其目前的能力与使用方式。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">OpenAI</span><span class="tag">企业级</span><span class="tag">Agent</span></div>
+</div>
+</section>
+<section>
+  <h2>异常检测（Anomaly Detection）</h2>
+  <div class="item">
+  <h3>InspectorGPT：对比推理增强的 VLM 工业异常检测</h3>
+  <p>传统无监督异常检测依赖对正常特征分布建模，难以泛化到未知类别，而部分引入 VLM 做零样本检测的方法在推理式后训练后反而出现判别力崩塌、甚至不如基座模型且只能给出文本或粗框。受人工检测中&quot;对比缺陷参照图&quot;原理启发，InspectorGPT 通过对比推理增强 VLM，实现更具泛化性并支持像素级分割的综合工业异常检测。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.29783v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">工业异常检测</span><span class="tag">VLM</span><span class="tag">零样本</span></div>
+</div>
+<div class="item">
+  <h3>基于视觉触觉传感的小型工业零件异常检测</h3>
+  <p>针对亚厘米级小零件缺陷由几何驱动、标准光学相机难以分辨的问题，该工作利用视觉触觉传感器（GelSight Mini）将接触压痕转为高分辨率图像数据，系统评估 SPADE、PaDiM、FAPM、InReaCh 四种无监督特征嵌入方法在五种真实工业零件数据集上的异常检测表现，填补了触觉传感在工业 AD 中的研究空白。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.30506v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">工业异常检测</span><span class="tag">触觉传感</span><span class="tag">无监督</span></div>
+</div>
+<div class="item">
+  <h3>数据稀缺风机的生成式多域迁移故障检测</h3>
+  <p>新部署风机缺乏充足的无故障训练数据，导致无监督正常行为模型故障检测性能不佳。该工作提出基于 StarGAN 的多域生成域映射方法，将数据稀缺风机的 SCADA 测量映射为多台数据丰富风机的分布并保持运行状态，从而借助可靠模型检测稀缺域中的故障。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.30323v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">故障检测</span><span class="tag">迁移学习</span><span class="tag">GAN</span></div>
+</div>
+<div class="item">
+  <h3>HSMLog：小语言模型辅助的硬件安全模块日志异常检测</h3>
+  <p>HSM 日志的异常往往来自事件序列、密钥、对象状态与时序模式间的关系而非孤立事件，现有方法将检测与 HSM 专属证据验证分离。HSMLog 提出两阶段框架：先由小语言模型从滑窗结构化事件中识别候选告警并做策略引导评估，再结合检索到的策略与告警窗口前的历史可疑密钥记录及上下文进行保守的行为分析。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.29773v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">日志异常检测</span><span class="tag">小语言模型</span><span class="tag">安全</span></div>
+</div>
+</section>
+<section>
+  <h2>多模态计数（Multimodal Counting）</h2>
+  <div class="item">
+  <h3>NumBench：诊断文生图模型的计数失败</h3>
+  <p>T2I 模型常生成错误数量的物体，但现有基准过小或控制不足、难以解释原因。NumBench 构建了含 64 万条 prompt、覆盖 1600 类、计数 1 到 100 的大规模基准，采用析因设计变化物体组成、空间引导与外观条件；作者还提出请求实例竞争有限可解析图像区域的过程模型，并给出置信度加权数值精度分数 CWNPS 用于可扩展评测。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.28206v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">文生图</span><span class="tag">计数</span><span class="tag">基准</span></div>
+</div>
+<div class="item">
+  <h3>跨模态物体计数综述：分类、基准、应用与开放挑战</h3>
+  <p>物体计数已从类别专用的密度回归转向开放词表、基础模型支撑的计数器，可依据视觉与文本提示枚举实例，但作者指出关于通用泛化的宣称已超出评测基础设施：多数指标依赖少数已饱和的基准，而新诊断数据集暴露出语义对齐、时序身份与遮挡下空间推理的系统性失败。为此提出涵盖模态、机制、提示、监督级别与泛化设置的五轴分类法来审视文献。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.23845v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">物体计数</span><span class="tag">综述</span><span class="tag">开放词表</span></div>
+</div>
+<div class="item">
+  <h3>DCA-MoE：空间自适应跨层融合与密度路由专家的人群计数</h3>
+  <p>人群计数需在透视、头部尺度、遮挡与背景杂乱剧烈变化下恢复可靠局部密度，但许多多层解码器仍采用空间不变的特征融合并对所有位置使用同一感受野。DCA-MoE 冻结 DINOv3 编码器，通过空间自适应层融合（SALF）预测逐位置的多层特征权重，并用密度路由多感受野专家（DR-MoE）为每个位置分配局部、中程与大上下文残差专家的软混合，使融合与感受野决策均内容相关。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.15213v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">人群计数</span><span class="tag">MoE</span><span class="tag">DINOv3</span></div>
+</div>
+<div class="item">
+  <h3>面向大规模空中人群监测的无标签无人机计数验证与部署协议</h3>
+  <p>面向 2034 FIFA 世界杯与 Hajj 级人群管理场景，无人机计数需在与训练语料迥异的画面上无标签地保持精度并提前预警危险涌入。该工作基于 525 次受控实验、全分辨率语料研究与多项消融，验证无标签自适应在四类退化、五种严重程度下可恢复 31–49% 的偏移诱导误差，最优方法较冻结源模型提升 41.8 MAE，并建立了区分方法的严重度定律与稳定性预算。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2608.17625v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">人群计数</span><span class="tag">无人机</span><span class="tag">无标签自适应</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
