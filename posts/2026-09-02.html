@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-09-02</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-09-02</p>
+  <h1>大模型每日进展 · 2026-09-02</h1>
+  <div class="summary">今日焦点集中在原生统一多模态模型的理解-生成协同机制研究，以及 GLM-5.3、Qwen3.8-Flash-Next、DeepSeek-V4-Flash-Vision 等一批新模型密集刷屏 HuggingFace 趋势榜；Anthropic 发布 Claude Fable 5.1，在科学基准 Terminal-Bench-Science 上取得显著提升。异常检测与多模态计数两个定向数据源今日未抓取到有效论文内容。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>Claude Fable 5.1 发布，主打编码与科研长任务</h3>
+  <p>Anthropic 发布 Claude Fable(及 Mythos) 5.1，宣称在编码、知识工作与长程问题求解上树立新标杆。官方重点强调科研能力，在全新的 Terminal-Bench-Science 0.1 基准上取得 52.6% 的成绩，较 Fable 5 的 24.7%、Opus 5 的 29.0% 和 GPT-5.6 Sol 的 22.4% 有大幅领先，其余基准也有小幅提升。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Sep/1/claude-fable-5-1/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">Anthropic</span><span class="tag">Claude</span><span class="tag">模型发布</span></div>
+</div>
+<div class="item">
+  <h3>GLM-5.3 / GLM-5.3-Flash 登上 HuggingFace 趋势榜</h3>
+  <p>智谱 zai-org 上架 GLM-5.3(753B) 及其多模态版 GLM-5.3-Flash(321B, Image-Text-to-Text)，一天内下载量分别达 9 万和 44 万，社区热度居前列，Flash 版侧重多模态与高吞吐推理场景。</p>
+  <div class="src">来源：<a href="https://huggingface.co/zai-org/GLM-5.3" target="_blank" rel="noopener">HuggingFace Models</a></div>
+  <div class="tags"><span class="tag">GLM</span><span class="tag">多模态</span><span class="tag">开源模型</span></div>
+</div>
+<div class="item">
+  <h3>DeepSeek-V4-Flash-Vision-Exp 视觉多模态实验版上线</h3>
+  <p>DeepSeek 发布 DeepSeek-V4-Flash-Vision-Exp(305B, Image-Text-to-Text) 实验版本，定位轻量高速的视觉-语言多模态模型，近 17 小时内已获 1.79 万下载。</p>
+  <div class="src">来源：<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp" target="_blank" rel="noopener">HuggingFace Models</a></div>
+  <div class="tags"><span class="tag">DeepSeek</span><span class="tag">视觉多模态</span><span class="tag">开源模型</span></div>
+</div>
+<div class="item">
+  <h3>Qwen3.8-Flash-Next 系列刷屏趋势榜</h3>
+  <p>阿里 Qwen 发布 Qwen3.8-Flash-Next(180B, Image-Text-to-Text) 及其 FP8 量化版，主打高吞吐多模态推理，主版本一周内下载量超 20 万、点赞 4.65k，配套 GGUF/FP8 等多种部署格式生态活跃。</p>
+  <div class="src">来源：<a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next" target="_blank" rel="noopener">HuggingFace Models</a></div>
+  <div class="tags"><span class="tag">Qwen</span><span class="tag">多模态</span><span class="tag">开源模型</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>原生统一多模态模型中理解与生成的协同机制</h3>
+  <p>针对当前统一多模态模型中「理解」与「生成」能力常被割裂对待、难以互相促进的问题，该工作系统地从表征、任务到系统三个层面剖析二者的协同关系。研究揭示了原生统一模型内部理解与生成如何相互增益，并给出可指导后续统一模型架构与训练设计的经验性结论。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.01607" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">多模态</span><span class="tag">统一模型</span><span class="tag">理解生成</span></div>
+</div>
+<div class="item">
+  <h3>StudentSim：训练基于 LLM 的学生模拟器</h3>
+  <p>为了让教育类对话系统与教学策略评估能在真实、可控的环境中迭代，微软研究院提出用 LLM 训练能模拟真实学生行为的模拟器。该方法解决了缺乏可规模化、贴近真实学习者反应的评测环境的痛点，可为智能辅导与教学 Agent 提供逼真的交互对象。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.01591" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">LLM</span><span class="tag">教育</span><span class="tag">模拟器</span></div>
+</div>
+<div class="item">
+  <h3>Hi-Q：面向多跳问答的层次化证据引导查询精化</h3>
+  <p>多跳问答中检索到的证据往往零散且难以逐步收敛，POSTECH 提出 Hi-Q，通过层次化、证据引导的查询精化机制逐轮细化检索目标。该方法针对多跳推理中证据聚合不充分的问题，提升了跨文档推理链的检索与回答质量。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2608.30468" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">多跳问答</span><span class="tag">检索</span><span class="tag">RAG</span></div>
+</div>
+<div class="item">
+  <h3>评估多模态 LLM 作为通用视觉-语言-动作无人机控制智能体</h3>
+  <p>为检验多模态 LLM 能否胜任真实具身控制任务，HyperCLOVA X 团队构建了涵盖指挥、接近、跟踪、搜索四类无人机控制任务的评测。研究针对 VLA(视觉-语言-动作) 智能体缺乏系统性无人机操控基准的问题，评估了主流 MLLM 在这些任务上的通用能力表现与局限。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.01404" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">多模态</span><span class="tag">VLA</span><span class="tag">无人机</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>TimesFM 3.0 发布，Google 时间序列预测基础模型</h3>
+  <p>Google 上架 TimesFM 3.0(0.3B) 时间序列预测基础模型，主打轻量参数下的通用零样本预测能力，为时序场景提供开箱即用的预训练底座。</p>
+  <div class="src">来源：<a href="https://huggingface.co/google/timesfm-3.0-pytorch" target="_blank" rel="noopener">HuggingFace Models</a></div>
+  <div class="tags"><span class="tag">时间序列</span><span class="tag">基础模型</span><span class="tag">Google</span></div>
+</div>
+<div class="item">
+  <h3>CordisBench：评估语言模型对动态 Agent 组件生命周期的推理能力</h3>
+  <p>CordisBench 提供了一套评估 LLM 能否在动态 Agent 框架中理解组件生命周期的基准，附带开源代码与数据集，用于衡量模型在长链路 Agent 编排场景下的可靠性。</p>
+  <div class="src">来源：<a href="https://github.com/sileod/cordis-bench" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">评测基准</span><span class="tag">开源</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>OpenAI Codex/ChatGPT 桌面端内置完整运行时与办公套件</h3>
+  <p>Simon Willison 发现 OpenAI Codex(已并入 ChatGPT 桌面应用) 在缓存目录中捆绑了约 1.7GB 运行时，包含完整的 Python、Node.js 以及 Poppler、git 和 LibreOffice 等原生二进制，并配有让 Codex 调用这些工具的技能定义，反映其向本地文档处理与工具执行能力扩张。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Sep/1/codex-libreoffice/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">OpenAI</span><span class="tag">Codex</span><span class="tag">工具执行</span></div>
+</div>
+<div class="item">
+  <h3>E-Commerce Bench：评估 LLM Agent 的长程自主经营能力</h3>
+  <p>Qwen 团队推出 E-Commerce Bench，用于评估 LLM Agent 在长时间跨度下自主运营电商业务的能力，聚焦真实商业操作场景中的规划与执行表现。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2608.30730" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">电商</span><span class="tag">评测基准</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
