@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-09-03</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-09-03</p>
+  <h1>大模型每日进展 · 2026-09-03</h1>
+  <div class="summary">今日看点：Google 发布 Gemini 3.8 Flash（含面向可信防御者的 3.8 Flash Cyber 变体），主打快、便宜、代码能力强；NVIDIA 团队展示后训练让语言模型在编程竞赛中达到金牌水平；arXiv 上出现「语言模型可控制自身注意力」等值得关注的方法论工作。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>Google 发布 Gemini 3.8 Flash 与 3.8 Flash Cyber</h3>
+  <p>Google 推出新一代 Gemini 3.8 Flash，支持 low/medium/high 三档 thinking 级别，延续 Flash 系列快、便宜且在 HTML/JavaScript 等编码任务上表现胜任的特点；Simon Willison 实测生成一个 HTML 小工具仅耗时 13 秒、成本约 1.8 美分。同时发布仅向「trusted defenders」开放的 3.8 Flash Cyber 安全防御变体。</p>
+  <div class="src">来源：<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">Gemini</span><span class="tag">模型发布</span></div>
+</div>
+<div class="item">
+  <h3>llm-gemini 0.34 支持 Gemini 3.8 Flash</h3>
+  <p>Simon Willison 的 llm-gemini 插件更新至 0.34，新增对 gemini-3.8-flash 模型的支持（含三档 thinking 级别），并修复了异步响应未记录已解析模型版本的问题。</p>
+  <div class="src">来源：<a href="https://github.com/simonw/llm-gemini/releases/tag/0.34" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">工具</span><span class="tag">Gemini</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>Language Models Can Control Their Own Attention</h3>
+  <p>现有 Transformer 的注意力分配由模型内部固定机制决定，难以按需引导模型关注关键信息。该工作探索让语言模型自身控制其注意力分布，使模型能主动调节对上下文不同部分的关注，从而更好地处理复杂推理与长上下文任务。研究表明该机制可作为提升模型可控性与表现的新途径。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.02737" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">注意力机制</span><span class="tag">LLM</span></div>
+</div>
+<div class="item">
+  <h3>Post-Training Language Models for Gold-Medal Performance in Coding Competitions</h3>
+  <p>编程竞赛要求极强的算法推理与代码正确性，是衡量模型高阶推理能力的严苛基准。NVIDIA 团队研究通过后训练（post-training）方法系统提升语言模型的竞赛级编程能力，目标是达到金牌水平表现。结果显示经过针对性后训练的模型在编程竞赛任务上取得金牌级成绩，验证了后训练在提升高难度推理任务上的有效性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.02849" target="_blank" rel="noopener">arXiv cs.LG</a></div>
+  <div class="tags"><span class="tag">代码生成</span><span class="tag">后训练</span></div>
+</div>
+<div class="item">
+  <h3>Cliff: Learning Process Rewards from the First Mistake</h3>
+  <p>过程奖励模型（PRM）通常需要昂贵的逐步标注，且难以准确定位推理链中错误的起点。Cliff 提出从「第一个错误」出发学习过程奖励的思路，聚焦推理轨迹中首次出错的位置来构建更有效、更省标注的过程监督信号。该方法旨在提升过程奖励建模的效率与推理链错误定位的准确性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.02817" target="_blank" rel="noopener">arXiv cs.LG</a></div>
+  <div class="tags"><span class="tag">过程奖励</span><span class="tag">推理</span></div>
+</div>
+<div class="item">
+  <h3>UE5M3 FP4 Block Scaling for Stable Language Model Pretraining</h3>
+  <p>FP4 等超低比特训练能大幅降低大模型预训练成本，但数值稳定性是主要障碍。该工作提出 UE5M3 FP4 分块缩放（block scaling）方案，通过改进的量化缩放机制稳定 FP4 精度下的语言模型预训练。研究表明该方法可在保持训练稳定性的同时受益于低比特带来的效率提升。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.02846" target="_blank" rel="noopener">arXiv cs.LG</a></div>
+  <div class="tags"><span class="tag">低比特训练</span><span class="tag">预训练</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>EarlyEval：通过早期结果预测降低智能体评测成本</h3>
+  <p>针对 LLM 智能体评测运行成本高的问题，EarlyEval 提出通过对任务早期状态预测最终结果，从而在不完整执行的情况下更廉价地评估智能体表现。代码与数据已开源。</p>
+  <div class="src">来源：<a href="https://github.com/inphotoo/earlyeval" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">Agent</span><span class="tag">评测</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>Anthropic 公开 Claude 消费级应用系统提示词</h3>
+  <p>Anthropic 持续公开其 Claude.ai 及移动端应用的系统提示词，并保留历史版本变更记录。Simon Willison 分析指出新版系统提示词对拒绝复现歌曲歌词等版权内容作了明显强化。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Sep/2/claudes-new-system-prompt/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">Claude</span><span class="tag">系统提示词</span></div>
+</div>
+<div class="item">
+  <h3>Paint.NET 借助 Claude 完成 Direct2D 净室重写以支持 WINE/Linux</h3>
+  <p>Paint.NET 作者 Rick Brewster 借助 Claude 从零净室逆向重写了 Direct2D 实现（约 18 万行代码），使 Paint.NET 能在 WINE/Linux 上运行。他坦言大部分为「vibe coded」代码难以人工全面审查，展现了编码智能体在大型工程实践中的能力与风险。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Sep/2/rick-brewster/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">Claude</span><span class="tag">编码智能体</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
