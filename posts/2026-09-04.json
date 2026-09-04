@@ -1,0 +1,138 @@
+{
+  "date": "2026-09-04",
+  "title": "大模型每日进展 · 2026-09-04",
+  "summary": "今日最值得关注的是 OpenAI 发布 GPT-6 Astra，在安全任务与超长上下文（256K–1M tokens）上取得突破性表现，ARC-AGI 3 达 99.9%；HuggingFace 出现 LLaDA-Image 等以全开放训练配方构建图像生成器的工作；Google 同步推出 Gemini 3.8 Flash。",
+  "sections": [
+    {
+      "heading": "模型发布与能力更新",
+      "items": [
+        {
+          "title": "GPT-6 Astra 发布：安全任务与长上下文能力大幅提升",
+          "summary": "OpenAI 发布 GPT-6 Astra，定位对标 Claude Fable，API 定价 $10/M 输入、$50/M 输出。其在安全类任务表现极强（ExploitBench 100%、SRE-Bench 二进制逆向 99.2%），ARC-AGI 3 达 99.9%（借助自定义 Provider Adapter harness），并在长上下文八针基准上 256K–512K 达 100%、512K–1M 达 96.3%；不过在 Artificial Analysis 的 Intelligence Index 上仍落后于 Fable 5.1。",
+          "url": "https://openai.com/index/gpt-6-astra/",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "模型发布",
+            "OpenAI",
+            "长上下文"
+          ]
+        },
+        {
+          "title": "Google 发布 Gemini 3.8 Flash",
+          "summary": "Google 推出 Gemini 3.8 Flash（及仅面向可信防御方的 3.8 Flash Cyber），支持 low/medium/high 三档 thinking 级别，主打快速、廉价且在 HTML/JavaScript 生成等任务上表现出色，llm-gemini 已同步支持。",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "模型发布",
+            "Google",
+            "Gemini"
+          ]
+        },
+        {
+          "title": "HuggingFace 趋势模型：GLM-5.3、Qwen3.8 系列与 DeepSeek-V4-Flash-Vision",
+          "summary": "HuggingFace 趋势榜出现多款新旗舰模型，包括 zai-org 的 GLM-5.3（753B）与 GLM-5.3-Flash（321B）、Qwen3.8-Flash-Next（180B）及 DeepSeek-V4-Flash-Vision-Exp（305B 图文多模态），反映大模型持续向大参数量与多模态方向迭代。",
+          "url": "https://huggingface.co/zai-org/GLM-5.3",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "开源模型",
+            "多模态"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "论文与技术方法",
+      "items": [
+        {
+          "title": "LLaDA-Image：以全开放训练配方构建强图像生成器",
+          "summary": "针对当前强图像生成模型训练细节多不公开的问题，该工作提出 LLaDA-Image，以完全开放的训练配方（数据、流程、方法）构建高质量图像生成器，旨在让社区可复现地训练出具竞争力的生成模型，推动图像生成技术的开放透明。",
+          "url": "https://huggingface.co/papers/2609.03796",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "图像生成",
+            "开放训练"
+          ]
+        },
+        {
+          "title": "LatentPress：超越文本与视觉的上下文压缩",
+          "summary": "面对长上下文推理中 token 开销高的痛点，LatentPress 提出一种可跨文本与视觉模态的上下文压缩方法，将冗长上下文压缩为更紧凑的潜表示，以在保持信息的同时降低推理成本，为多模态长上下文处理提供通用压缩思路。",
+          "url": "https://huggingface.co/papers/2609.01507",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "上下文压缩",
+            "多模态"
+          ]
+        },
+        {
+          "title": "Why Gated DeltaNet Survives 4-Bit Quantization：混合 27B LLM 的 NVFP4 W4A4",
+          "summary": "为在混合架构大模型上实现更激进的低比特量化，作者研究了 27B 混合 LLM 中循环部分（Gated DeltaNet）在 NVFP4 W4A4 下的量化鲁棒性，分析其为何能在 4-bit 权重与激活下保持性能，为高效部署混合循环-注意力大模型提供了量化方案与理论解释。",
+          "url": "https://huggingface.co/papers/2609.04098",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "量化",
+            "高效推理"
+          ]
+        },
+        {
+          "title": "CORE：通过 Reranker 蒸馏改进 MLLM 嵌入的组合推理",
+          "summary": "针对多模态大模型嵌入在组合推理上的不足，CORE 提出借助 reranker 蒸馏来增强 MLLM embedding 的组合推理能力，使检索/表示更好地捕捉细粒度的组合语义，从而提升多模态表示在组合性任务上的表现。",
+          "url": "https://huggingface.co/papers/2609.04083",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "MLLM",
+            "嵌入",
+            "组合推理"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "开源生态与工具",
+      "items": [
+        {
+          "title": "Compile by Training：将自然语言规范编译为本地神经函数",
+          "summary": "该 EMNLP 2026 系统演示提出「训练即编译」的思路，把自然语言描述的功能规范直接训练成本地可运行的神经函数（program as weights），为将 LLM 能力沉淀为可复用本地组件提供了一种新工具形态，并附带在线 Demo。",
+          "url": "https://arxiv.org/abs/2609.04199",
+          "source": "arXiv cs.CL",
+          "tags": [
+            "工具",
+            "代码生成"
+          ]
+        },
+        {
+          "title": "llm-gemini 0.34 发布：支持 Gemini 3.8 Flash",
+          "summary": "Simon Willison 的 llm-gemini 插件更新至 0.34，新增对 Gemini 3.8 Flash 的支持（含 low/medium/high 三档 thinking），并修复了异步响应未记录已解析模型版本的问题，方便命令行快速调用最新 Gemini 模型。",
+          "url": "https://github.com/simonw/llm-gemini/releases/tag/0.34",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "开源工具",
+            "Gemini"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "产品与行业动态",
+      "items": [
+        {
+          "title": "GPT-6 Astra 上线：面向企业与 API 逐步开放",
+          "summary": "OpenAI 宣布 GPT-6 Astra 今日起向有限组织开放，未来几天将逐步覆盖 ChatGPT Plus/Pro/Business/Enterprise 用户，并通过 OpenAI API 与 AWS 提供，API 模型标识为 gpt-6-astra，定价与 Claude Fable 5/5.1 持平。",
+          "url": "https://openai.com/index/gpt-6-astra/",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "产品",
+            "OpenAI"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "异常检测（Anomaly Detection）",
+      "items": []
+    },
+    {
+      "heading": "多模态计数（Multimodal Counting）",
+      "items": []
+    }
+  ]
+}
