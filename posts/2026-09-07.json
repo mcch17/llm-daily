@@ -1,0 +1,83 @@
+{
+  "date": "2026-09-07",
+  "title": "大模型每日进展 · 2026-09-07",
+  "summary": "OpenAI 集中释放两篇内部视角文章，透露其研究团队全面转向 agentic engineering，并将「递归自我改进」（RSI）作为新的 AGI 叙事焦点，同时暗示内部已用上后来发布为 GPT-6 Astra 的模型。技术侧，RAG 上下文软压缩与多模态因果信息流成为 cs.CL 值得关注的方向。",
+  "sections": [
+    {
+      "heading": "模型发布与能力更新",
+      "items": []
+    },
+    {
+      "heading": "论文与技术方法",
+      "items": [
+        {
+          "title": "Compression Beyond the Uncompressed: 面向 RAG 的软上下文压缩两阶段训练方案",
+          "summary": "RAG 系统需要拼接大量检索文档，长上下文带来显著的计算与延迟开销，作者希望在保留信息的前提下对上下文进行软压缩。该工作针对现有软压缩方法难以逼近甚至超越未压缩基线的痛点，提出一套两阶段训练配方来提升压缩表示的信息保真度。论文表明其方案能在压缩上下文的同时维持乃至改善下游问答表现，突破「压缩必然掉点」的限制。",
+          "url": "https://arxiv.org/abs/2609.05152",
+          "source": "arXiv cs.CL",
+          "tags": [
+            "RAG",
+            "上下文压缩"
+          ]
+        },
+        {
+          "title": "From Vision to Language: 多模态决策中的因果信息流研究",
+          "summary": "多模态模型在决策时如何将视觉信息传递到语言输出，其内部机制尚不透明，作者希望以因果视角刻画信息流动。该研究针对多模态模型可解释性与视觉-语言信息交互不清晰的问题，分析视觉信号对语言决策的因果贡献。论文已被 EMNLP 2026 Findings 接收，给出了多模态决策中视觉到语言因果通路的实证结论。",
+          "url": "https://arxiv.org/abs/2609.05149",
+          "source": "arXiv cs.CL",
+          "tags": [
+            "多模态",
+            "可解释性"
+          ]
+        },
+        {
+          "title": "WearableQA: 面向真实可穿戴数据的健康推理基准",
+          "summary": "现有 LLM 评测多基于文本，缺乏对真实可穿戴设备时序健康数据推理能力的检验，作者构建了 WearableQA 基准以填补该空白。该基准针对模型在真实世界可穿戴数据上进行健康相关推理这一任务，评估其从传感数据中提取并推断健康结论的能力。工作提供了系统化的健康推理评测框架，为医疗健康场景的 LLM 应用提供衡量标准。",
+          "url": "https://arxiv.org/abs/2609.05405",
+          "source": "arXiv cs.CL",
+          "tags": [
+            "Benchmark",
+            "健康推理"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "开源生态与工具",
+      "items": []
+    },
+    {
+      "heading": "产品与行业动态",
+      "items": [
+        {
+          "title": "OpenAI 内部视角：研究加速与递归自我改进（RSI）",
+          "summary": "OpenAI 发布《Research acceleration: The view inside OpenAI》，披露其研究团队在 2026 年全面拥抱 agentic engineering 编码智能体，并把递归自我改进（RSI）作为新的 AGI 叙事焦点；文中图表显示 7 月底人均 AI 投入显著跃升，被外界猜测与内部提前用上后来发布为 GPT-6 Astra 的模型相关。",
+          "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "OpenAI",
+            "Agent"
+          ]
+        },
+        {
+          "title": "An Alien Mind：OpenAI 首席科学家谈递归自我改进",
+          "summary": "OpenAI 首席科学家 Jakub Pachocki 发表《An Alien Mind》essay，与研究加速文章共同阐述递归自我改进（RSI）的理念，反映 OpenAI 将 RSI 定位为通向 AGI 的核心路线。",
+          "url": "https://openai.com/index/an-alien-mind/",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "OpenAI",
+            "AGI"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "异常检测",
+      "items": []
+    },
+    {
+      "heading": "多模态计数",
+      "items": []
+    }
+  ]
+}
