@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-09-09</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-09-09</p>
+  <h1>大模型每日进展 · 2026-09-09</h1>
+  <div class="summary">今日最大看点是 OpenAI 用内部未发布模型成功解决 Navier-Stokes 千禧年大奖问题，但因与 NYU/Anthropic 研究者工作的先后争议而引发热议；模型侧 GLM-5.3、Qwen3.8-Flash-Next、DeepSeek-V4-Flash-Vision-Exp 等新一代大模型密集现身 Hugging Face 热度榜；论文侧覆盖 RAG 软上下文压缩、多模态因果信息流与可解释推理等方向。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>GLM-5.3 系列（含 Flash 变体）</h3>
+  <p>智谱 AI 的 GLM-5.3 旗舰模型（约 753B 参数）在 Hugging Face 热度榜居前，属 GLM 系列新一代大规模文本生成模型；同日出现的 GLM-5.3-Flash（约 321B，支持图文输入）主打更快推理，二者组成该系列从旗舰到高效型的完整梯度。</p>
+  <div class="src">来源：<a href="https://huggingface.co/zai-org/GLM-5.3" target="_blank" rel="noopener">Hugging Face Trending</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">GLM</span><span class="tag">多模态</span></div>
+</div>
+<div class="item">
+  <h3>Qwen3.8-Flash-Next</h3>
+  <p>Qwen 系列的 Qwen3.8-Flash-Next（约 180B）上线并进入 Hugging Face 热度榜前列，为 Image-Text-to-Text 多模态大模型，代表 Qwen3.8 家族在参数规模与多模态能力上的延续，同一家族还有 27B 量级的 Qwen3.8-27B 及其多个量化版本。</p>
+  <div class="src">来源：<a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next" target="_blank" rel="noopener">Hugging Face Trending</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">Qwen</span><span class="tag">多模态</span></div>
+</div>
+<div class="item">
+  <h3>DeepSeek-V4-Flash-Vision-Exp</h3>
+  <p>DeepSeek 发布 V4 系列的视觉实验版 DeepSeek-V4-Flash-Vision-Exp（约 305B），为 Image-Text-to-Text 模型，属于 DeepSeek-V4 家族在 Flash 推理与多模态视觉方向上的一次实验性能力扩展。</p>
+  <div class="src">来源：<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp" target="_blank" rel="noopener">Hugging Face Trending</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">DeepSeek</span><span class="tag">视觉</span></div>
+</div>
+<div class="item">
+  <h3>MiniMax-H3</h3>
+  <p>MiniMax 的 MiniMax-H3（约 33B）为 Image-to-Video 视频生成模型，在 Hugging Face 上热度上升明显，另有社区基于其的多个衍生权重（如 vdn-minimax-h3、Minimax-h3_Singularity），显示其已成为视频生成方向上的热门开源底模。</p>
+  <div class="src">来源：<a href="https://huggingface.co/MiniMaxAI/MiniMax-H3" target="_blank" rel="noopener">Hugging Face Trending</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">MiniMax</span><span class="tag">视频生成</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>Compression Beyond the Uncompressed: A Two-Stage Training Recipe for Soft Context Compression in RAG</h3>
+  <p>RAG 场景下长上下文会显著推高推理成本并引入噪声，是该方法要解决的核心痛点。论文提出一种「两阶段训练」配方，用可学习的软上下文压缩（soft context compression）把检索到的上下文压成紧凑软表示，以减少 token 的同时尽量保留原始信息、缓解压缩前后信息损失与训练不稳定的问题。作者通过分阶段的训练策略让压缩器在「压缩质量」与「下游问答效果」之间取得更好折衷，为长上下文检索增强生成提供了降本思路。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.05152" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">RAG</span><span class="tag">上下文压缩</span><span class="tag">论文</span></div>
+</div>
+<div class="item">
+  <h3>From Vision to Language: Investigating Causal Information Flow in Multimodal Decision-Making</h3>
+  <p>多模态模型究竟靠视觉还是语言做出决策，长期是一个难以直接观测的黑盒问题，作者因此用因果信息流（causal information flow）方法剖析视觉信号到语言输出的信息传递路径。其动机是理解视觉信息在多模态决策中是否被真正利用、被多充分地利用，从而解释模型在跨模态任务上的行为。该工作已被 EMNLP 2026 Findings 收录，为多模态决策的可解释性提供了因果层面的分析证据。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.05149" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">多模态</span><span class="tag">因果分析</span><span class="tag">可解释性</span></div>
+</div>
+<div class="item">
+  <h3>A Verifier-Guided Explainable Reasoning Framework with Gold-Anchored QLoRA, Task-Aware Mixture-of-Experts, and Group-Relative RLVR</h3>
+  <p>大模型在复杂推理任务上常缺乏可靠的验证信号与高效的微调手段，该工作为此提出一个验证器引导的可解释推理框架。框架组合了「金标锚定的 QLoRA」低秩微调、任务感知的混合专家（MoE）路由，以及基于组内相对可验证奖励的强化学习（Group-Relative RLVR），目的是让推理过程得到更可靠的验证信号引导并提升可解释性。整体上旨在同时改善推理的准确性与稳定性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.05221" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">推理</span><span class="tag">MoE</span><span class="tag">强化学习</span></div>
+</div>
+<div class="item">
+  <h3>How Does mHC Use Its Residual Streams? Selective Routing and Near-Identity Mixing</h3>
+  <p>大型模型内部残差流（residual stream）上的信息如何被路由与组合，是难以直接检查的结构性问题，该论文针对 mHC 模型做可解释性分析。作者发现该模型在残差流上呈现出「选择性路由」与「近恒等混合」两种行为模式，说明不同层对不同信息的处理方式并不均匀。这一分析为后续模型结构改进与内部机制理解提供了可参考的实证解释。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.05309" target="_blank" rel="noopener">arXiv cs.LG</a></div>
+  <div class="tags"><span class="tag">可解释性</span><span class="tag">模型结构</span><span class="tag">论文</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>TimeFM-3.0（Google，时序基础模型）</h3>
+  <p>Google 开源的时序基础模型 timesfm-3.0-pytorch（约 0.3B）进入 Hugging Face 热度榜，定位为通用的时间序列预测基础模型，延续 TimeFM 系列在零样本/少样本时序预测上的路线，可服务于金融、能源等时序应用场景。</p>
+  <div class="src">来源：<a href="https://huggingface.co/google/timesfm-3.0-pytorch" target="_blank" rel="noopener">Hugging Face Trending</a></div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">时序</span><span class="tag">基础模型</span></div>
+</div>
+<div class="item">
+  <h3>LTX-2.5（Lightricks，视频生成）</h3>
+  <p>Lightricks 开源的 LTX-2.5 为 Image-to-Video 视频生成模型，在 Hugging Face 上热度较高，属于社区活跃的开放视频生成权重之一，与 MiniMax-H3 一起成为近期视频生成方向的代表性开源模型。</p>
+  <div class="src">来源：<a href="https://huggingface.co/Lightricks/LTX-2.5" target="_blank" rel="noopener">Hugging Face Trending</a></div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">视频生成</span><span class="tag">扩散模型</span></div>
+</div>
+<div class="item">
+  <h3>MiniCPM5-2B（OpenBMB，端侧小模型）</h3>
+  <p>OpenBMB 发布 MiniCPM5-2B（约 3B 量级）小模型，主打参数规模小的端侧文本生成能力，延续 MiniCPM 系列在移动端/低成本部署上的路径，适合资源受限场景下的本地推理。</p>
+  <div class="src">来源：<a href="https://huggingface.co/openbmb/MiniCPM5-2B" target="_blank" rel="noopener">Hugging Face Trending</a></div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">端侧</span><span class="tag">小模型</span></div>
+</div>
+<div class="item">
+  <h3>VibeVoice-ASR-Streaming-7B（Microsoft，流式语音识别）</h3>
+  <p>微软开源的 VibeVoice-ASR-Streaming-7B（约 9B）面向流式自动语音识别（ASR）任务，强调实时流式转录能力，是语音识别方向较新的开源权重，便于在低延迟语音场景中落地。</p>
+  <div class="src">来源：<a href="https://huggingface.co/microsoft/VibeVoice-ASR-Streaming-7B" target="_blank" rel="noopener">Hugging Face Trending</a></div>
+  <div class="tags"><span class="tag">开源模型</span><span class="tag">语音识别</span><span class="tag">流式</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>OpenAI 用内部模型解决 Navier-Stokes 千禧年问题并引发学术争议</h3>
+  <p>OpenAI 宣布其未发布模型在约 88 小时代理任务、约 3000 亿输出 token 的规模下解决了 Navier-Stokes 存在性与光滑性问题（七个千禧年大奖问题之一），随后用 GPT-6 Astra 花约 17 小时完成 Lean 形式化验证。但该成果与 NYU 教授 Tristan Buckmaster 及 Anthropic 数学家 Levent Alpöge 近一年的相关工作存在先后重叠，OpenAI 是否借助其产品使用数据成为焦点，引发学界对研究优先级与大模型训练数据边界的广泛讨论。</p>
+  <div class="src">来源：<a href="https://openai.com/index/navier-stokes-solution/" target="_blank" rel="noopener">Simon Willison 博客 / OpenAI</a></div>
+  <div class="tags"><span class="tag">OpenAI</span><span class="tag">千禧年问题</span><span class="tag">学术争议</span></div>
+</div>
+<div class="item">
+  <h3>Terence Tao 警告开放数学问题正被 AI 以不可再生方式开采</h3>
+  <p>数学家 Terence Tao 在社媒上提出，有价值且可解的开放问题正被 AI 以不可再生方式「开采」；甚至仅凭「某人在做某问题」的传言，就可能触发大量 AI 计算资源抢先跑完，导致研究者不再公开分享有前景的研究方向。他认为这会逆转数百年开放科学传统，对学科长远发展造成损害，属于 AI 驱动科研带来的结构性风险提醒。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Sep/9/terence-tao/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">开放科学</span><span class="tag">数学</span><span class="tag">AI 研究</span></div>
+</div>
+<div class="item">
+  <h3>TeamOut（YC W22）——公司团建规划的 AI Agent</h3>
+  <p>YC 孵化项目 TeamOut 发布一款用于规划公司团建的 AI agent，可结合团队偏好、预算与时间自动生成团建行程方案，是 AI agent 在企业行政/HR 场景落地的一个新案例。</p>
+  <div class="src">来源：<a href="https://app.teamout.com/ai" target="_blank" rel="noopener">Hacker News</a></div>
+  <div class="tags"><span class="tag">AI Agent</span><span class="tag">产品</span><span class="tag">YC</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
