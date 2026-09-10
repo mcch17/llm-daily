@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-09-10</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-09-10</p>
+  <h1>大模型每日进展 · 2026-09-10</h1>
+  <div class="summary">今日 HuggingFace 趋势榜被 GLM-5.3、DeepSeek-V4-Flash-Vision-Exp、Qwen3.8-Flash-Next 等新一代大模型占据，多模态与 MoE 仍是主线；论文侧 Show-Harness（VLM Agent 直接操控机器人）与 Programmable World Model 热度最高。行业侧两件事最值得关注：AI 辅助两天写出 WeChat 零点击蠕虫 exploit 的 WeWorm，以及 OpenAI 宣称解决 Navier–Stokes 问题引发的优先权争议。两个论文定向数据源（异常检测、多模态计数）本次未返回任何条目，对应维度留空。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>openbmb/MiniCPM5-2B 登顶 HF 趋势榜</h3>
+  <p>MiniCPM 系列新的小尺寸文本生成模型，页面标注参数量约 3B 级别，约 19 小时前更新，在趋势榜首位并获得近千点赞，属于端侧可用的小模型路线。</p>
+  <div class="src">来源：<a href="https://huggingface.co/openbmb/MiniCPM5-2B" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">MiniCPM</span><span class="tag">小模型</span><span class="tag">端侧</span><span class="tag">text-generation</span></div>
+</div>
+<div class="item">
+  <h3>zai-org 发布 GLM-5.3 与 GLM-5.3-Flash</h3>
+  <p>GLM-5.3 为 753B 文本生成模型，同期上线 321B 的 GLM-5.3-Flash，后者是 image-text-to-text 多模态版本，二者在趋势榜上累计下载与点赞数均居前列，显示国产大模型继续走大参数 + 多模态双线。</p>
+  <div class="src">来源：<a href="https://huggingface.co/zai-org/GLM-5.3" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">GLM-5.3</span><span class="tag">zai-org</span><span class="tag">多模态</span><span class="tag">MoE</span></div>
+</div>
+<div class="item">
+  <h3>DeepSeek-V4-Flash-Vision-Exp 公开权重</h3>
+  <p>DeepSeek V4 系列以 Vision-Exp 形式放出的 305B 多模态实验模型，pipeline 为 image-text-to-text，更新于 9 天前、约 843 点赞，是 V4 代在视觉理解方向的首个公开实验版本。</p>
+  <div class="src">来源：<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">DeepSeek</span><span class="tag">V4</span><span class="tag">视觉语言模型</span><span class="tag">实验版</span></div>
+</div>
+<div class="item">
+  <h3>Qwen3.8-Flash-Next 持续放量</h3>
+  <p>180B 的 image-text-to-text 模型，更新 14 天前即已积累约 505 万下载与 5.05k 点赞，社区量化与微调衍生版本（如 unsloth GGUF、NVIDIA NVFP4）同步扩散，是当前多模态开源生态的事实基座之一。</p>
+  <div class="src">来源：<a href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">Qwen</span><span class="tag">多模态</span><span class="tag">开源权重</span><span class="tag">生态</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>Show-Harness: Just a VLM Agent Can Play Robots</h3>
+  <p>动机是通用 VLM Agent 已能完成网页与桌面操作，但把这套能力迁移到真实机器人上往往要为每种硬件重写控制接口；该工作提出统一的 harness，让 VLM Agent 沿用既有交互范式直接驱动机器人，从而把具身控制问题转化为 agent 的接口设计问题。它针对的是机器人控制通用化与可复现评测的痛点，由 Show Lab 提交并在当日 HF 论文榜受到关注。抓取页面未附摘要，具体任务设置与成功率需见原文。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.10522" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">VLM Agent</span><span class="tag">机器人</span><span class="tag">具身智能</span><span class="tag">harness</span></div>
+</div>
+<div class="item">
+  <h3>Programmable World Model</h3>
+  <p>针对世界模型生成过程难以被使用者按需干预、无法做可控反事实推演的问题，该工作提出可编程世界模型，把生成过程暴露为可组合的控制接口。其目标是让世界模型从『只能看』变成『可以按指令改』，从而服务于规划、仿真与数据合成等下游任务。抓取页面仅给出标题与作者信息，具体方法细节与评测结果需见原文。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.10540" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">世界模型</span><span class="tag">可控生成</span><span class="tag">反事实</span><span class="tag">仿真</span></div>
+</div>
+<div class="item">
+  <h3>Φ-Bench: Can Large Language Models Engineer the Infrastructure That Powers Them?</h3>
+  <p>动机是大模型已被广泛用于编写训练与推理基础设施，却缺乏针对这一能力的系统性评测；Φ-Bench 由 StepFun 提出，用工程化的基础设施任务衡量模型能否搭建『支撑自己运行的系统』。它把评测重心从问答与代码题转向真实的系统级工程能力，当日 HF 论文榜点赞数最高（54）。具体基准构成与模型得分需见原文。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.10226" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">基准评测</span><span class="tag">AI Infra</span><span class="tag">LLM 工程能力</span><span class="tag">StepFun</span></div>
+</div>
+<div class="item">
+  <h3>On-Policy Distillation for Vision-Language Model Adaptation, an Effective Paradigm on Low-Quality Multimodal Data</h3>
+  <p>动机是高质量图文语料昂贵，而真实业务中的多模态数据往往含噪、标注粗糙，直接微调容易让 VLM 学到错误对齐；该工作提出在低质量多模态数据上用 on-policy distillation 做适配，以教师模型对自身生成轨迹的在线反馈作为监督信号。它针对的核心痛点是低质数据下的适配鲁棒性，属于 VLM 后训练范式层面的探索。摘要与量化结果未包含在抓取内容中。</p>
+  <div class="src">来源：<a href="https://arxiv.org/pdf/2609.10321" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">蒸馏</span><span class="tag">VLM 适配</span><span class="tag">低质数据</span><span class="tag">后训练</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>.blend URL Viewer：浏览器里直接查看 Blender 文件</h3>
+  <p>Simon Willison 发布的小工具，可把远程 .blend 文件加载到浏览器中查看 3D 模型，是其 vibe-coded Blender 系列实验的配套产物。起因是 Codex 跑 GPT-6 Astra（high）用本地 Blender skill 花了 17 分 51 秒自动生成了一组法贝热彩蛋主题模型，作者随后把查看器做成在线工具以分享成果。</p>
+  <div class="src">来源：<a href="https://tools.simonwillison.net/blender-viewer" target="_blank" rel="noopener">Simon Willison's Weblog</a></div>
+  <div class="tags"><span class="tag">工具</span><span class="tag">Blender</span><span class="tag">coding agent</span><span class="tag">3D</span></div>
+</div>
+<div class="item">
+  <h3>面向 coding agent 的 Blender skill 开源</h3>
+  <p>与上述实验配套的 skill 文件被开源到 GitHub 仓库，用声明式方式描述『如何让 agent 调用本地 Blender 建模』，可直接被 Codex 等编码 agent 加载。它代表了一类正在成形的实践：把本地专业软件的操作知识封装成 agent 可复用的 skill，而非一次性提示词。</p>
+  <div class="src">来源：<a href="https://github.com/simonw/gpt-6-astra-blender-pelican-bicycle/blob/main/outputs/blender-local/SKILL.md" target="_blank" rel="noopener">Simon Willison's Weblog</a></div>
+  <div class="tags"><span class="tag">agent skill</span><span class="tag">开源</span><span class="tag">Blender</span><span class="tag">工作流</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>WeWorm：首个借 AI 在两天内写出的 WeChat 零点击蠕虫</h3>
+  <p>Calif Research 披露 WeWorm，称其为首个可通过 WeChat 通话在 iOS 与 Android 上传播的零点击蠕虫，受害者无需接听甚至无需触碰手机，攻击即可成立。团队表示借助 AI 约两天定位漏洞并写出首个 RCE exploit、再用一周完成蠕虫化，强调过去这类工作需要更大团队耗时数月，AI 已经承担了其中大部分工作量。</p>
+  <div class="src">来源：<a href="https://calif.io/research/weworm" target="_blank" rel="noopener">Simon Willison's Weblog</a></div>
+  <div class="tags"><span class="tag">AI 安全</span><span class="tag">漏洞利用</span><span class="tag">蠕虫</span><span class="tag">移动安全</span></div>
+</div>
+<div class="item">
+  <h3>OpenAI 宣称解决 Navier–Stokes 问题，陷入优先权争议</h3>
+  <p>OpenAI 用未发布的模型给出了 Navier–Stokes 存在性与光滑性问题的解决结果，该问题自 2000 年起属于悬赏 100 万美元的七个千禧年大奖难题之一。事件被 NYU 数学教授 Tristan Buckmaster 的指控所盖过：他与现供职于 Anthropic 的 Levent Alpöge 已合作近一年并于 8 月 15 日取得突破，随后迅速公开了自己的结果与说明文档。</p>
+  <div class="src">来源：<a href="https://openai.com/index/navier-stokes-solution/" target="_blank" rel="noopener">Simon Willison's Weblog</a></div>
+  <div class="tags"><span class="tag">OpenAI</span><span class="tag">数学</span><span class="tag">千禧年难题</span><span class="tag">研究伦理</span></div>
+</div>
+<div class="item">
+  <h3>Terence Tao：开放问题正被 AI 以不可再生方式开采</h3>
+  <p>陶哲轩指出，好的开放问题集合正在被以『非可再生』的方式消耗，甚至仅仅出现『有人在研究某问题』的传闻，就会触发大量 AI 驱动的算力涌入并把问题迅速压平，使原创研究项目来不及成熟。他警告这种激励结构可能让研究者不再分享有前景的方向，从而逆转数百年的开放科学传统。</p>
+  <div class="src">来源：<a href="https://mathstodon.xyz/@tao/117237320796901560" target="_blank" rel="noopener">Simon Willison's Weblog</a></div>
+  <div class="tags"><span class="tag">开放科学</span><span class="tag">AI 伦理</span><span class="tag">数学</span><span class="tag">研究生态</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
