@@ -1,0 +1,135 @@
+{
+  "date": "2026-09-11",
+  "title": "大模型每日进展 · 2026-09-11",
+  "summary": "今日 HuggingFace 论文榜以 Agent 与 World Model 为主线，Show Lab 的 Show-Harness 展示单个 VLM Agent 即可操控机器人，Alaya Lab 提出可编程世界模型。开源生态方面 DeepSeek-V4.1-Flash、MiniCPM5-2B、GLM-5.3 等多款模型登上 HuggingFace 趋势榜。异常检测与多模态计数两个定向数据源今日未返回有效内容。",
+  "sections": [
+    {
+      "heading": "模型发布与能力更新",
+      "items": [
+        {
+          "title": "DeepSeek-V4.1-Flash 登上 HuggingFace 趋势榜",
+          "summary": "DeepSeek 发布 V4.1-Flash 版本，为 Image-Text-to-Text 多模态模型（763B 规模），主打快速推理，近期在 HuggingFace 趋势榜居前。",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "模型发布",
+            "多模态"
+          ]
+        },
+        {
+          "title": "MiniCPM5-2B 开源发布",
+          "summary": "OpenBMB 发布 MiniCPM5-2B 小尺寸文本生成模型（3B 规模），下载量迅速攀升并提供 GGUF 版本，延续端侧高效路线。",
+          "url": "https://huggingface.co/openbmb/MiniCPM5-2B",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "模型发布",
+            "端侧"
+          ]
+        },
+        {
+          "title": "GLM-5.3 系列上榜（含 Flash 与安全专用版）",
+          "summary": "智谱 zai-org 发布 GLM-5.3（753B）及 GLM-5.3-Flash（321B）多模态版本，同时出现面向网络安全场景的 FP8 变体，登上 HuggingFace 趋势榜。",
+          "url": "https://huggingface.co/zai-org/GLM-5.3",
+          "source": "HuggingFace Trending Models",
+          "tags": [
+            "模型发布",
+            "MoE"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "论文与技术方法",
+      "items": [
+        {
+          "title": "Show-Harness: Just a VLM Agent Can Play Robots",
+          "summary": "针对机器人操控通常需要复杂专用策略模型的痛点，Show Lab 提出 Show-Harness，探索仅用一个视觉语言模型（VLM）Agent 即可驱动机器人完成任务。该工作旨在验证通用 VLM 在具身控制中的可行性，在 HuggingFace 论文榜获得高热度（163 upvotes），显示 VLM 作为统一控制器的潜力。",
+          "url": "https://huggingface.co/papers/2609.10522",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "VLM",
+            "具身智能"
+          ]
+        },
+        {
+          "title": "PlannerForge: LLM Agents for Scenario-Based Testing of Motion Planners",
+          "summary": "自动驾驶的场景化测试长期是割裂的模块化流水线，场景生成、检索、修改、执行与分析由不同工具完成、缺乏交互。PlannerForge 提出统一的 LLM-Agent 框架覆盖全测试流程并新增 ADS 增强与基准两阶段，用 10 个现成 LLM 在各任务测试。结果显示各任务最佳得分 0.88–1.00，开源 20–35B 模型可媲美商业 API，在自然语言场景生成（193/200 vs 144）、rank-1 选择（92.0% vs 67.5%）等指标上超越基线，且成本调优将规划成功率从 50.4% 提升至 70.2%、碰撞率从 19.0% 降至 8.4%。",
+          "url": "https://huggingface.co/papers/2609.08965",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "LLM Agent",
+            "自动驾驶"
+          ]
+        },
+        {
+          "title": "Data Scarcity and Model Sparsity: Mixtures-of-Experts Overfit More to Repeated Data",
+          "summary": "针对数据稀缺时重复训练数据的影响，作者（含 Percy Liang、Luke Zettlemoyer 等）研究 MoE 稀疏模型在重复数据下的过拟合行为。工作揭示在数据受限场景中，MoE 相比稠密模型更容易对重复数据过拟合，为稀疏模型的数据配比与训练策略提供了实证参考。",
+          "url": "https://arxiv.org/abs/2609.11917",
+          "source": "arXiv cs.LG",
+          "tags": [
+            "MoE",
+            "训练动态"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "开源生态与工具",
+      "items": [
+        {
+          "title": "trynix.dev：浏览器中运行任意 Nix 包",
+          "summary": "Farid Zakaria 基于 qemu-wasm 实现完全在浏览器中运行的 x86_64 Linux 虚拟机，可启动过去 13 年的任意 Nix 包并通过 URL 寻址；配套 trynix-preview GitHub Action 可直接在浏览器中启动 PR 构建进行审查。",
+          "url": "https://trynix.dev/",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "工具",
+            "WebAssembly"
+          ]
+        },
+        {
+          "title": "PlannerForge 开源仓库",
+          "summary": "TUM-AVS 团队开源了自动驾驶场景化测试的统一 LLM-Agent 框架 PlannerForge，覆盖场景生成到 ADS 评估的完整流程，附带项目主页与代码。",
+          "url": "https://github.com/TUM-AVS/PlannerForge",
+          "source": "HuggingFace Papers",
+          "tags": [
+            "开源",
+            "自动驾驶"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "产品与行业动态",
+      "items": [
+        {
+          "title": "Shopify 将移动端从 React Native 回归原生",
+          "summary": "Shopify 宣布放弃 2020 年起采用的 React Native，转回独立的 Swift 与 Kotlin 原生代码库。关键理由是 AI 编码 Agent 如今能完成大量实现、翻译、测试与审查工作，使得双端维护成本不再是决定性因素。",
+          "url": "https://simonwillison.net/2026/Sep/10/shopify-react-native/",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "行业动态",
+            "AI编程"
+          ]
+        },
+        {
+          "title": "Calif Research 演示 WeWorm：AI 辅助编写零点击蠕虫",
+          "summary": "安全团队展示了首个通过微信通话在 iOS/Android 间传播的零点击蠕虫 WeWorm，受害者无需接听即被攻陷。团队借助 AI 约两天即找到漏洞并写出 RCE 利用，一周内完成蠕虫，凸显 AI 大幅降低高危攻击门槛的安全隐患。",
+          "url": "https://calif.io/research/weworm",
+          "source": "Simon Willison 博客",
+          "tags": [
+            "AI安全",
+            "漏洞"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "异常检测",
+      "items": []
+    },
+    {
+      "heading": "多模态计数",
+      "items": []
+    }
+  ]
+}
