@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-09-15</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-09-15</p>
+  <h1>大模型每日进展 · 2026-09-15</h1>
+  <div class="summary">今日 HuggingFace 趋势论文聚焦递归自我改进与流式思考，Google 的 Dream-RSI 通过演化世界实现模型自进化，Omni-Streaming Thinking 探索边看边推理的能力。开源模型方面 DeepSeek-V4.1-Flash、MiniCPM5、Nex-N2.5 系列等密集更新。异常检测与多模态计数两个定向数据源今日未返回有效论文，暂缺。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>DeepSeek-V4.1-Flash 登顶 HF 趋势榜</h3>
+  <p>DeepSeek 发布的 V4.1-Flash 为 763B 规模的图文到文本（Image-Text-to-Text）多模态模型，近期下载量达 28.8 万，位居 HuggingFace 趋势榜首，延续 DeepSeek 在大规模开源多模态方向的布局。</p>
+  <div class="src">来源：<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">多模态</span><span class="tag">DeepSeek</span></div>
+</div>
+<div class="item">
+  <h3>MiniCPM5-2B 小模型持续走热</h3>
+  <p>openbmb 发布的 MiniCPM5-2B 为 3B 级文本生成模型，近期下载量超 20 万，延续 MiniCPM 系列在端侧小模型上的高性价比路线。</p>
+  <div class="src">来源：<a href="https://huggingface.co/openbmb/MiniCPM5-2B" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">端侧</span><span class="tag">小模型</span></div>
+</div>
+<div class="item">
+  <h3>Nex-N2.5 系列发布 mini 与 Pro 版本</h3>
+  <p>nex-agi 同时上架 Nex-N2.5-mini（35B）与 Nex-N2.5-Pro（397B）两款文本生成模型，覆盖从中等规模到超大规模的不同部署需求。</p>
+  <div class="src">来源：<a href="https://huggingface.co/nex-agi/Nex-N2.5-Pro" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">模型发布</span><span class="tag">文本生成</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>Dream-RSI: Recursive Self-Improvement through Evolving Worlds</h3>
+  <p>针对模型在固定训练数据下难以持续提升的问题，Google 提出 Dream-RSI，通过让模型在不断演化的虚拟世界中递归自我改进来突破静态数据瓶颈。该方法以自生成、自演化的环境作为持续学习信号，探索开放式的自提升范式，为模型能力的自主增长提供了一条新路径。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.14858" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">自我改进</span><span class="tag">强化学习</span><span class="tag">Google</span></div>
+</div>
+<div class="item">
+  <h3>Omni-Streaming Thinking</h3>
+  <p>为解决现有模型需完整接收输入后才能推理、难以应对实时流式场景的痛点，该工作提出 Omni-Streaming Thinking，让模型在信息持续流入的过程中边接收边思考。方法针对流式多模态输入下的低延迟推理需求，探索了同步感知与推理的机制，为实时交互式智能体奠定基础。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.15128" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">流式推理</span><span class="tag">多模态</span></div>
+</div>
+<div class="item">
+  <h3>LLaDA-UI: Bringing Block-wise Diffusion to Vision-Language GUI Agents</h3>
+  <p>针对自回归模型在 GUI 智能体中动作生成效率与并行性不足的问题，inclusionAI 提出 LLaDA-UI，将分块扩散（block-wise diffusion）引入视觉-语言 GUI 智能体。该方法利用扩散式并行解码提升界面操作的生成能力，为视觉-语言 GUI 代理提供了区别于自回归的新技术路线。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.13287" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">GUI Agent</span><span class="tag">扩散模型</span><span class="tag">视觉语言</span></div>
+</div>
+<div class="item">
+  <h3>BVB: Benchmarking Agentic Video Understanding via Programmatic Reconstruction in Blender</h3>
+  <p>针对当前视频理解评测难以精确控制场景与验证智能体推理的问题，该工作提出 BVB，利用 Blender 中的程序化重建来构建可控的视频理解基准。方法通过可编程重建生成带精确标注的评测场景，用于系统检验智能体式视频理解能力，为该方向提供了更严谨可控的评测框架。</p>
+  <div class="src">来源：<a href="https://huggingface.co/papers/2609.15478" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">视频理解</span><span class="tag">Benchmark</span><span class="tag">智能体</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>LTX-2.5 图生视频模型</h3>
+  <p>Lightricks 发布 LTX-2.5 图像到视频（Image-to-Video）生成模型，近期下载量超过 150 万，是当前 HuggingFace 上热度极高的开源视频生成方案。</p>
+  <div class="src">来源：<a href="https://huggingface.co/Lightricks/LTX-2.5" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">视频生成</span><span class="tag">开源</span></div>
+</div>
+<div class="item">
+  <h3>google/timesfm-3.0-pytorch 时序预测基础模型</h3>
+  <p>Google 发布 TimesFM 3.0（0.3B）时间序列预测基础模型的 PyTorch 版本，近期下载量超 80 万，为通用时序预测提供开箱即用的预训练底座。</p>
+  <div class="src">来源：<a href="https://huggingface.co/google/timesfm-3.0-pytorch" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">时序预测</span><span class="tag">基础模型</span><span class="tag">Google</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>关于 AI 灭绝论的&quot;恐惧传染&quot;讨论</h3>
+  <p>Bryan Cantrill 回应前 Anthropic 研究员关于&quot;AI 可能在本十年末毁灭人类&quot;的言论，批评生物武器、关键基础设施攻击等极端风险论调缺乏领域专家支撑，呼吁在公开发出警报时保持审慎与专业，避免滥用公众信任制造不必要的恐慌。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Sep/14/the-contagion-of-fear/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">AI 安全</span><span class="tag">行业观点</span><span class="tag">Anthropic</span></div>
+</div>
+<div class="item">
+  <h3>&quot;我们现在都是产品工程师&quot; —— 编程成本坍缩后的软件工作</h3>
+  <p>Laurie Voss 提出观点：随着 AI 让写代码、审查修复与运维的成本不断坍缩，软件工作的核心将回归到&quot;弄清用户真正想要什么、精确定义并做得好用&quot;，这部分不可迁移的成本将逐渐成为整个工作的主体。</p>
+  <div class="src">来源：<a href="https://simonwillison.net/2026/Sep/14/laurie-voss/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">AI 编程</span><span class="tag">行业趋势</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
