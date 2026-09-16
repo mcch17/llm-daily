@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-09-16</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-09-16</p>
+  <h1>大模型每日进展 · 2026-09-16</h1>
+  <div class="summary">今日 Google 发布 Gemini 3.8 Live 系列语音到语音模型，与 OpenAI 的 GPT-Live 形成对垒；DeepSeek-V4.1-Flash 等大参数模型在 HuggingFace 持续热门。研究侧关注从冻结 LLM 中直接读出技能路由信号（Gavel）以及科研智能体的递归式自我改进（ScienceBuddy）。异常检测与多模态计数方向多篇结合 VLM/CLIP 的训练-free 与零样本新工作值得关注。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>Google 发布 Gemini 3.8 Live 与 3.8 Live Extended Thinking</h3>
+  <p>Google 推出两款语音到语音模型 Gemini 3.8 Live 和 3.8 Live Extended Thinking，形态与 OpenAI 的 GPT-Live 家族类似，支持通过 WebSocket 端点进行实时双向语音对话，可在浏览器中打断模型说话。</p>
+  <div class="src">来源：<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">Gemini</span><span class="tag">语音模型</span><span class="tag">实时对话</span></div>
+</div>
+<div class="item">
+  <h3>DeepSeek-V4.1-Flash 在 HuggingFace 持续热门</h3>
+  <p>DeepSeek-V4.1-Flash 为 763B 规模的 Image-Text-to-Text 多模态模型，近期下载量达 32.6 万，居 HuggingFace trending 前列，社区已出现 FP8 量化等衍生版本。</p>
+  <div class="src">来源：<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">DeepSeek</span><span class="tag">多模态</span><span class="tag">开源模型</span></div>
+</div>
+<div class="item">
+  <h3>MiniCPM5-2B 小模型发布</h3>
+  <p>openbmb 发布 MiniCPM5-2B（3B 级）文本生成模型，四天内下载量超 27 万，延续 MiniCPM 系列在端侧小模型上的高性价比路线。</p>
+  <div class="src">来源：<a href="https://huggingface.co/openbmb/MiniCPM5-2B" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">MiniCPM</span><span class="tag">小模型</span><span class="tag">端侧</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>The Router Within: 从冻结 LLM 中读出原生技能路由</h3>
+  <p>智能体依靠调用正确技能来扩展参数化知识，但主流做法把所有技能元数据预载入上下文会分散注意力并限制技能库规模，检索式方案又把选择移出了模型能力之外。作者发现冻结 LLM 在前向传播中已携带路由信号，提出 Gavel（Glance And Verdict），仅训练两个线性映射即可在不放入任何技能文本的情况下，通过投影中间层状态对整个技能库打分，从而实现高效的原生技能路由。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.15982v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">LLM Agent</span><span class="tag">技能路由</span><span class="tag">冻结模型</span></div>
+</div>
+<div class="item">
+  <h3>ScienceBuddy: 面向交互式科研智能体的递归式自我改进</h3>
+  <p>为把持续进化的科研智能体带入研究者日常工作流，作者提出并开源 ScienceBuddy，将研究者的请求、反馈与执行证据转化为持续学习的任务与评估标准。其核心是递归中的递归自我改进范式：内层递归在模型固定时改进 harness，外层递归在改进后的 harness 下用强化学习训练模型，二者相互促进；论文通过研究者交互案例展示了该范式的可行性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.17523v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">科研智能体</span><span class="tag">自我改进</span><span class="tag">强化学习</span></div>
+</div>
+<div class="item">
+  <h3>AI for Games in the Foundation Model Era</h3>
+  <p>基础模型与学习式游戏世界模型正在重塑游戏全生命周期的 AI，但玩游戏、建模玩家与动态、辅助设计开发、运行时适配与测试评估等方向长期分散演进，难以看清哪些能力可跨场景迁移。作者将文献按 AI 输出的直接用途归纳为六种角色，系统梳理各角色的结构假设与迁移性，为该领域提供统一的组织框架与研究地图。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.16679v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">基础模型</span><span class="tag">游戏 AI</span><span class="tag">综述</span></div>
+</div>
+<div class="item">
+  <h3>持续学习机制的组合以实现长时程记忆</h3>
+  <p>语言模型需要吸收随时间到达的信息并在多次更新后保留，作者提出长时程记忆设定：模型通过持续监督微调学习 100 个问答任务，不保留早期样本也无任务标识。研究发现顺序更新导致灾难性遗忘且单一持续学习机制均无法在此时程维持强保留，进而假设并验证针对互补遗忘来源的机制在组合使用时更有效，并沿数据/函数/权重锚点等维度组织这些组合。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.06986v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">持续学习</span><span class="tag">灾难性遗忘</span><span class="tag">记忆</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>Simon Willison 用 GPT-6 Astra 构建 Gemini Live 无依赖 Web UI</h3>
+  <p>作者用 GPT-6 Astra Extra High 根据文档生成了一个无任何第三方库的 Gemini Live 测试 Web UI，可选择模型与音色预设、设置系统提示并通过浏览器 Web Audio API 进行实时语音对话，直接连接 generativelanguage WebSocket 端点。</p>
+  <div class="src">来源：<a href="https://github.com/simonw/tools/blob/main/gemini-live.html" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">工具</span><span class="tag">语音</span><span class="tag">WebSocket</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>围绕 AI 生存风险言论的争议：The contagion of fear</h3>
+  <p>Bryan Cantrill 回应前 Anthropic 员工关于 AI&quot;可能在本十年内毁灭人类&quot;的言论，指出诸如&quot;黑客攻击关键基础设施&quot;&quot;灭绝级生物武器&quot;等说法多依赖缺乏领域专家支撑的臆测式外推，呼吁提出警告者应承担举证责任、审慎发声。</p>
+  <div class="src">来源：<a href="https://bcantrill.dtrace.org/2026/09/13/the-contagion-of-fear/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">AI 安全</span><span class="tag">AI 伦理</span><span class="tag">行业讨论</span></div>
+</div>
+</section>
+<section>
+  <h2>异常检测</h2>
+  <div class="item">
+  <h3>Probe-VAD: 面向训练-free 视频异常检测的序数似然探测</h3>
+  <p>视频异常检测旨在定位未剪辑视频中的异常事件，VLM 提供了丰富的视觉理解来支持训练-free VAD，但现有方法在视觉理解与异常打分之间施加了限制性接口——基于字幕的流程会压缩视觉证据、直接数值生成又迫使模型用少量预定义分数表达判断，二者都会掩盖异常严重度的细微差异。作者提出 Probe-VAD，用序数二元探测框架直接探测模型对严重度的偏好，从而提升异常排序的分辨率。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.17211v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">视频异常检测</span><span class="tag">VLM</span><span class="tag">训练-free</span></div>
+</div>
+<div class="item">
+  <h3>PSMP-CLIP: 基于 CLIP 的零样本异常检测</h3>
+  <p>零样本异常检测需在无目标域样本下定位异常，现有 CLIP 方法存在异常图粗糙、语义提示有限的问题。作者提出 PSMP-CLIP，融合 patch-prompt SAM2 分割（PPSS）与多语义引导提示正则化（MSGPR）：PPSS 直接从中间 patch 特征采样提示以避免阈值漂移并引导 SAM2 产生精细掩码，MSGPR 用语义锚点约束的可学习提示保持泛化。在 14 个数据集上取得高度竞争力表现，并在 MVTec AD、BTAD、CVC-ClinicDB、TN3K、Kvasir 等取得最佳像素级 AUROC。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.16785v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">零样本异常检测</span><span class="tag">CLIP</span><span class="tag">SAM2</span></div>
+</div>
+<div class="item">
+  <h3>机械多模态时序中的自监督跨模态重建鲁棒故障检测</h3>
+  <p>工业故障检测对安全可靠至关重要，现代系统依赖异构传感模态捕捉互补的物理过程信息，但现有数据驱动异常检测方法多独立处理各模态或仅做简单特征级融合，难以利用刻画正常行为的跨模态关系，且常假设训练与部署分布一致而对现实中的分布漂移敏感。作者提出基于自监督跨模态重建的方法，以更好地建模模态间关系并提升在分布变化下的鲁棒性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.16314v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">故障检测</span><span class="tag">多模态时序</span><span class="tag">自监督</span></div>
+</div>
+<div class="item">
+  <h3>FreqSpaNet: 面向物理层硬件完整性检测的频率与空间学习</h3>
+  <p>未授权硬件替换可在保留设备逻辑身份的同时改变其物理实现，给硬件完整性验证带来挑战；时空极化指纹（SFPF）能跨多频率与方向捕捉设备相关响应，但其频率与空间维度具有不同的结构依赖。作者提出 FreqSpaNet，用频率分支捕捉相邻频率的局部变化、几何感知空间分支用角度信息建模方向关系，并通过自适应融合与互补预训练面向开集硬件异常检测学习 SFPF 表示。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.17491v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">硬件完整性</span><span class="tag">开集异常检测</span><span class="tag">表示学习</span></div>
+</div>
+</section>
+<section>
+  <h2>多模态计数</h2>
+  <div class="item">
+  <h3>Counting Beyond Instances: 群体-个体目标计数基准</h3>
+  <p>视觉计数通常以实例级建模，估计图像中某类目标的数量，但现实计数常涉及由多个实例构成的更高层语义单元，如&quot;一串葡萄&quot;&quot;一摞盘子&quot;。作者指出这类群体-个体计数尚缺乏系统评测，进而构建面向群体与个体两个层次的目标计数基准，以推动视觉计数从纯实例计数走向更贴近现实的语义单元计数。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.04716v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">目标计数</span><span class="tag">视觉计数</span><span class="tag">基准</span></div>
+</div>
+<div class="item">
+  <h3>Are Image Generators Zero-Shot Perceivers? 生成式感知的严谨评测</h3>
+  <p>受 Vision Banana 等工作启发（轻量指令微调可让图像生成器在多项视觉感知任务上达到 SOTA），作者提出 ProbeGen 基准，将单目深度估计、指代/推理分割与目标计数统一表述为由文本提示指定的条件生成任务，并在 11 个基准上对比包括专有/开源图像生成器、专用感知模型与 MLLM 在内的 20 个模型。结果显示预训练图像生成器具备可测量的零样本感知能力，为生成式模型作为通用感知器提供了系统评估。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.07884v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">零样本感知</span><span class="tag">目标计数</span><span class="tag">图像生成器</span></div>
+</div>
+<div class="item">
+  <h3>训练-free 的逻辑与结构异常检测（含目标计数校准融合）</h3>
+  <p>工业异常检测须同时处理结构异常（局部纹理损坏）与逻辑异常（违反目标数量、组成或排列的全局规则），但现有检测器往往偏向其一——训练-free 方法擅长利用冻结表示却缺乏显式的目标计数概念，而具备计数推理的方法通常依赖类别特定的部件建模。作者提出正常集校准，用正常图像统计对齐异构异常线索，从而在无需额外训练或部件级监督的情况下将计数能力引入训练-free 异常检测。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.05091v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">目标计数</span><span class="tag">逻辑异常</span><span class="tag">训练-free</span></div>
+</div>
+<div class="item">
+  <h3>(How) Do MLLMs Report Bistable Images Like Humans?</h3>
+  <p>针对鸭兔图等经典双稳态刺激（一幅图支持多种互斥解读、人类通常一次只报告一种），作者研究 MLLM 是否表现出类似的报告行为及其内部计算支撑。基于 LLaVA 家族，从可调制性（报告能否被自下而上视觉线索与自上而下语言先验偏置）与排他性（是否只承诺单一解读）两个维度，在鸭兔图与合成视觉字谜上测试，发现视觉与语言操纵都能以与人类一致的方式系统性改变报告，且响应主要保持排他性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.13254v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">MLLM</span><span class="tag">视觉感知</span><span class="tag">双稳态图像</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
