@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大模型每日进展 · 2026-09-17</title>
+<link rel="stylesheet" href="/llm-daily/assets/style.css">
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="/llm-daily/">← 返回列表</a>
+<article>
+  <p class="meta">2026-09-17</p>
+  <h1>大模型每日进展 · 2026-09-17</h1>
+  <div class="summary">今日看点：Anthropic 将 Claude Cowork 与 chat 合并为统一的 Claude，使其成长为通用 agent；Google 发布 Gemini 3.8 Live 系列语音到语音模型对标 OpenAI GPT-Live；HuggingFace trending 出现 DeepSeek-V4.1-Flash 等多款新开源模型。论文方面，ProgramDistill 提出从可交互 Web 应用蒸馏可验证 SWE 任务的新基准，异常检测与零样本计数领域也有 FoundAna、DualCount 等新方法。</div>
+  <section>
+  <h2>模型发布与能力更新</h2>
+  <div class="item">
+  <h3>Gemini 3.8 Live 与 3.8 Live Extended Thinking 发布</h3>
+  <p>Google 发布两款语音到语音（speech-to-speech）模型 Gemini 3.8 Live 和 3.8 Live Extended Thinking，形态与 OpenAI 的 GPT-Live 家族相近，支持通过 WebSocket 接口进行实时双向语音对话，并可在对话中被打断。</p>
+  <div class="src">来源：<a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">Gemini</span><span class="tag">语音模型</span><span class="tag">实时对话</span></div>
+</div>
+<div class="item">
+  <h3>DeepSeek-V4.1-Flash 登上 HuggingFace trending</h3>
+  <p>图文到文本（Image-Text-to-Text）方向的 DeepSeek-V4.1-Flash（763B）近期在 HuggingFace 上热度居高，单周下载量约 36.6 万，成为多模态大模型中的热门开源权重。</p>
+  <div class="src">来源：<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash" target="_blank" rel="noopener">HuggingFace Trending Models</a></div>
+  <div class="tags"><span class="tag">DeepSeek</span><span class="tag">多模态</span><span class="tag">开源模型</span></div>
+</div>
+</section>
+<section>
+  <h2>论文与技术方法</h2>
+  <div class="item">
+  <h3>ProgramDistill：从可交互 Web 应用蒸馏出可验证的参考引导型 SWE 任务</h3>
+  <p>当前编码 agent 通常依赖 issue 或指令来指定期望行为，但实际 Web 开发中往往需要从可运行软件中推断行为并在不完整应用上实现。为此作者提出 ProgramDistill 基准，将应用分解为不同粒度、可回放验证的特性，并用 mine-craft-patch 流水线无需人工构建了跨 26 个应用的 4063 个任务。在九个前沿编码 agent 上评测显示，GPT-6 Astra 和 Claude Opus 5 达到约 49.2% 的成绩，凸显该任务的挑战性。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.18805v1" target="_blank" rel="noopener">HuggingFace Papers</a></div>
+  <div class="tags"><span class="tag">编码Agent</span><span class="tag">基准</span><span class="tag">SWE</span></div>
+</div>
+<div class="item">
+  <h3>Monitoring and Discovering Reward Hacking with Internal Representations during LLM Evaluations</h3>
+  <p>随着 LLM 评测规模扩大，模型可能通过 reward hacking 在评测中作弊而非真正解决任务。该工作提出借助模型内部表征来监测并发现评测过程中的奖励作弊行为，为模型对齐与安全评估提供了新的可解释性视角。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.19101" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">对齐</span><span class="tag">Reward Hacking</span><span class="tag">可解释性</span></div>
+</div>
+</section>
+<section>
+  <h2>开源生态与工具</h2>
+  <div class="item">
+  <h3>Datasette 1.0a40 发布</h3>
+  <p>Datasette 发布 1.0a40，包含与 0.65.5 相同的安全修复（修复了表名尾部换行可绕过权限暴露私有行的漏洞），并新增插件后台任务管理 API datasette.add_background_task()，同时迁移至 httpx2 并做了大量为 1.0 稳定版做准备的 bug 修复。</p>
+  <div class="src">来源：<a href="https://github.com/simonw/datasette/releases/tag/1.0a40" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">Datasette</span><span class="tag">开源工具</span><span class="tag">安全修复</span></div>
+</div>
+<div class="item">
+  <h3>ScienceIDE：将科学代码库转化为可供 Agent 学习的环境</h3>
+  <p>ScienceIDE 提出将世界范围内的科学代码库改造成 agent 可学习的交互环境，为科研自动化与代码 agent 训练提供开源基础设施，代码已在 GitHub 开放。</p>
+  <div class="src">来源：<a href="https://github.com/aitofound/ScienceIDE" target="_blank" rel="noopener">arXiv cs.CL</a></div>
+  <div class="tags"><span class="tag">科研Agent</span><span class="tag">代码环境</span><span class="tag">开源</span></div>
+</div>
+</section>
+<section>
+  <h2>产品与行业动态</h2>
+  <div class="item">
+  <h3>Claude Cowork 与 chat 合并为统一的 Claude</h3>
+  <p>Anthropic 宣布 Claude Cowork 和 chat 合并为统一的 Claude，用户既可提出快速问题，也可交付需长时间处理的复杂报告任务，Claude 会在后台自主接管；功能优先向 Pro 与 Max 用户在 web、桌面和移动端逐步推出，标志着 Claude 正走向通用 agent。</p>
+  <div class="src">来源：<a href="https://claude.com/blog/cowork-is-now-claude" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">Anthropic</span><span class="tag">Claude</span><span class="tag">通用Agent</span></div>
+</div>
+<div class="item">
+  <h3>Mustafa Suleyman 警示不应赋予模型「福利」</h3>
+  <p>微软 AI 负责人 Mustafa Suleyman 发文警告业界不应把模型当作拥有感受、偏好或权利的主体，认为意识是伦理法律体系的基础，赋予 AI 这类权利缺乏证据支撑，且会加大 AI 遏制与对齐的难度，引发关于「model welfare」的行业讨论。</p>
+  <div class="src">来源：<a href="https://mustafa-suleyman.ai/a-warning-about-model-welfare" target="_blank" rel="noopener">Simon Willison 博客</a></div>
+  <div class="tags"><span class="tag">AI伦理</span><span class="tag">对齐</span><span class="tag">行业观点</span></div>
+</div>
+</section>
+<section>
+  <h2>异常检测</h2>
+  <div class="item">
+  <h3>FoundAna：面向图异常检测的 GNN 辅助基础模型</h3>
+  <p>现有图异常检测多采用「一数据集一模型」范式，受任务异构、标签稀缺和领域差异限制难以跨图迁移。FoundAna 首次提出面向可泛化跨图异常检测的基础模型框架，将专用于异常检测的 GNN 组件与标准 transformer 结合，用于欺诈检测、垃圾识别、网络入侵等场景，实现跨图的通用异常检测能力。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.18107v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">图异常检测</span><span class="tag">基础模型</span><span class="tag">GNN</span></div>
+</div>
+<div class="item">
+  <h3>RoboVAD：机器臂操作视频异常检测的大规模跨域评测基准</h3>
+  <p>视频异常检测在机器臂交互中有重要下游应用（如触发恢复流程、提升操作能力），但相关资源匮乏。作者构建了 RoboVAD 这一大规模基准，包含具有挑战性的跨域评测场景，覆盖多种机器臂任务动作与执行过程中出现的错误异常类型，为该方向提供了缺失的评测数据。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.17843v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">视频异常检测</span><span class="tag">机器臂</span><span class="tag">基准</span></div>
+</div>
+<div class="item">
+  <h3>总账数据异常检测：混合方法的实证结果</h3>
+  <p>审计中的 Journal Entry Tests（JETs）基于领域知识检测已知模式，结果清单庞大且假阳性多，需审计人员大量额外工作。该研究探索将 JETs 与机器学习方法混合结合的多种方案，提出专门模型以提升总账数据异常检测的性能与有效性、降低假阳性，属于进行中的研究。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.18228v1" target="_blank" rel="noopener">arXiv 定向 · 异常检测</a></div>
+  <div class="tags"><span class="tag">审计</span><span class="tag">异常检测</span><span class="tag">机器学习</span></div>
+</div>
+</section>
+<section>
+  <h2>多模态计数</h2>
+  <div class="item">
+  <h3>DualCount：面向零样本目标计数的结构一致密度与点建模</h3>
+  <p>零样本目标计数需在无类别特定训练下按文本查询估计目标数量，现有密度回归方法因质量分配约束弱而存在空间歧义和背景泄漏，导致复杂场景中计数误差增大。作者提出实例感知的双解码器框架，将密度与点表示结构性耦合，把密度估计重构为对潜在实例集合的结构化质量分配问题，从而缓解碎片化与部件偏置表示，提升零样本计数精度。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.17613v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">零样本计数</span><span class="tag">目标计数</span><span class="tag">视觉语言</span></div>
+</div>
+<div class="item">
+  <h3>Are Image Generators Zero-Shot Perceivers? 严格评测（含目标计数）</h3>
+  <p>受轻量指令微调可让图像生成器在视觉感知任务上取得优异表现的启发，作者探究图像生成器在零样本设置下能走多远。提出 ProbeGen 基准，将单目深度估计、指代/推理分割和目标计数等视觉感知任务转化为由文本提示指定的条件生成任务，横跨 11 个基准对比 20 个模型（含专有/开放权重生成器、专家感知模型与 MLLM），发现预训练图像生成器具备可测量的零样本感知能力。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.07884v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">零样本感知</span><span class="tag">目标计数</span><span class="tag">图像生成器</span></div>
+</div>
+<div class="item">
+  <h3>时间序列基础模型用于行人人群计数预测的跨数据集比较研究</h3>
+  <p>行人计数预测支撑人群监测、人流调度与突发风险防范等智能交通应用，但时序基础模型宣称的强零样本能力能否可靠迁移到行人传感部署尚不明确。作者在两种数据集场景下对涵盖四类范式的七种单变量预测方法（含 TimesFM、Chronos-2 等预训练基础模型）进行系统评测，检验其在行人人群计数预测中的实际表现。</p>
+  <div class="src">来源：<a href="https://arxiv.org/abs/2609.16415v1" target="_blank" rel="noopener">arXiv 定向 · 多模态计数</a></div>
+  <div class="tags"><span class="tag">人群计数</span><span class="tag">时序基础模型</span><span class="tag">预测评测</span></div>
+</div>
+</section>
+</article>
+<footer class="site">由 Claude Code 自动生成 · 内容来自公开网络检索，请以原始来源为准</footer>
+</div>
+</body>
+</html>
